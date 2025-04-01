@@ -37,8 +37,8 @@ MAX_FILES = int(environ.get("MAX_FILES", "10"))  # file limit 10 file Olay
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 # ban information
-BANNED_CHANNELS = [int(banned_channels) if id_pattern.search(banned_channels) else banned_channels for banned_channels in environ.get('BANNED_CHANNELS', '').split()]   
-BAN_CHNL = [int(ban_chal) if id_pattern.search(ban_chal) else ban_chal for ban_chal in environ.get('BAN_CHNL', '').split()]
+BANNED_CHANNELS = [int(banned_channels) if id_pattern.search(banned_channels) else banned_channels for banned_channels in environ.get('BANNED_CHANNELS', '-1002410513772').split()]   
+BAN_CHNL = [int(ban_chal) if id_pattern.search(ban_chal) else ban_chal for ban_chal in environ.get('BAN_CHNL', '-1002410513772').split()]
 BAN_ALERT = environ.get('BAN_ALERT' , '<b><blockquote>Yᴏᴜʀ ᴀʀᴇ ʙᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴛʜɪs ʙᴏᴛ.ᴄᴏɴᴛᴀᴄᴛ [ᴏᴡɴᴇʀ](https://telegram.me/RexySamq) ᴛᴏ ʀᴇsᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇ!!</blockquote></b>')
 
 # MongoDB information
