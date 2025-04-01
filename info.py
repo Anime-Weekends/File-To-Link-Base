@@ -3,10 +3,6 @@ from os import environ, getenv
 
 id_pattern = re.compile(r'^.\d+$')
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
-
 # Bot information
 SESSION = environ.get('SESSION', 'Webavbot')
 API_ID = int(environ.get('API_ID', '12345678'))
@@ -84,6 +80,3 @@ if HAS_SSL:
 else:
     URL = "http://{}{}/".format(FQDN, "" if NO_PORT else ":" + str(PORT))
       
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
