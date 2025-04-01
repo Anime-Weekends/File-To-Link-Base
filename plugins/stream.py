@@ -60,11 +60,11 @@ async def private_receive_handler(c: Client, m: Message):
                 quote=True,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton(" Stream ", url=stream),
-                     InlineKeyboardButton(" Download ", url=download)],
-                    [InlineKeyboardButton('Get File', url=file_link),
-                    InlineKeyboardButton('share', url=share_link),
-                    InlineKeyboardButton('close', callback_data='close_data')]
+                    [InlineKeyboardButton("Sᴛʀᴇᴀᴍ", url=stream),
+                     InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ", url=download)],
+                    [InlineKeyboardButton('Gᴇᴛ ғɪʟᴇ', url=file_link),
+                    InlineKeyboardButton('Sʜᴀʀᴇ', url=share_link),
+                    InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')]
                 ])
             )
         else:
@@ -73,10 +73,10 @@ async def private_receive_handler(c: Client, m: Message):
                 quote=True,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton(" Download ", url=download),
-                    InlineKeyboardButton('Get File', url=file_link)],
-                   [ InlineKeyboardButton('share', url=share_link),
-                    InlineKeyboardButton('close', callback_data='close_data')]
+                    [InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ", url=download),
+                    InlineKeyboardButton('Gᴇᴛ ғɪʟᴇ', url=file_link)],
+                   [ InlineKeyboardButton('Sʜᴀʀᴇ', url=share_link),
+                    InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')]
                 ])
              )
 
