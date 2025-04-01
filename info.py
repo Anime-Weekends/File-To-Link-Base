@@ -11,8 +11,8 @@ BOT_TOKEN = environ.get('BOT_TOKEN', "")
 BOT_USERNAME = environ.get("BOT_USERNAME", '') # without @ 
 
 # Admins, Channels & Users
-BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '')) # admin your channel in stream 
-LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '')) # admin your channel in users log 
+BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '-1002599144576')) # admin your channel in stream 
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1002510861342')) # admin your channel in users log 
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5977931010').split()] # 3567788, 678899, 5889467
 OWNER_USERNAME = environ.get("OWNER_USERNAME", '') # without @ 
 
@@ -47,7 +47,7 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "EmitingStarsFilesToLink")
 
 # fsub  information
 AUTH_PICS = environ.get('AUTH_PICS', 'https://i.ibb.co/ycvH92F8/photo-2025-04-01-10-56-55-7488297041311825924.jpg')              
-AUTH_CHANNEL = (environ.get("AUTH_CHANNEL", ""))
+AUTH_CHANNEL = (environ.get("AUTH_CHANNEL", "-1002410513772"))
 FSUB = environ.get("FSUB", True)
 
 # port information
