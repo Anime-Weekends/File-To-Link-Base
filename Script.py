@@ -90,8 +90,8 @@ Vᴇʀsɪᴏɴ : v{}</blockquote></b>"""
 
 <b><u><i><blockquote>ᴛᴀᴘ ᴛᴏ ᴄᴏᴘʏ ʟɪɴᴋ</u></i></b>
 
-<b><blockquote>Sᴛʀᴇᴀᴍ  : </b> <code>{}</code></blockquote>
-<b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> <code>{}</code></blockquote>
+<b><blockquote>Sᴛʀᴇᴀᴍ  : </b> {}</blockquote>
+<b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> {}</blockquote>
 
 <b><blockquote>Nᴏᴛᴇ : ʟɪɴᴋ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ ᴛɪʟʟ ɪ ᴅᴇʟᴇᴛᴇ</blockquote></b>"""
 
@@ -107,8 +107,8 @@ Vᴇʀsɪᴏɴ : v{}</blockquote></b>"""
 
 <b><u><i><blockquote>ᴛᴀᴘ ᴛᴏ ᴄᴏᴘʏ ʟɪɴᴋ</u></i></b>
 
-<b><blockquote>Sᴛʀᴇᴀᴍ  : </b> <code>{}</code></blockquote>
-<b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> <code>{}</code></blockquote>
+<b><blockquote>Sᴛʀᴇᴀᴍ  : </b> {}</blockquote>
+<b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> {}</blockquote>
 
 <b><blockquote>Nᴏᴛᴇ : ʟɪɴᴋ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ ᴛɪʟʟ ɪ ᴅᴇʟᴇᴛᴇ</blockquote></b>"""
     
