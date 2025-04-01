@@ -7,14 +7,14 @@ id_pattern = re.compile(r'^.\d+$')
 SESSION = environ.get('SESSION', 'Webavbot')
 API_ID = int(environ.get('API_ID', '28744454'))
 API_HASH = environ.get('API_HASH', 'debd37cef0ad1a1ce45d0be8e8c3c5e7')
-BOT_TOKEN = environ.get('BOT_TOKEN', "")
-BOT_USERNAME = environ.get("BOT_USERNAME", '') # without @ 
+BOT_TOKEN = environ.get('BOT_TOKEN', "7563428770:AAE0Dnp4OsIfJNhqiy0cYwyPT2prowRaR1w")
+BOT_USERNAME = environ.get("BOT_USERNAME", 'File_To_Links_xRobot') # without @ 
 
 # Admins, Channels & Users
 BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '-1002599144576')) # admin your channel in stream 
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1002510861342')) # admin your channel in users log 
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5977931010').split()] # 3567788, 678899, 5889467
-OWNER_USERNAME = environ.get("OWNER_USERNAME", '') # without @ 
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5548954124 6429532957').split()] # 3567788, 678899, 5889467
+OWNER_USERNAME = environ.get("OWNER_USERNAME", 'RexySama') # without @ 
 
 # pics information
 PICS = environ.get('PICS', 'https://i.ibb.co/B5p3YNwf/photo-2025-04-01-10-57-46-7488297260355158020.jpg')
