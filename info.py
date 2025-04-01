@@ -63,7 +63,7 @@ PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
 SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
 
 # Online Stream and Download
-BIND_ADDRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+BIND_ADDRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app/'))
 WORKERS = int(getenv('WORKERS', '4'))
 MULTI_CLIENT = False
 name = str(environ.get('name', 'avbotz'))
@@ -78,5 +78,5 @@ HAS_SSL=bool(getenv('HAS_SSL',False))
 if HAS_SSL:
     URL = "https://{}/".format(FQDN)
 else:
-    URL = "http://{}{}/".format(FQDN, "" if NO_PORT else ":" + str(PORT))
+    URL = "http://{}{}/".format(FQDN, "http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app/" if NO_PORT else ":" + str(PORT))
       
