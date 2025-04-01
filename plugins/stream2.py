@@ -46,9 +46,9 @@ async def channel_receive_handler(bot: Client, broadcast: Message):
 
         # बटन बनाएं
         buttons = InlineKeyboardMarkup([
-            [InlineKeyboardButton(" Stream", url=stream),
-             InlineKeyboardButton("Download", url=download)],
-            [InlineKeyboardButton('Get File', url=file_link)]
+            [InlineKeyboardButton("Sᴛʀᴇᴀᴍ", url=stream),
+             InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ", url=download)],
+            [InlineKeyboardButton('Gᴇᴛ ғɪʟᴇ', url=file_link)]
         ])
 
         # चैनल मैसेज का कैप्शन और बटन अपडेट करें
