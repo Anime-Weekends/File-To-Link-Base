@@ -50,7 +50,7 @@ async def is_user_joined(bot, message: Message):
                 parse_mode=ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(
                 [[
-                    InlineKeyboardButton("❆ Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ ❆", url=invite_link.invite_link)
+                    InlineKeyboardButton("Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link)
                 ]]
                 )
             )
@@ -59,7 +59,7 @@ async def is_user_joined(bot, message: Message):
                 text=script.AUTH_TXT.format(message.from_user.mention),
                 reply_markup=InlineKeyboardMarkup(
                     [[
-                        InlineKeyboardButton("❆ Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ ❆", url=invite_link.invite_link)
+                        InlineKeyboardButton("Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link)
                     ]]
                 ),
                 parse_mode=ParseMode.HTML
@@ -73,7 +73,7 @@ async def is_user_joined(bot, message: Message):
         return False
     except Exception:
         await message.reply_text(
-            text = f"<i>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='https://t.me/AV_SUPPORT_GROUP'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>",
+            text = f"<i><blockquote>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='https://t.me/RexySama'>Cʟɪᴄᴋ ʜᴇʀᴇ</a></blockquote></b>",
             parse_mode=ParseMode.HTML,
             disable_web_page_preview=True)
         return False
