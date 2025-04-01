@@ -27,39 +27,39 @@ Olay aman vishwakarma ne add Kiya hai
 /unban user/channel id undan
 /restart bot is restart</b>"""
 
-    HELP2_TXT = """<b>Hᴏᴡ ᴛᴏ Uꜱᴇ Fɪʟᴇ ᴛᴏ Lɪɴᴋ Bᴏᴛ
+    HELP2_TXT = """<b><blockquote>Hᴏᴡ ᴛᴏ Uꜱᴇ Fɪʟᴇ ᴛᴏ Lɪɴᴋ Bᴏᴛ</blockquote>
 
-Bᴀꜱɪᴄ Uꜱᴀɢᴇ:
-• Sᴇɴᴅ ᴀɴʏ ғɪʟᴇ ᴏʀ ᴍᴇᴅɪᴀ ғʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ
+<blockquote>Bᴀꜱɪᴄ Uꜱᴀɢᴇ:</blockquote>
+<blockquote expandable>• Sᴇɴᴅ ᴀɴʏ ғɪʟᴇ ᴏʀ ᴍᴇᴅɪᴀ ғʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ
 • Bᴏᴛ ᴡɪʟʟ ɢᴇɴᴇʀᴀᴛᴇ ᴘᴇʀᴍᴀɴᴇɴᴛ ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴᴅ ꜱᴛʀᴇᴀᴍ ʟɪɴᴋꜱ
 • Uꜱᴇ ᴛʜᴇꜱᴇ ʟɪɴᴋꜱ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴏʀ ꜱᴛʀᴇᴀᴍ ᴄᴏɴᴛᴇɴᴛ ᴛʜʀᴏᴜɢʜ ᴏᴜʀ ꜱᴇʀᴠᴇʀꜱ
-• Fᴏʀ ꜱᴛʀᴇᴀᴍɪɴɢ, ᴘᴀꜱᴛᴇ ᴛʜᴇ ᴘʀᴏᴠɪᴅᴇᴅ ʟɪɴᴋ ɪɴ ᴀɴʏ ᴠɪᴅᴇᴏ ᴘʟᴀʏᴇʀ
+• Fᴏʀ ꜱᴛʀᴇᴀᴍɪɴɢ, ᴘᴀꜱᴛᴇ ᴛʜᴇ ᴘʀᴏᴠɪᴅᴇᴅ ʟɪɴᴋ ɪɴ ᴀɴʏ ᴠɪᴅᴇᴏ ᴘʟᴀʏᴇʀ</blockquote>
 
-Kᴇʏ Fᴇᴀᴛᴜʀᴇꜱ:
-• Pᴇʀᴍᴀɴᴇɴᴛ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛɪᴏɴ
+<blockquote>Kᴇʏ Fᴇᴀᴛᴜʀᴇꜱ:</blockquote>
+<blockquote expandable>• Pᴇʀᴍᴀɴᴇɴᴛ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛɪᴏɴ
 • Dɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ ꜱᴜᴘᴘᴏʀᴛ 
 • Vɪᴅᴇᴏ ꜱᴛʀᴇᴀᴍɪɴɢ ᴄᴀᴘᴀʙɪʟɪᴛʏ
 • Cʜᴀɴɴᴇʟ ꜱᴜᴘᴘᴏʀᴛ (Aᴅᴅ ʙᴏᴛ ᴀꜱ ᴀᴅᴍɪɴ)
 • Cᴜꜱᴛᴏᴍ ꜱʜᴏʀᴛᴇɴᴇʀ ɪɴᴛᴇɢʀᴀᴛɪᴏɴ
-• Uɴʟɪᴍɪᴛᴇᴅ ғɪʟᴇ ꜱɪᴢᴇ ꜱᴜᴘᴘᴏʀᴛ
+• Uɴʟɪᴍɪᴛᴇᴅ ғɪʟᴇ ꜱɪᴢᴇ ꜱᴜᴘᴘᴏʀᴛ</blockquote>
 
-Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:
-𝟷. Aᴅᴅ ʙᴏᴛ ᴀꜱ ᴀᴅᴍɪɴ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ
+<blockquote>Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:</blockquote>
+<blockquote expandable>𝟷. Aᴅᴅ ʙᴏᴛ ᴀꜱ ᴀᴅᴍɪɴ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ
 𝟸. Bᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴘʀᴏᴄᴇꜱꜱ ғɪʟᴇꜱ
-𝟹. Lɪɴᴋꜱ ᴡɪʟʟ ʙᴇ ɢᴇɴᴇʀᴀᴛᴇᴅ ғᴏʀ ᴀʟʟ ᴍᴇᴅɪᴀ
+𝟹. Lɪɴᴋꜱ ᴡɪʟʟ ʙᴇ ɢᴇɴᴇʀᴀᴛᴇᴅ ғᴏʀ ᴀʟʟ ᴍᴇᴅɪᴀ</blockquote>
 
-⚠️ Iᴍᴘᴏʀᴛᴀɴᴛ Nᴏᴛᴇꜱ:
-• Aʟʟ ʟɪɴᴋꜱ ᴀʀᴇ ᴘᴇʀᴍᴀɴᴇɴᴛ ᴀɴᴅ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ
+<blockquote>⚠️ Iᴍᴘᴏʀᴛᴀɴᴛ Nᴏᴛᴇꜱ:</blockquote>
+<blockquote expandable>• Aʟʟ ʟɪɴᴋꜱ ᴀʀᴇ ᴘᴇʀᴍᴀɴᴇɴᴛ ᴀɴᴅ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ
 • Sʜᴀʀɪɴɢ ɪɴᴀᴘᴘʀᴏᴘʀɪᴀᴛᴇ ᴄᴏɴᴛᴇɴᴛ ᴡɪʟʟ ʀᴇꜱᴜʟᴛ ɪɴ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ
-• Rᴇᴘᴏʀᴛ ᴀɴʏ ɪꜱꜱᴜᴇꜱ ᴛᴏ ᴏᴜʀ ꜱᴜᴘᴘᴏʀᴛ ᴛᴇᴀᴍ
+• Rᴇᴘᴏʀᴛ ᴀɴʏ ɪꜱꜱᴜᴇꜱ ᴛᴏ ᴏᴜʀ ꜱᴜᴘᴘᴏʀᴛ ᴛᴇᴀᴍ</blockquote>
 
-🔞 ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ.
+<blockquote>Aᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ.</blockquote>
 
-📮 Hᴇʟᴘ & Sᴜᴘᴘᴏʀᴛ:
-• Uᴘᴅᴀᴛᴇꜱ: @AV_BOTz_UPDATE
-• Sᴜᴘᴘᴏʀᴛ: @AV_SUPPORT_GROUP
+<blockquote>Hᴇʟᴘ & Sᴜᴘᴘᴏʀᴛ:</blockquote>
+<blockquote expandable>• Uᴘᴅᴀᴛᴇꜱ: @EmitingStars_Botz
+• Sᴜᴘᴘᴏʀᴛ: @EmitingStars_Support</blockquote>
 
- <u><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/AV_OWNER_BOT'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></u></i></b>"""
+<blockquote><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/RexySama'>Dᴇᴠᴇʟᴏᴘᴇʀ</a></i></blockquote></b>"""
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
@@ -69,56 +69,51 @@ Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:
 ID - <code>{}</code>
 Nᴀᴍᴇ - {}"""
 
-    ABOUT_TXT = """<b>╔═══❰ {} ❱══════❍
-║╭━━━━━━━━━━━━━━━━━━➣
-║┣⪼🤖ᴍʏ ɴᴀᴍᴇ : {}
-║┣⪼👦ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/AV_OWNER_BOT'>ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ</a>
-║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href=https://t.me/AV_BOTz_UPDATE>ᴀᴠ ʙᴏᴛᴢ</a>
-║┣⪼⏲️ʙᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
-║┣⪼📡Hᴏsᴛᴇᴅ ᴏɴ : ᴋᴏʏᴇʙ 
-║┣⪼🗣️ʟᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
-║┣⪼📚ʟɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ
-║┣⪼🗒️ᴠᴇʀsɪᴏɴ : v{} [ᴍᴏsᴛ sᴛᴀʙʟᴇ]
-║╰━━━━━━━━━━━━━━━➣
-╚══════════════════❍ </b>"""
+    ABOUT_TXT = """<b><blockquote>{}</blockquote>
+<blockquote expandable>Mʏ ɴᴀᴍᴇ : {}
+Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/RexySama'>ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ</a>
+Uᴘᴅᴀᴛᴇ : <a href=>ᴀᴠ ʙᴏᴛᴢ</a>
+Bᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
+Hᴏsᴛᴇᴅ ᴏɴ : ᴋᴏʏᴇʙ 
+Lᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
+Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ
+Vᴇʀsɪᴏɴ : v{}</blockquote></b>"""
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
-    AUTH_TXT = """<b>Dᴇᴀʀ {}!\n\nPʟᴇᴀsᴇ ᴊᴏɪɴ ᴏᴜʀ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴍᴇ ! 😊\n\nDᴜᴇ ᴛᴏ sᴇʀᴠᴇʀ ᴏᴠᴇʀʟᴏᴀᴅ, ᴏɴʟʏ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ʙᴏᴛ !</b>"""
+    AUTH_TXT = """<b><blockquote expandable>Dᴇᴀʀ {}!\n\nPʟᴇᴀsᴇ ᴊᴏɪɴ ᴏᴜʀ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴍᴇ ! 😊\n\nDᴜᴇ ᴛᴏ sᴇʀᴠᴇʀ ᴏᴠᴇʀʟᴏᴀᴅ, ᴏɴʟʏ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ʙᴏᴛ !</blockquote></b>"""
     
     CAPTION_TXT = """
-<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>
+<i><blockquote>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</blockquote></i>
 
-<b>📧 ꜰɪʟᴇ ɴᴀᴍᴇ :- </b> <i><a href={}>{}</a></i>
+<b><blockquote>Fɪʟᴇ ɴᴀᴍᴇ :- </b> <i><a href={}>{}</a></blockquote></i>
+<b><blockquote>Fɪʟᴇ sɪᴢᴇ :- </b> <i>{}</blockquote></i>
 
-<b>📦 ꜰɪʟᴇ sɪᴢᴇ :- </b> <i>{}</i>
+<b><u><i><blockquote>ᴛᴀᴘ ᴛᴏ ᴄᴏᴘʏ ʟɪɴᴋ</u></i></b>
 
-<b><u><i>Tap To Copy Link 👇</u></i></b>
+<b><blockquote>Sᴛʀᴇᴀᴍ  : </b> <code>{}</code></blockquote>
+<b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> <code>{}</code></blockquote>
 
-<b>🖥 Stream  : </b> <code>{}</code>
-
-<b>📥 Download : </b> <code>{}</code>
-
-<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE 🤡</b>"""
+<b><blockquote>Nᴏᴛᴇ : ʟɪɴᴋ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ ᴛɪʟʟ ɪ ᴅᴇʟᴇᴛᴇ</blockquote></b>"""
 
  #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     CAPTION2_TXT = """
-<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>
+<i><blockquote>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</blockquote></i>
 
-<b>📧 ꜰɪʟᴇ ɴᴀᴍᴇ :- </b> <i><a href={}>{}</a></i>
+<b><blockquote>Fɪʟᴇ ɴᴀᴍᴇ :- </b> <i><a href={}>{}</a></blockquote></i>
+<b><blockquote>Fɪʟᴇ sɪᴢᴇ :- </b> <i>{}</blockquote></i>
 
-<b>📦 ꜰɪʟᴇ sɪᴢᴇ :- </b> <i>{}</i>
+<b><u><i><blockquote>ᴛᴀᴘ ᴛᴏ ᴄᴏᴘʏ ʟɪɴᴋ</u></i></b>
 
-<b><u><i>Tap To Copy Link 👇</u></i></b>
+<b><blockquote>Sᴛʀᴇᴀᴍ  : </b> <code>{}</code></blockquote>
+<b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> <code>{}</code></blockquote>
 
-<b>📥 Download : </b> <code>{}</code>
-
-<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE 🤡</b>"""
+<b><blockquote>Nᴏᴛᴇ : ʟɪɴᴋ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ ᴛɪʟʟ ɪ ᴅᴇʟᴇᴛᴇ</blockquote></b>"""
     
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
