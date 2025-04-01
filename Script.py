@@ -4,28 +4,26 @@ class script(object):
 Add me to your channel to instantly generate links for any downloadable media. Once received, I will automatically attach appropriate buttons to the post containing the URL.</i>\n\n<blockquote><a href=https://t.me/{}?startchannel&admin=post_messages+edit_messages+delete_messages>➜ 𝖠𝖽𝖽 𝖳𝗈 𝖢𝗁𝖺𝗇𝗇𝖾𝗅</a></blockquote>"""
 
     RESTART_TXT = """
-<b>Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !
-
-📅 Dᴀᴛᴇ : <code>{}</code>
+<b><blockquote>Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !</blockquote>
+<blockquote expandable>📅 Dᴀᴛᴇ : <code>{}</code>
 ⏰ Tɪᴍᴇ : <code>{}</code>
 🌐 Tɪᴍᴇᴢᴏɴᴇ : <code>Asia/Kolkata</code>
-🛠️ Bᴜɪʟᴅ Sᴛᴀᴛᴜs: <code>v2.6 [ Sᴛᴀʙʟᴇ ]</code></b>"""
+🛠️ Bᴜɪʟᴅ Sᴛᴀᴛᴜs: <code>v2.6 [ Sᴛᴀʙʟᴇ ]</code></blockquote></b>"""
 
-    HELP_TXT = """<b>ʏᴏᴜ ᴅᴏɴ'ᴛ ɴᴇᴇᴅ ᴍᴀɴʏ ᴄᴏᴍᴍᴇɴᴛs ᴛᴏ ᴜsᴇ ᴛʜɪs ʙᴏᴛ \n\nᴊᴜsᴛ sᴇɴᴅ ᴍᴇ ғɪʟᴇs ᴀɴᴅ I ᴡɪʟʟ ɢɪᴠᴇ ʏᴏᴜ ᴅɪʀᴇᴄᴛ ʙᴏᴡɴʟᴏᴀᴅ & sᴛʀᴇᴀᴍɪɴɢ ʟɪɴᴋ\n\nᴀʟsᴏ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ ᴀɴᴅ sᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 💥\n\nғᴏʀ ᴍᴏʀᴇ, ᴜꜱᴇ /help ᴄᴏᴍᴍᴀɴᴅ\nᴍᴏʀᴇ, ᴜꜱᴇ /about ᴄᴏᴍᴍᴀɴᴅ</b>"""
+    HELP_TXT = """<b><blockquote>Yᴏᴜ ᴅᴏɴ'ᴛ ɴᴇᴇᴅ ᴍᴀɴʏ ᴄᴏᴍᴍᴇɴᴛs ᴛᴏ ᴜsᴇ ᴛʜɪs ʙᴏᴛ</blockquote>\n<blockquote>Jᴜsᴛ sᴇɴᴅ ᴍᴇ ғɪʟᴇs ᴀɴᴅ I ᴡɪʟʟ ɢɪᴠᴇ ʏᴏᴜ ᴅɪʀᴇᴄᴛ ʙᴏᴡɴʟᴏᴀᴅ & sᴛʀᴇᴀᴍɪɴɢ ʟɪɴᴋ</blockquote>\n<blockquote>Aʟsᴏ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ ᴀɴᴅ sᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ</blockquote>\n\n<blockquote>Fᴏʀ ᴍᴏʀᴇ, ᴜꜱᴇ /help\nᴍᴏʀᴇ, ᴜꜱᴇ /about</blockquote></b>"""
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     ADMIN_CMD_TXT = """<b>
-    
-Olay aman vishwakarma ne add Kiya hai 
 
-/broadcast send massage users 
+<blockquote>Tʜɪs ɪs ғᴏʀ ᴄᴜᴛᴇ ᴀᴅᴍɪɴ</blockquote>
+<blockquote expandable>/broadcast send massage users 
 /users To get users details
 /ban user/channel id dan
 /unban user/channel id undan
-/restart bot is restart</b>"""
+/restart bot is restart</blockquote></b>"""
 
     HELP2_TXT = """<b><blockquote>Hᴏᴡ ᴛᴏ Uꜱᴇ Fɪʟᴇ ᴛᴏ Lɪɴᴋ Bᴏᴛ</blockquote>
 
@@ -69,12 +67,12 @@ Olay aman vishwakarma ne add Kiya hai
 ID - <code>{}</code>
 Nᴀᴍᴇ - {}"""
 
-    ABOUT_TXT = """<b><blockquote>{}</blockquote>
+    ABOUT_TXT = """<b><blockquote>Hᴇʏ ᴄᴜᴛɪᴇᴇ  {}</blockquote>
 <blockquote expandable>Mʏ ɴᴀᴍᴇ : {}
-Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/RexySama'>ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ</a>
-Uᴘᴅᴀᴛᴇ : <a href=>ᴀᴠ ʙᴏᴛᴢ</a>
+Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/RexySama'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
+Uᴘᴅᴀᴛᴇ : <a href='https://t.me/EmitingStars_Botz'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
 Bᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
-Hᴏsᴛᴇᴅ ᴏɴ : ᴋᴏʏᴇʙ 
+Hᴏsᴛᴇᴅ ᴏɴ : ʜᴇʀᴏᴋᴜ
 Lᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
 Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ
 Vᴇʀsɪᴏɴ : v{}</blockquote></b>"""
