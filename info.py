@@ -76,7 +76,7 @@ else:
 FQDN = str(getenv('FQDN', BIND_ADDRESS)) if not ON_HEROKU or getenv('FQDN','') else APP_NAME+'.herokuapp.com'
 HAS_SSL=bool(getenv('HAS_SSL',False))
 if HAS_SSL:
-    URL = "https://{}/".format(FQDN)
+    URL = "https://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app/".format(FQDN)
 else:
-    URL = "http://{}{}/".format(FQDN, "" if NO_PORT else ":" + str(PORT))
+    URL = "http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app/".format(FQDN, "" if NO_PORT else ":" + str(PORT))
       
