@@ -16,7 +16,6 @@ class script(object):
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     ADMIN_CMD_TXT = """<b>
-
 <blockquote>Tʜɪs ɪs ғᴏʀ ᴄᴜᴛᴇ ᴀᴅᴍɪɴ</blockquote>
 <blockquote expandable>/broadcast send massage users 
 /users To get users details
@@ -84,11 +83,8 @@ Vᴇʀsɪᴏɴ : v{}</blockquote></b>"""
     
     CAPTION_TXT = """
 <i><blockquote>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</blockquote></i>
-
 <b><blockquote>Fɪʟᴇ ɴᴀᴍᴇ :- </b> <i><a href={}>{}</a></blockquote></i>
 <b><blockquote>Fɪʟᴇ sɪᴢᴇ :- </b> <i>{}</blockquote></i>
-
-<b><u><i><blockquote>ᴛᴀᴘ ᴛᴏ ᴄᴏᴘʏ ʟɪɴᴋ</u></i></b>
 
 <b><blockquote>Sᴛʀᴇᴀᴍ  : </b> {}</blockquote>
 <b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> {}</blockquote>
@@ -101,11 +97,8 @@ Vᴇʀsɪᴏɴ : v{}</blockquote></b>"""
     
     CAPTION2_TXT = """
 <i><blockquote>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</blockquote></i>
-
 <b><blockquote>Fɪʟᴇ ɴᴀᴍᴇ :- </b> <i><a href={}>{}</a></blockquote></i>
 <b><blockquote>Fɪʟᴇ sɪᴢᴇ :- </b> <i>{}</blockquote></i>
-
-<b><u><i><blockquote>ᴛᴀᴘ ᴛᴏ ᴄᴏᴘʏ ʟɪɴᴋ</u></i></b>
 
 <b><blockquote>Sᴛʀᴇᴀᴍ  : </b> {}</blockquote>
 <b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> {}</blockquote>
