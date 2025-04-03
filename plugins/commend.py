@@ -58,10 +58,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.delete()
     elif query.data == "about":
         buttons = [[
-	    InlineKeyboardButton('💻 sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://github.com/Botsthe/AV-FILE-TO-LINK.git')
+	    InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/RexySama')
 	],[
-            InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start'),
-	    InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
+            InlineKeyboardButton('Hᴏᴍᴇ', callback_data='start'),
+	    InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         me2 = (await client.get_me()).mention
@@ -113,7 +113,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [[
-            InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start')
+            InlineKeyboardButton('Hᴏᴍᴇ', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -189,11 +189,10 @@ async def about(client, message):
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     me2 = (await client.get_me()).mention
-    await message.reply_photo(
-        photo="https://i.ibb.co/rK42qL4w/photo-2025-04-03-11-48-19-7489052453044748316.jpg",  # Replace
-        caption=script.ABOUT_TXT.format(me2, me2, get_readable_time(time.time() - StartTime), version),
-        reply_markup=reply_markup,
-        message_effect_id=5104841245755180586  # 🔥
+    await message.reply_text(
+        text=script.ABOUT_TXT.format(me2, me2, get_readable_time(time.time() - StartTime), version),
+        disable_web_page_preview=True, 
+        reply_markup=reply_markup
     )
 	
 #Dont Remove My Credit @AV_BOTz_UPDATE 
