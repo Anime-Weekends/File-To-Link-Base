@@ -24,13 +24,15 @@ async def start(client, message):
             return
     if len(message.command) != 2 or (len(message.command) == 2 and message.command[1] == "start"):
         buttons = [[
-            InlineKeyboardButton('Uᴘᴅᴀᴛᴇᴅ', url=CHANNEL),
-	    InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url=SUPPORT)
+            InlineKeyboardButton('ɢ', callback_data='help'),
+	    InlineKeyboardButton('ᴏ', callback_data='help'),
+	    InlineKeyboardButton('ᴊ', callback_data='help'),
+	    InlineKeyboardButton('ᴏ', callback_data='help')
         ],[
-            InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
+            InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
+        ],[
+	    InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about')
-        ],[
- 	    InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -71,13 +73,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('Uᴘᴅᴀᴛᴇᴅ', url=CHANNEL),
-	    InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url=SUPPORT)
+            InlineKeyboardButton('ɢ', callback_data='help'),
+	    InlineKeyboardButton('ᴏ', callback_data='help'),
+	    InlineKeyboardButton('ᴊ', callback_data='help'),
+	    InlineKeyboardButton('ᴏ', callback_data='help')
         ],[
-            InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
+            InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
+        ],[
+	    InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about')
-        ],[
- 	    InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
