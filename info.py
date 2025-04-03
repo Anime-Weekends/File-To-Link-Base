@@ -17,7 +17,7 @@ ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ
 OWNER_USERNAME = environ.get("OWNER_USERNAME", 'RexySama') # without @ 
 
 # pics information
-PICS = environ.get('PICS', 'https://i.ibb.co/TD6VrfJV/photo-2025-04-01-15-31-19-7488367753653387280.jpg')
+PICS = environ.get('PICS', 'https://i.ibb.co/hxqp9gQk/photo-2025-04-03-11-00-42-7489040182323183640.jpg')
 
 # channel link information
 CHANNEL = environ.get('CHANNEL', 'https://t.me/EmitingStars_Botz')
