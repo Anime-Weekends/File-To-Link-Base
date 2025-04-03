@@ -191,10 +191,7 @@ async def about(client, message):
         disable_web_page_preview=True, 
         reply_markup=reply_markup
     )
-        
-  
-			      
-	
+        			      	
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
