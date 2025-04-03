@@ -187,7 +187,6 @@ async def about(client, message):
     me2 = (await client.get_me()).mention
     await message.reply_photo(
         photo=random.choice(PICS),
-	message.reply_text(
         text=script.ABOUT_TXT.format(me2, me2, get_readable_time(time.time() - StartTime), __version__),
         disable_web_page_preview=True, 
         reply_markup=reply_markup
