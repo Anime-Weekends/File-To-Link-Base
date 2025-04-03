@@ -181,17 +181,17 @@ async def help(client, message):
 
 @Client.on_message(filters.command("about"))
 async def about(client, message):
-    buttons = [[
-       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
-    ]]
-    reply_markup = InlineKeyboardMarkup(buttons)
-    me2 = (await client.get_me()).mention
-    await message.reply_text(
-        text=script.ABOUT_TXT.format(me2, me2, get_readable_time(time.time() - StartTime), version),
-        disable_web_page_preview=True, 
-        reply_markup=reply_markup
-	    message_effect_id=5104841245755180586 #🔥
-    )
+    buttons = [[
+        InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
+    ]]
+    reply_markup = InlineKeyboardMarkup(buttons)
+    me2 = (await client.get_me()).mention
+    await message.reply_photo(
+        photo="https://i.ibb.co/rK42qL4w/photo-2025-04-03-11-48-19-7489052453044748316.jpg",
+        caption=script.ABOUT_TXT.format(me2, me2, get_readable_time(time.time() - StartTime), version),
+        reply_markup=reply_markup,
+        message_effect_id=5104841245755180586  # 🔥
+)
 			      
 	
 #Dont Remove My Credit @AV_BOTz_UPDATE 
