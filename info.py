@@ -13,7 +13,7 @@ BOT_USERNAME = environ.get("BOT_USERNAME", 'File_To_Links_xRobot') # without @
 # Admins, Channels & Users
 BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '-1002599144576')) # admin your channel in stream 
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1002510861342')) # admin your channel in users log 
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6429532957').split()] # 3567788, 678899, 5889467
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6429532957 6266529037').split()] # 3567788, 678899, 5889467
 OWNER_USERNAME = environ.get("OWNER_USERNAME", 'RexySama') # without @ 
 
 # pics information
