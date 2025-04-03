@@ -24,10 +24,10 @@ async def start(client, message):
             return
     if len(message.command) != 2 or (len(message.command) == 2 and message.command[1] == "start"):
         buttons = [[
-            InlineKeyboardButton('ɢ', callback_data='help'),
-	    InlineKeyboardButton('ᴏ', callback_data='help'),
-	    InlineKeyboardButton('ᴊ', callback_data='help'),
-	    InlineKeyboardButton('ᴏ', callback_data='help')
+            InlineKeyboardButton('G', callback_data='help'),
+	    InlineKeyboardButton('O', callback_data='help'),
+	    InlineKeyboardButton('J', callback_data='help'),
+	    InlineKeyboardButton('O', callback_data='help')
         ],[
             InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
         ],[
@@ -73,10 +73,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('ɢ', callback_data='help'),
-	    InlineKeyboardButton('ᴏ', callback_data='help'),
-	    InlineKeyboardButton('ᴊ', callback_data='help'),
-	    InlineKeyboardButton('ᴏ', callback_data='help')
+            InlineKeyboardButton('G', callback_data='help'),
+	    InlineKeyboardButton('O', callback_data='help'),
+	    InlineKeyboardButton('J', callback_data='help'),
+	    InlineKeyboardButton('O', callback_data='help')
         ],[
             InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
         ],[
