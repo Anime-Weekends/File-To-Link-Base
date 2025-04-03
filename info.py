@@ -16,8 +16,8 @@ LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1002510861342')) # admin your cha
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6429532957 6266529037').split()] # 3567788, 678899, 5889467
 OWNER_USERNAME = environ.get("OWNER_USERNAME", 'RexySama') # without @ 
 
-# pics information
-PICS = environ.get('PICS', 'https://i.ibb.co/hxqp9gQk/photo-2025-04-03-11-00-42-7489040182323183640.jpg')
+#Collection of pics for Bot // #Optional but atleast one pic link should be replaced if you don't want predefined links
+PICS = (os.environ.get("PICS", "https://i.ibb.co/hxqp9gQk/photo-2025-04-03-11-00-42-7489040182323183640.jpg")).split() #Required
 
 # channel link information
 CHANNEL = environ.get('CHANNEL', 'https://t.me/EmitingStars_Botz')
