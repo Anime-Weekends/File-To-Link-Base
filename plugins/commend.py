@@ -34,10 +34,9 @@ async def start(client, message):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
-            photo=random.choice(PICS),
+            photo=(PICS),
             caption=script.START_TXT.format(message.from_user.mention, BOT_USERNAME),
-            reply_markup=reply_markup,
-		message_effect_id=5104841245755180586 #🔥
+            reply_markup=reply_markup
         )
         return
     msg = message.command[1]
@@ -56,10 +55,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.delete()
     elif query.data == "about":
         buttons = [[
-	    InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/RexySama')
+	    InlineKeyboardButton('💻 sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://github.com/Botsthe/AV-FILE-TO-LINK.git')
 	],[
-            InlineKeyboardButton('Hᴏᴍᴇ', callback_data='start'),
-	    InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
+            InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start'),
+	    InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         me2 = (await client.get_me()).mention
@@ -128,35 +127,35 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if len(str(user_id)) == 10:
             reason = str(query.data.split("_")[2])
             try:
-                await client.send_message(user_id , f"<b><blockquote>Yᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ʙʏ [ᴏᴡɴᴇʀ](https://telegram.me/RexySama)\nʀᴇᴀsᴏɴ : {reason}</blockquote></b>")
-                await query.message.edit(f"<b><blockquote>Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nʀᴇᴀsᴏɴ : {reason}</blockquote></b>")
+                await client.send_message(user_id , f"<b>ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ʙʏ [ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ](https://telegram.me/AV_OWNER_BOT)\nʀᴇᴀsᴏɴ : {reason}</b>")
+                await query.message.edit(f"<b>Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nʀᴇᴀsᴏɴ : {reason}</b>")
             except Exception as e:
-                await query.message.edit(f"<b><blockquote>Sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</blockquote></b>")
+                await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
         else:
-            await query.message.edit(f"<b><blockquote>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</blockquote></b>")
+            await query.message.edit(f"<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>")
 
     elif query.data.startswith('noAlert'):
         user_id =(query.data.split("_")[1])
         user_id = int(user_id.replace(' ' , ''))
-        await query.message.edit(f"<b><blockquote>Tʜᴇ ʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.</blockquote></b>")
+        await query.message.edit(f"<b>Tʜᴇ ʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.</b>")
 
     elif query.data.startswith('sendUnbanAlert'):
         user_id =(query.data.split("_")[1])
         user_id = int(user_id.replace(' ' , ''))
         if len(str(user_id)) == 10:
             try:
-                unban_text = "<b><blockquote>Hᴜʀʀᴀʏ..ʏᴏᴜ ᴀʀᴇ ᴜɴʙᴀɴɴᴇᴅ ʙʏ [ᴏᴡɴᴇʀ](https://telegram.me/RexySama)</blockquote></b>"
+                unban_text = "<b>ʜᴜʀʀᴀʏ..ʏᴏᴜ ᴀʀᴇ ᴜɴʙᴀɴɴᴇᴅ ʙʏ [ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ](https://telegram.me/AV_OWNER_BOT)</b>"
                 await client.send_message(user_id , unban_text)
-                await query.message.edit(f"<b><blockquote>Uɴʙᴀɴɴᴇᴅ Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nᴀʟᴇʀᴛ ᴛᴇxᴛ : {unban_text}</blockquote></b>")
+                await query.message.edit(f"<b>Uɴʙᴀɴɴᴇᴅ Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nᴀʟᴇʀᴛ ᴛᴇxᴛ : {unban_text}</b>")
             except Exception as e:
-                await query.message.edit(f"<b><blockquote>Sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</blockquote></b>")
+                await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
         else:
-            await query.message.edit(f"<b><blockquote>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</blockquote></b>")
+            await query.message.edit(f"<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>")
             
     elif query.data.startswith('NoUnbanAlert'):
         user_id =(query.data.split("_")[1])
         user_id = int(user_id.replace(' ' , ''))
-        await query.message.edit(f"<blockquote>Tʜᴇ ᴜɴʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.</blockquote>")
+        await query.message.edit(f"Tʜᴇ ᴜɴʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.")
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
@@ -165,14 +164,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
 @Client.on_message(filters.command("help"))
 async def help(client, message):
     btn = [[
-       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
+       InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
     ]]
     reply_markup = InlineKeyboardMarkup(btn)
     await message.reply_text(
         text=script.HELP2_TXT,
         disable_web_page_preview=True, 
         reply_markup=reply_markup
-	    message_effect_id=5104841245755180586 #🔥
     )
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
@@ -182,7 +180,7 @@ async def help(client, message):
 @Client.on_message(filters.command("about"))
 async def about(client, message):
     buttons = [[
-       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
+       InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     me2 = (await client.get_me()).mention
@@ -191,7 +189,7 @@ async def about(client, message):
         disable_web_page_preview=True, 
         reply_markup=reply_markup
     )
-        			      	
+	
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
