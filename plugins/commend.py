@@ -34,9 +34,10 @@ async def start(client, message):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
-            photo=(PICS),
+            photo = random.choice(PICS),
             caption=script.START_TXT.format(message.from_user.mention, BOT_USERNAME),
             reply_markup=reply_markup
+		message_effect_id=5104841245755180586 #🔥
         )
         return
     msg = message.command[1]
