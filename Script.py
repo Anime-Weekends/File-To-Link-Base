@@ -72,8 +72,7 @@ Uᴘᴅᴀᴛᴇ : <a href='https://t.me/EmitingStars_Botz'>ᴄʟɪᴄᴋ ʜᴇ�
 Bᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
 Hᴏsᴛᴇᴅ ᴏɴ : ʜᴇʀᴏᴋᴜ
 Lᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
-Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ
-Vᴇʀsɪᴏɴ : v{}</blockquote></b>"""
+Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</blockquote></b>"""
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
