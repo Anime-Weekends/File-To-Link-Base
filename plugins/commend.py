@@ -149,7 +149,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         user_id = int(user_id.replace(' ' , ''))
         if len(str(user_id)) == 10:
             try:
-                unban_text = "<b>ʜᴜʀʀᴀʏ..ʏᴏᴜ ᴀʀᴇ ᴜɴʙᴀɴɴᴇᴅ ʙʏ [ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ](https://telegram.me/AV_OWNER_BOT)</b>"
+                unban_text = "<b>ʜᴜʀʀᴀʏ..ʏᴏᴜ ᴀʀᴇ ᴜɴʙᴀɴɴᴇᴅ ʙʏ [ᴏᴡɴᴇʀ](https://telegram.me/RexySama)</b>"
                 await client.send_message(user_id , unban_text)
                 await query.message.edit(f"<b>Uɴʙᴀɴɴᴇᴅ Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nᴀʟᴇʀᴛ ᴛᴇxᴛ : {unban_text}</b>")
             except Exception as e:
@@ -169,7 +169,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 @Client.on_message(filters.command("rules"))
 async def help(client, message):
     btn = [[
-       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
+       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data'), 
+       InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
     ]]
     reply_markup = InlineKeyboardMarkup(btn)
     await message.reply_photo(
@@ -186,7 +187,8 @@ async def help(client, message):
 @Client.on_message(filters.command("about"))
 async def about(client, message):
     buttons = [[
-       InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
+       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data'), 
+       InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     me2 = (await client.get_me()).mention
