@@ -172,11 +172,11 @@ async def help(client, message):
        InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
     ]]
     reply_markup = InlineKeyboardMarkup(btn)
-    await message.reply_text(
-        text=script.HELP2_TXT,
-        disable_web_page_preview=True, 
+    await message.reply_photo(
+        photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # or a local file like "images/help.jpg"
+        caption=script.HELP2_TXT,
         reply_markup=reply_markup
-    )
+     )
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
