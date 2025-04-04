@@ -23,9 +23,7 @@ class script(object):
 /unban user/channel id undan
 /restart bot is restart</blockquote></b>"""
 
-    HELP2_TXT = """<b><blockquote>Hᴏᴡ ᴛᴏ Uꜱᴇ Fɪʟᴇ ᴛᴏ Lɪɴᴋ Bᴏᴛ</blockquote>
-
-<blockquote>Bᴀꜱɪᴄ Uꜱᴀɢᴇ:</blockquote>
+    HELP2_TXT = """<b><blockquote>Bᴀꜱɪᴄ Uꜱᴀɢᴇ:</blockquote>
 <blockquote expandable>• Sᴇɴᴅ ᴀɴʏ ғɪʟᴇ ᴏʀ ᴍᴇᴅɪᴀ ғʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ
 • Bᴏᴛ ᴡɪʟʟ ɢᴇɴᴇʀᴀᴛᴇ ᴘᴇʀᴍᴀɴᴇɴᴛ ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴᴅ ꜱᴛʀᴇᴀᴍ ʟɪɴᴋꜱ
 • Uꜱᴇ ᴛʜᴇꜱᴇ ʟɪɴᴋꜱ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴏʀ ꜱᴛʀᴇᴀᴍ ᴄᴏɴᴛᴇɴᴛ ᴛʜʀᴏᴜɢʜ ᴏᴜʀ ꜱᴇʀᴠᴇʀꜱ
@@ -57,6 +55,15 @@ ID - <code>{}</code>
 Nᴀᴍᴇ - {}"""
 
     ABOUT_TXT = """<b><blockquote>Hᴇʏ ᴄᴜᴛɪᴇᴇ  {}</blockquote>
+<blockquote expandable>Mʏ ɴᴀᴍᴇ : {}
+Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/RexySama'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
+Uᴘᴅᴀᴛᴇ : <a href='https://t.me/EmitingStars_Botz'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
+Bᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
+Hᴏsᴛᴇᴅ ᴏɴ : ʜᴇʀᴏᴋᴜ
+Lᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
+Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</blockquote></b>"""
+
+    ABOUT_TXT2 = """<b><blockquote>Holla  {}</blockquote>
 <blockquote expandable>Mʏ ɴᴀᴍᴇ : {}
 Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/RexySama'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
 Uᴘᴅᴀᴛᴇ : <a href='https://t.me/EmitingStars_Botz'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
