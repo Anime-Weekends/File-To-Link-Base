@@ -12,28 +12,47 @@ import asyncio
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 @Client.on_message(filters.command('ban') & filters.user(ADMINS))
-async def do_ban(bot ,  message):
+async def do_ban(bot, message):
     userid = message.text.split(" ", 2)[1] if len(message.text.split(" ", 1)) > 1 else None
     reason = message.text.split(" ", 2)[2] if len(message.text.split(" ", 2)) > 2 else None
+
     if not userid:
-        return await message.reply('<b><blockquote>Pʟᴇᴀsᴇ ᴀᴅᴅ ᴀ ᴠᴀʟɪᴅ ᴜsᴇʀ/ᴄʜᴀɴɴᴇʟ ɪᴅ ᴡɪᴛʜ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ\n\nᴇx : /ban (user/channel_id) (banning reason[Optional]) \nʀᴇᴀʟ ᴇx : <code>/ban 1234567899</code>\nᴡɪᴛʜ ʀᴇᴀsᴏɴ ᴇx:<code>/ban 1234567899 seding adult links to bot</code>\nᴛᴏ ʙᴀɴ ᴀ ᴄʜᴀɴɴᴇʟ :\n<code>/ban CHANEL_ID</code>\nᴇx : <code>/ban -1001234567899</code></blockquote></b>')
+        await message.reply_photo(
+            photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # Generated image path
+            caption=(
+                "<b><blockquote>Pʟᴇᴀsᴇ ᴀᴅᴅ ᴀ ᴠᴀʟɪᴅ ᴜsᴇʀ/ᴄʜᴀɴɴᴇʟ ɪᴅ ᴡɪᴛʜ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ\n\n"
+                "ᴇx : /ban (user/channel_id) (banning reason[Optional]) \n"
+                "ʀᴇᴀʟ ᴇx : <code>/ban 1234567899</code>\n"
+                "ᴡɪᴛʜ ʀᴇᴀsᴏɴ ᴇx:<code>/ban 1234567899 sending adult links to bot</code>\n"
+                "ᴛᴏ ʙᴀɴ ᴀ ᴄʜᴀɴɴᴇʟ :\n<code>/ban CHANEL_ID</code>\n"
+                "ᴇx : <code>/ban -1001234567899</code></blockquote></b>"
+            ),
+            parse_mode="html"
+        )
+        return
+
     text = await message.reply("<b><blockquote>Lᴇᴛ ᴍᴇ ᴄʜᴇᴄᴋ 👀</blockquote></b>")
+
     banSts = await db.ban_user(userid)
-    if banSts == True:
+    if banSts is True:
         await text.edit(
-    text=f"<b><blockquote><code>{userid}</code> Hᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ\n\nSʜᴏᴜʟᴅ I sᴇɴᴅ ᴀɴ ᴀʟᴇʀᴛ ᴛᴏ ᴛʜᴇ ʙᴀɴɴᴇᴅ ᴜsᴇʀ?</blockquote></b>",
-    reply_markup=InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("Yᴇs ✅", callback_data=f"sendAlert_{userid}_{reason if reason else 'no reason provided'}"),
-                InlineKeyboardButton("Nᴏ ❌", callback_data=f"noAlert_{userid}"),
-            ],
-        ]
-    ),
-)
+            text=(
+                f"<b><blockquote><code>{userid}</code> Hᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ\n\n"
+                "Sʜᴏᴜʟᴅ I sᴇɴᴅ ᴀɴ ᴀʟᴇʀᴛ ᴛᴏ ᴛʜᴇ ʙᴀɴɴᴇᴅ ᴜsᴇʀ?</blockquote></b>"
+            ),
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("Yᴇs ✅", callback_data=f"sendAlert_{userid}_{reason if reason else 'no reason provided'}"),
+                        InlineKeyboardButton("Nᴏ ❌", callback_data=f"noAlert_{userid}"),
+                    ]
+                ]
+            )
+        )
     else:
-        await text.edit(f"<b><blockquote>Cᴏɴᴛʀᴏʟʟ ʏᴏᴜʀ ᴀɴɢᴇʀ ʙʀᴏ...\n<code>{userid}</code> ɪs ᴀʟʀᴇᴀᴅʏ ʙᴀɴɴᴇᴅ !!</blockquote></b>")
-    return
+        await text.edit(
+            f"<b><blockquote>Cᴏɴᴛʀᴏʟʟ ʏᴏᴜʀ ᴀɴɢᴇʀ ʙʀᴏ...\n<code>{userid}</code> ɪs ᴀʟʀᴇᴀᴅʏ ʙᴀɴɴᴇᴅ !!</blockquote></b>"
+    )
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
