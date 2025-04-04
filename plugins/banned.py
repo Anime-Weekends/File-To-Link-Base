@@ -18,20 +18,25 @@ async def do_ban(bot, message):
     reason = message.text.split(" ", 2)[2] if len(message.text.split(" ", 2)) > 2 else None
 
     if not userid:
-        await message.reply_photo(
-            photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # Generated image path
-            caption=(
-                "<b><blockquote>Pʟᴇᴀsᴇ ᴀᴅᴅ ᴀ ᴠᴀʟɪᴅ ᴜsᴇʀ/ᴄʜᴀɴɴᴇʟ ɪᴅ ᴡɪᴛʜ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ\n\n"
-                "ᴇx : /ban (user/channel_id) (banning reason[Optional]) \n"
-                "ʀᴇᴀʟ ᴇx : <code>/ban 1234567899</code>\n"
-                "ᴡɪᴛʜ ʀᴇᴀsᴏɴ ᴇx:<code>/ban 1234567899 sending adult links to bot</code>\n"
-                "ᴛᴏ ʙᴀɴ ᴀ ᴄʜᴀɴɴᴇʟ :\n<code>/ban CHANEL_ID</code>\n"
-                "ᴇx : <code>/ban -1001234567899</code></blockquote></b>"
-            ),
-            parse_mode=ParseMode.HTML
-        )
-        return
-
+    await message.reply_photo(
+        photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",
+        caption=(
+            "<b><blockquote>Pʟᴇᴀsᴇ ᴀᴅᴅ ᴀ ᴠᴀʟɪᴅ ᴜsᴇʀ/ᴄʜᴀɴɴᴇʟ ɪᴅ ᴡɪᴛʜ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ\n\n"
+            "ᴇx : /ban (user/channel_id) (banning reason[Optional]) \n"
+            "ʀᴇᴀʟ ᴇx : <code>/ban 1234567899</code>\n"
+            "ᴡɪᴛʜ ʀᴇᴀsᴏɴ ᴇx:<code>/ban 1234567899 sending adult links to bot</code>\n"
+            "ᴛᴏ ʙᴀɴ ᴀ ᴄʜᴀɴɴᴇʟ :\n<code>/ban CHANEL_ID</code>\n"
+            "ᴇx : <code>/ban -1001234567899</code></blockquote></b>"
+        ),
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("❓ Hᴇʟᴘ", callback_data="ban_help")],
+                [InlineKeyboardButton("❌ Cʟᴏsᴇ", callback_data="close_msg")]
+            ]
+        ),
+        parse_mode=ParseMode.HTML
+    )
+    return
     text = await message.reply("<b><blockquote>Lᴇᴛ ᴍᴇ ᴄʜᴇᴄᴋ 👀</blockquote></b>")
 
     banSts = await db.ban_user(userid)
