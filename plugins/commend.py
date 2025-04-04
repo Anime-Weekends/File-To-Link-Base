@@ -10,9 +10,6 @@ from utils import get_readable_time
 from web.utils import StartTime, __version__
 from plugins.avbot import is_user_joined
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
@@ -48,9 +45,6 @@ async def start(client, message):
         _, file_id = msg.split("_", 1)
         return await client.copy_message(chat_id=message.from_user.id, from_chat_id=int(BIN_CHANNEL), message_id=int(file_id))
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 	
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
@@ -90,9 +84,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
              parse_mode=enums.ParseMode.HTML
         )
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
+
 	
     elif query.data == "help":
         buttons = [[
@@ -198,6 +190,21 @@ async def about(client, message):
 	reply_markup=reply_markup, 
 	    message_effect_id=5104841245755180586 #🔥
      )
+
+
+@Client.on_message(filters.command("Developer"))
+async def help(client, message):
+    btn = [[
+       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data'), 
+       InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
+    ]]
+    reply_markup = InlineKeyboardMarkup(btn)
+    await message.reply_photo(
+        photo="https://i.ibb.co/Z7Sx6kH/photo-2025-04-04-10-30-02-7489403360462766096.jpg",  # or a local file like "images/help.jpg"
+        caption=script.HELP2_TXT,
+        reply_markup=reply_markup, 
+	    message_effect_id=5104841245755180586 #🔥
+	)
 	
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
