@@ -189,7 +189,7 @@ async def about(client, message):
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     me2 = (await client.get_me()).mention
-await message.reply_photo(
+    await message.reply_photo(
 	photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",
 	caption=script.ABOUT_TXT.format(me2,me2,get_readable_time(time.time()-startTime),version),
 	reply_markup=reply_markup
