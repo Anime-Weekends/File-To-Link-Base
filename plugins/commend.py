@@ -166,16 +166,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
-@Client.on_message(filters.command("help"))
+@Client.on_message(filters.command("rules"))
 async def help(client, message):
     btn = [[
-       InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
+       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
     ]]
     reply_markup = InlineKeyboardMarkup(btn)
     await message.reply_photo(
         photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # or a local file like "images/help.jpg"
         caption=script.HELP2_TXT,
         reply_markup=reply_markup
+	    message_effect_id=5104841245755180586 #🔥
      )
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
@@ -193,6 +194,7 @@ async def about(client, message):
 	photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",
 	caption=script.ABOUT_TXT.format(me2, me2, get_readable_time(time.time() - StartTime)),
 	reply_markup=reply_markup
+	    message_effect_id=5104841245755180586 #🔥
      )
 	
 #Dont Remove My Credit @AV_BOTz_UPDATE 
