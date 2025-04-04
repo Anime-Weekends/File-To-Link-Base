@@ -21,8 +21,8 @@ async def do_ban(bot, message):
         await message.reply_photo(
             photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # Generated image path
             caption=(
-                "<b><blockquote>Pʟᴇᴀsᴇ ᴀᴅᴅ ᴀ ᴠᴀʟɪᴅ ᴜsᴇʀ/ᴄʜᴀɴɴᴇʟ ɪᴅ ᴡɪᴛʜ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ\n\n"
-                "ᴇx : /ban (user/channel_id) (banning reason[Optional]) \n"
+                "<b><blockquote>Pʟᴇᴀsᴇ ᴀᴅᴅ ᴀ ᴠᴀʟɪᴅ ᴜsᴇʀ/ᴄʜᴀɴɴᴇʟ ɪᴅ ᴡɪᴛʜ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ</blockquote>\n"
+                "<blockquote>ᴇx : /ban (user/channel_id) (banning reason[Optional]) \n"
                 "ʀᴇᴀʟ ᴇx : <code>/ban 1234567899</code>\n"
                 "ᴡɪᴛʜ ʀᴇᴀsᴏɴ ᴇx:<code>/ban 1234567899 sending adult links to bot</code>\n"
                 "ᴛᴏ ʙᴀɴ ᴀ ᴄʜᴀɴɴᴇʟ :\n<code>/ban CHANEL_ID</code>\n"
