@@ -1,4 +1,8 @@
-https://i.ibb.co/hxqp9gQk/photo-2025-04-03-11-00-42-7489040182323183640.jpg
+
+### Example Images
+Here are some anime-related images that you can use in your bot interface:
+
+![Anime Image](https://i.ibb.co/hxqp9gQk/photo-2025-04-03-11-00-42-7489040182323183640.jpg)
 
   <h1 align="center"></h1>
 <p align="center"> 
