@@ -6,6 +6,7 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, 
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
 from pyrogram.errors import ChatAdminRequired
 import asyncio
+from pyrogram.enums import ParseMode
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
