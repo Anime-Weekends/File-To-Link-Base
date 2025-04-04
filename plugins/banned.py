@@ -27,7 +27,7 @@ async def do_ban(bot, message):
                 "ᴛᴏ ʙᴀɴ ᴀ ᴄʜᴀɴɴᴇʟ :\n<code>/ban CHANEL_ID</code>\n"
                 "ᴇx : <code>/ban -1001234567899</code></blockquote></b>"
             ),
-            parse_mode="html"
+            parse_mode=ParseMode.HTML
         )
         return
 
