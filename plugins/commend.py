@@ -191,20 +191,6 @@ async def about(client, message):
 	    message_effect_id=5104841245755180586 #🔥
      )
 
-
-@Client.on_message(filters.command("Developer"))
-async def help(client, message):
-    btn = [[
-       InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data'), 
-       InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
-    ]]
-    reply_markup = InlineKeyboardMarkup(btn)
-    await message.reply_photo(
-        photo="https://i.ibb.co/Z7Sx6kH/photo-2025-04-04-10-30-02-7489403360462766096.jpg",  # or a local file like "images/help.jpg"
-        caption=script.HELP2_TXT,
-        reply_markup=reply_markup, 
-	    message_effect_id=5104841245755180586 #🔥
-	)
 	
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
