@@ -32,9 +32,7 @@ async def do_ban(bot, message):
         )
         return
     text = await message.reply("<b><blockquote>Lᴇᴛ ᴍᴇ ᴄʜᴇᴄᴋ 👀</blockquote></b>")
-
-    banSts = await db.ban_user(userid)
-
+    
 banSts = await db.ban_user(userid)
     if banSts is True:
         await text.edit(
