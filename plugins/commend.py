@@ -32,13 +32,32 @@ async def start(client, message):
             InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_photo(
-            photo = random.choice(PICS),
-            caption=script.START_TXT.format(message.from_user.mention, BOT_USERNAME),
-            reply_markup=reply_markup,
-		message_effect_id=5104841245755180586 #🔥
-        )
-        return
+        # Animation part
+m = await message.reply_text("<i>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ <b>ʟᴜᴄʏ</b>.\nʜᴏᴘᴇ ʏᴏᴜ'ʀᴇ ᴅᴏɪɴɢ ᴡᴇʟʟ...</i>")
+await asyncio.sleep(0.4)
+await m.edit_text("⏳")
+await asyncio.sleep(0.5)
+await m.edit_text("👀")
+await asyncio.sleep(0.5)
+await m.edit_text("<b><i>ꜱᴛᴀʀᴛɪɴɢ...</i></b>")
+await asyncio.sleep(0.4)
+await m.delete()
+
+# Sticker part
+sticker = await message.reply_sticker("CAACAgUAAxkBAAJFeWd037UWP-vgb_dWo55DCPZS9zJzAAJpEgACqXaJVxBrhzahNnwSHgQ")
+await asyncio.sleep(1)
+await sticker.delete()
+
+# Final photo reply
+await message.reply_photo(
+    photo=random.choice(PICS),
+    caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+    reply_markup=reply_markup,
+    parse_mode=enums.ParseMode.HTML,
+    message_effect_id=5104841245755180586
+)
+
+return
     msg = message.command[1]
 
     if msg.startswith("file"):
