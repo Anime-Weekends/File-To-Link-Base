@@ -119,17 +119,30 @@ async def cb_handler(client: Client, query: CallbackQuery):
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 	
     elif query.data.startswith("sendAlert"):
-        user_id =(query.data.split("_")[1])
-        user_id = int(user_id.replace(' ' , ''))
-        if len(str(user_id)) == 10:
-            reason = str(query.data.split("_")[2])
-            try:
-                await client.send_message(user_id , f"<b>ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ʙʏ [ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ](https://telegram.me/AV_OWNER_BOT)\nʀᴇᴀsᴏɴ : {reason}</b>")
-                await query.message.edit(f"<b>Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nʀᴇᴀsᴏɴ : {reason}</b>")
-            except Exception as e:
-                await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
-        else:
-            await query.message.edit(f"<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>")
+    user_id = (query.data.split("_")[1])
+    user_id = int(user_id.replace(' ', ''))
+    if len(str(user_id)) == 10:
+        reason = str(query.data.split("_")[2])
+        try:
+            image_url = "https://i.ibb.co/q3tWtLCv/photo-2025-04-05-08-59-25-7489751171209363460.jpg"  # Replace with your image URL
+
+            buttons = InlineKeyboardMarkup([
+                [InlineKeyboardButton("Cᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ", url="https://telegram.me/RexySama")]
+            ])
+
+            await client.send_photo(
+                user_id,
+                photo=image_url,
+                caption=f"<b>ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ʙʏ [ᴏᴡɴᴇʀ](https://telegram.me/RexySama)\nʀᴇᴀsᴏɴ : {reason}</b>",
+                reply_markup=buttons,
+                parse_mode="html"
+            )
+
+            await query.message.edit(f"<b>Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nʀᴇᴀsᴏɴ : {reason}</b>")
+        except Exception as e:
+            await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
+    else:
+        await query.message.edit(f"<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>")
 
     elif query.data.startswith('noAlert'):
         user_id =(query.data.split("_")[1])
