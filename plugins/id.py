@@ -6,12 +6,12 @@ async def showid(client, message):
 
     if chat_type == enums.ChatType.PRIVATE:
         user_id = message.chat.id
-        photo_url = "https://example.com/image.jpg"  # Replace with your image URL or file_id
+        photo_url = "https://i.ibb.co/q3tWtLCv/photo-2025-04-05-08-59-25-7489751171209363460.jpg"  # Replace with your image URL or file_id
 
         buttons = InlineKeyboardMarkup([
             [
-                InlineKeyboardButton("Button 1", callback_data="btn1"),
-                InlineKeyboardButton("Button 2", callback_data="btn2")
+                InlineKeyboardButton("Button 1", callback_data="url="),
+                InlineKeyboardButton("Button 2", callback_data="url=")
             ]
         ])
 
