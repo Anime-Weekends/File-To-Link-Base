@@ -10,8 +10,8 @@ async def showid(client, message):
 
         buttons = InlineKeyboardMarkup([
             [
-                InlineKeyboardButton("Button 1", callback_data="url="),
-                InlineKeyboardButton("Button 2", callback_data="url=")
+                InlineKeyboardButton("Button 1", url=f"https://t.me/{OWNER_USERNAME}"),
+                InlineKeyboardButton("Button 2", url=f"https://t.me/{OWNER_USERNAME}"")
             ]
         ])
 
