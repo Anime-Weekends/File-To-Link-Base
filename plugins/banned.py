@@ -37,11 +37,11 @@ async def do_ban(bot, message):
 
 if banSts is True:
     # Send image before editing the message
-    await text.bot.send_photo(
-        chat_id=text.chat.id,
-        photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # Replace with a valid image URL or InputFile
-        caption=f"<b><code>{userid}</code> Hᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ</b>",
-        parse_mode=ParseMode.HTML
+        await text.bot.send_photo(
+           chat_id=text.chat.id,
+           photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # Replace with a valid image URL or InputFile
+           caption=f"<b><code>{userid}</code> Hᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ</b>",
+           parse_mode=ParseMode.HTML
     )
 
     await text.edit(
