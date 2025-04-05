@@ -135,7 +135,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 photo=image_url,
                 caption=f"<b>ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ʙʏ [ᴏᴡɴᴇʀ](https://telegram.me/RexySama)\nʀᴇᴀsᴏɴ : {reason}</b>",
                 reply_markup=buttons,
-                parse_mode="html"
+                parse_mode=ParseMode.HTML
             )
 
             await query.message.edit(f"<b>Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nʀᴇᴀsᴏɴ : {reason}</b>")
