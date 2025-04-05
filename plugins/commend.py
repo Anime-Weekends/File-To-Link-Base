@@ -57,13 +57,15 @@ await message.reply_photo(
     message_effect_id=5104841245755180586
 )
 
-return
-    msg = message.command[1]
+msg = message.command[1]
 
-    if msg.startswith("file"):
-        _, file_id = msg.split("_", 1)
-        return await client.copy_message(chat_id=message.from_user.id, from_chat_id=int(BIN_CHANNEL), message_id=int(file_id))
-
+if msg.startswith("file"):
+    _, file_id = msg.split("_", 1)
+    return await client.copy_message(
+        chat_id=message.from_user.id,
+        from_chat_id=int(BIN_CHANNEL),
+        message_id=int(file_id)
+    )
 	
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
