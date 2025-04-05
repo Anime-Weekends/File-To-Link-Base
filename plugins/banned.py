@@ -35,39 +35,26 @@ async def do_ban(bot, message):
 
     banSts = await db.ban_user(userid)
 
-if banSts is True:
-    # Send image before editing the message
-        await text.bot.send_photo(
-           chat_id=text.chat.id,
-           photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",  # Replace with a valid image URL or InputFile
-           caption=f"<b><code>{userid}</code> Hᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ</b>",
-           parse_mode=ParseMode.HTML
-    )
-
-    await text.edit(
-        text=(
-            f"<b><blockquote><code>{userid}</code> Hᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ\n\n"
-            "Sʜᴏᴜʟᴅ I sᴇɴᴅ ᴀɴ ᴀʟᴇʀᴛ ᴛᴏ ᴛʜᴇ ʙᴀɴɴᴇᴅ ᴜsᴇʀ?</blockquote></b>"
-        ),
-        reply_markup=InlineKeyboardMarkup(
-            [
+banSts = await db.ban_user(userid)
+    if banSts is True:
+        await text.edit(
+            text=(
+                f"<b><blockquote><code>{userid}</code> Hᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ\n\n"
+                "Sʜᴏᴜʟᴅ I sᴇɴᴅ ᴀɴ ᴀʟᴇʀᴛ ᴛᴏ ᴛʜᴇ ʙᴀɴɴᴇᴅ ᴜsᴇʀ?</blockquote></b>"
+            ),
+            reply_markup=InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton(
-                        "Yᴇs ✅",
-                        callback_data=f"sendAlert_{userid}_{reason if reason else 'no reason provided'}"
-                    ),
-                    InlineKeyboardButton(
-                        "Nᴏ ❌",
-                        callback_data=f"noAlert_{userid}"
-                    ),
+                    [
+                        InlineKeyboardButton("Yᴇs ✅", callback_data=f"sendAlert_{userid}_{reason if reason else 'no reason provided'}"),
+                        InlineKeyboardButton("Nᴏ ❌", callback_data=f"noAlert_{userid}"),
+                    ]
                 ]
-            ]
+            )
         )
-    )
-else:
-    await text.edit(
-        f"<b><blockquote>Cᴏɴᴛʀᴏʟʟ ʏᴏᴜʀ ᴀɴɢᴇʀ ʙʀᴏ...\n<code>{userid}</code> ɪs ᴀʟʀᴇᴀᴅʏ ʙᴀɴɴᴇᴅ !!</blockquote></b>"
-    )
+    else:
+        await text.edit(
+            f"<b><blockquote>Cᴏɴᴛʀᴏʟʟ ʏᴏᴜʀ ᴀɴɢᴇʀ ʙʀᴏ...\n<code>{userid}</code> ɪs ᴀʟʀᴇᴀᴅʏ ʙᴀɴɴᴇᴅ !!</blockquote></b>"
+        )
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
