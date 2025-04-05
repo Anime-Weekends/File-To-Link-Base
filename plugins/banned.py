@@ -53,8 +53,10 @@ async def do_ban(bot, message):
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
-@Client.on_message(filters.command('unban') & filters.user(ADMINS)) async def do_unban(bot, message): userid = message.text.split(" ", 2)[1] if len(message.text.split(" ", 2)) > 1 else None
-
+ @Client.on_message(filters.command('unban') & filters.user(ADMINS))
+async def do_unban(bot, message):
+    userid = message.text.split(" ", 2)[1] if len(message.text.split(" ", 2)) > 1 else None
+    # Your logic here
 if not userid:
     return await message.reply(
         '<blockquote>Gɪᴠᴇ ᴍᴇ ᴀɴ ɪᴅ\nᴇx : <code>/unban 1234567899</code></blockquote>'
