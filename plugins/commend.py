@@ -122,7 +122,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         user_id = (query.data.split("_")[1])
         user_id = int(user_id.replace(' ', ''))
         if len(str(user_id)) == 10:
-        reason = str(query.data.split("_")[2])
+            reason = str(query.data.split("_")[2])
         try:
             image_url = "https://i.ibb.co/q3tWtLCv/photo-2025-04-05-08-59-25-7489751171209363460.jpg"  # Replace with your image URL
 
