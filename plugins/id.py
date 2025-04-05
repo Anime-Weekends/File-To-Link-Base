@@ -1,4 +1,6 @@
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import filters, enums
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
+from bot import Bot 
 
 @Bot.on_message(filters.command("id") & filters.private)
 async def showid(client, message):
