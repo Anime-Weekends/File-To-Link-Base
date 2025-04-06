@@ -1,11 +1,9 @@
 import json
 from calendar import month_name
-
 import aiohttp
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-#from plugins.Extra.human_read import get_readable_time
 def get_readable_time(seconds: int) -> str:
     minutes, sec = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
@@ -17,10 +15,10 @@ def get_readable_time(seconds: int) -> str:
     if sec > 0:
         time_parts.append(f"{sec}s")
     return " ".join(time_parts)
-  
-anime_query = """
-query ($id: Int, $idMal: Int, $search: String) {
-  Media(id: $id, idMal: $idMal, type: ANIME, search: $search) {
+
+media_query = """
+query ($id: Int, $idMal: Int, $search: String, $type: MediaType) {
+  Media(id: $id, idMal: $idMal, type: $type, search: $search) {
     id
     idMal
     title {
@@ -149,15 +147,13 @@ query ($id: Int, $idMal: Int, $search: String) {
 }
 """
 
-
-async def get_anime(title):
-    async with aiohttp.ClientSession() as sesi:
-        r = await sesi.post(
+async def get_media(variables):
+    async with aiohttp.ClientSession() as session:
+        response = await session.post(
             "https://graphql.anilist.co",
-            json={"query": anime_query, "variables": title},
+            json={"query": media_query, "variables": variables}
         )
-        return await r.read()
-
+        return await response.read()
 
 def shorten(description, info="anilist.co"):
     ms_g = ""
@@ -173,79 +169,75 @@ def shorten(description, info="anilist.co"):
         .replace("</i>", "")
     )
 
-
-@Client.on_message(filters.command("anime", '/'))
-async def anime_search(_, mesg):
+async def handle_media(mesg, media_type):
     search = mesg.text.split(None, 1)
     reply = await mesg.reply("⏳ <i>Please wait ...</i>", quote=True)
     if len(search) == 1:
-        return await reply.edit("⚠️ <b>Give Anime name please.</b>")
+        return await reply.edit(f"⚠️ <b>Give {media_type.capitalize()} name please.</b>")
+    search = search[1]
+    variables = {"search": search, "type": media_type.upper()}
+    data = json.loads(await get_media(variables))["data"]
+    res = data.get("Media", None)
+    if not res:
+        return await reply.edit("💢 No Resource found! [404]")
+
+    msg = f"<b>{res['title']['romaji']}</b> (<code>{res['title']['native']}</code>)\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
+    
+    if media_type == "anime":
+        durasi = get_readable_time(int(res.get("duration", 0) * 60))
+        msg += f"<b>Episodes</b>: {res.get('episodes', 'N/A')}\n<b>Duration </b>: {durasi} Per Eps.\n"
     else:
-        search = search[1]
-    variables = {"search": search}
-    if not (res := json.loads(await get_anime(variables))["data"].get("Media", None)):
-        return await reply.edit("💢 No Resource Anime found! [404]")
-    durasi = (
-        get_readable_time(int(res.get("duration") * 60))
-        if res.get("duration") is not None
-        else "0"
-    )
-    msg = f"<b>{res['title']['romaji']}</b> (<code>{res['title']['native']}</code>)\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n<b>Episodes</b>: {res.get('episodes', 'N/A')}\n<b>Duration </b>: {durasi} Per Eps.\n<b>Score</b>: {res['averageScore']}%\n<b>Category</b>: <code>"
-    for x in res["genres"]:
-        msg += f"{x}, "
-    msg = msg[:-2] + "</code>\n"
+        msg += f"<b>Chapters</b>: {res.get('chapters', 'N/A')}\n<b>Volumes</b>: {res.get('volumes', 'N/A')}\n"
+
+    msg += f"<b>Score</b>: {res.get('averageScore', 'N/A')}%\n<b>Category</b>: <code>"
+    for genre in res.get("genres", []):
+        msg += f"{genre}, "
+    msg = msg.rstrip(", ") + "</code>\n"
+
     try:
         sd = res["startDate"]
-        startdate = str(f"{month_name[sd['month']]} {sd['day']}, {sd['year']}")
+        startdate = f"{month_name[sd['month']]} {sd['day']}, {sd['year']}"
     except:
         startdate = "-"
     msg += f"<b>Start date</b>: <code>{startdate}</code>\n"
+
     try:
         ed = res["endDate"]
-        enddate = str(f"{month_name[ed['month']]} {ed['day']}, {ed['year']}")
+        enddate = f"{month_name[ed['month']]} {ed['day']}, {ed['year']}"
     except:
         enddate = "-"
     msg += f"<b>End date</b>: <code>{enddate}</code>\n"
-    msg += "<b>Studios</b>: <code>"
-    for x in res["studios"]["nodes"]:
-        msg += f"{x['name']}, "
-    msg = msg[:-2] + "</code>\n"
-    info = res.get("siteUrl")
-    trailer = res.get("trailer", None)
-    if trailer:
-        trailer_id = trailer.get("id", None)
-        site = trailer.get("site", None)
-        if site == "youtube":
-            trailer = f"https://youtu.be/{trailer_id}"
-    description = (
-        res.get("description")
-        .replace("<i>", "")
-        .replace("</i>", "")
-        .replace("<br>", "")
-        if res.get("description") is not None
-        else "N/A"
-    )
-    msg += shorten(description, info)
-    image = info.replace("anilist.co/anime/", "img.anili.st/media/")
-    btn = (
-        [
-            [
-                InlineKeyboardButton("More info", url=info),
-                InlineKeyboardButton("Trailer 🎬", url=trailer),
-            ]
-        ]
-        if trailer
-        else [[InlineKeyboardButton("More info", url=info)]]
-    )
 
-    if image:
-        try:
-            await mesg.reply_photo(
-                image, caption=msg, reply_markup=InlineKeyboardMarkup(btn)
-            )
-        except:
-            msg += f" [〽️]({image})"
-            await reply.edit(msg)
-    else:
+    msg += "<b>Studios</b>: <code>"
+    for studio in res.get("studios", {}).get("nodes", []):
+        msg += f"{studio['name']}, "
+    msg = msg.rstrip(", ") + "</code>\n"
+
+    info = res.get("siteUrl")
+    trailer = res.get("trailer")
+    trailer_url = None
+    if trailer and trailer.get("site") == "youtube":
+        trailer_url = f"https://youtu.be/{trailer['id']}"
+
+    description = res.get("description", "N/A")
+    msg += shorten(description, info)
+
+    image = info.replace("anilist.co/anime/", "img.anili.st/media/") if "anime" in info else res["coverImage"]["large"]
+    btn = [[InlineKeyboardButton("More info", url=info)]]
+    if trailer_url:
+        btn[0].append(InlineKeyboardButton("Trailer 🎬", url=trailer_url))
+
+    try:
+        await mesg.reply_photo(image, caption=msg, reply_markup=InlineKeyboardMarkup(btn))
+        await reply.delete()
+    except:
+        msg += f"\n[Image]({image})"
         await reply.edit(msg)
-    await reply.delete()
+
+@Client.on_message(filters.command("anime", "/"))
+async def anime_handler(client, message):
+    await handle_media(message, "anime")
+
+@Client.on_message(filters.command("manga", "/"))
+async def manga_handler(client, message):
+    await handle_media(message, "manga")
