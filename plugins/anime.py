@@ -6,7 +6,18 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 #from plugins.Extra.human_read import get_readable_time
-
+def get_readable_time(seconds: int) -> str:
+    minutes, sec = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    time_parts = []
+    if hours > 0:
+        time_parts.append(f"{hours}h")
+    if minutes > 0:
+        time_parts.append(f"{minutes}m")
+    if sec > 0:
+        time_parts.append(f"{sec}s")
+    return " ".join(time_parts)
+  
 anime_query = """
 query ($id: Int, $idMal: Int, $search: String) {
   Media(id: $id, idMal: $idMal, type: ANIME, search: $search) {
