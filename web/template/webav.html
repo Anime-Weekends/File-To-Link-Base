@@ -16,6 +16,10 @@
           fontFamily: {
             orbitron: ['Orbitron', 'sans-serif']
           },
+          colors: {
+            blackish: '#0b0b0b',
+            whiteish: '#f5f5f5',
+          },
           animation: {
             fadeIn: 'fadeIn 0.8s ease-in-out both',
           },
@@ -33,13 +37,13 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen flex flex-col items-center font-orbitron p-4">
+<body class="bg-black text-whiteish min-h-screen flex flex-col items-center font-orbitron p-4">
   <div class="w-full max-w-4xl space-y-8 animate-fadeIn">
     <header class="text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 drop-shadow-lg">{{file_name}}</h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">{{file_name}}</h1>
     </header>
 
-    <div class="rounded-2xl overflow-hidden shadow-2xl backdrop-blur bg-white/5 border border-cyan-600 p-2">
+    <div class="rounded-2xl overflow-hidden shadow-2xl bg-blackish border border-white p-2">
       <video class="plyr w-full rounded-xl" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
         <source src="{{file_url}}" type="video/mp4" />
         Your browser does not support the video tag.
@@ -47,20 +51,19 @@
     </div>
 
     <div class="flex flex-wrap justify-center gap-4">
-      <button onclick="download()" class="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition">
+      <button onclick="download()" class="bg-black border border-white text-white hover:bg-white hover:text-black px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
         <i class="fas fa-cloud-download-alt mr-2"></i>Download
       </button>
-      <button onclick="copyLink()" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition">
+      <button onclick="copyLink()" class="bg-black border border-white text-white hover:bg-white hover:text-black px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
         <i class="fas fa-link mr-2"></i>Copy Link
       </button>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-sm text-center">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
       <div onclick="playOnline('vlc')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
       <div onclick="playOnline('mx')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
       <div onclick="playOnline('np')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-8 mx-auto" />nPlayer</div>
       <div onclick="playOnline('sp')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
-      <div onclick="playOnline('km')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/km.webp" class="h-8 mx-auto" />KM Player</div>
     </div>
 
     <div class="flex justify-center space-x-6 mt-6">
@@ -70,7 +73,7 @@
       <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-6" /></a>
     </div>
 
-    <p class="text-center text-gray-400 text-xs mt-4">UI Design by <span class="text-cyan-500 font-semibold">REXY</span></p>
+    <p class="text-center text-gray-500 text-xs mt-4">UI Design by <span class="text-white font-semibold">REXY</span></p>
   </div>
 
   <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
@@ -88,8 +91,7 @@
         mxp: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.pro;end`,
         mx: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.ad;end`,
         np: `nplayer-${finalUrl}`,
-        sp: `intent:${finalUrl}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;end`,
-        km: `intent:${finalUrl}#Intent;package=com.kmplayer;end`
+        sp: `intent:${finalUrl}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;end`
       };
       window.location.href = urls[player] || finalUrl;
     }
@@ -102,7 +104,7 @@
       navigator.clipboard.writeText(finalUrl).then(() => {
         const div = document.createElement('div');
         div.textContent = "Link copied to clipboard!";
-        div.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg animate-fadeIn";
+        div.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-2 rounded-lg shadow-lg animate-fadeIn";
         document.body.appendChild(div);
         setTimeout(() => div.remove(), 3000);
       });
@@ -111,7 +113,7 @@
 
   <style>
     .player-button {
-      @apply cursor-pointer bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-xl shadow transition transform hover:scale-105;
+      @apply cursor-pointer bg-black border border-white text-white py-3 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105;
     }
   </style>
 </body>
