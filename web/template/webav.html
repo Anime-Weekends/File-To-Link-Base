@@ -9,50 +9,74 @@
   <link rel="icon" href="https://i.ibb.co/wZP3njqD/photo-2025-04-01-09-47-05-7488279045398855684.jpg" type="image/x-icon" />
   <link href="https://cdn.plyr.io/3.7.8/plyr.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif']
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.8s ease-in-out both',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(20px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col items-center p-4">
-  <div class="w-full max-w-4xl space-y-6">
+<body class="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen flex flex-col items-center font-orbitron p-4">
+  <div class="w-full max-w-4xl space-y-8 animate-fadeIn">
     <header class="text-center">
-      <h1 class="text-3xl font-bold tracking-wide text-cyan-400">{{file_name}}</h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 drop-shadow-lg">{{file_name}}</h1>
     </header>
 
-    <div class="rounded-xl overflow-hidden shadow-lg border border-gray-700">
-      <video class="plyr w-full" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
+    <div class="rounded-2xl overflow-hidden shadow-2xl backdrop-blur bg-white/5 border border-cyan-600 p-2">
+      <video class="plyr w-full rounded-xl" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
         <source src="{{file_url}}" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <button onclick="download()" class="flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white font-medium py-2 px-4 rounded-lg shadow transition">
-        <i class="fas fa-cloud-download-alt"></i> Download
+    <div class="flex flex-wrap justify-center gap-4">
+      <button onclick="download()" class="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition">
+        <i class="fas fa-cloud-download-alt mr-2"></i>Download
       </button>
-      <button onclick="copyLink()" class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-medium py-2 px-4 rounded-lg shadow transition">
-        <i class="fas fa-link"></i> Copy Link
+      <button onclick="copyLink()" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition">
+        <i class="fas fa-link mr-2"></i>Copy Link
       </button>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-      <button onclick="playOnline('vlc')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" alt="VLC" class="h-6" /> VLC</button>
-      <button onclick="playOnline('mx')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" alt="MX" class="h-6" /> MX Player</button>
-      <button onclick="playOnline('np')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" alt="nPlayer" class="h-6" /> nPlayer</button>
-      <button onclick="playOnline('sp')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" alt="SPlayer" class="h-6" /> SPlayer</button>
-      <button onclick="playOnline('km')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/km.webp" alt="KM" class="h-6" /> KM Player</button>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-sm text-center">
+      <div onclick="playOnline('vlc')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
+      <div onclick="playOnline('mx')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
+      <div onclick="playOnline('np')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-8 mx-auto" />nPlayer</div>
+      <div onclick="playOnline('sp')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
+      <div onclick="playOnline('km')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/km.webp" class="h-8 mx-auto" />KM Player</div>
     </div>
 
-    <footer class="flex justify-center gap-6 mt-8">
-      <a href="http://t.me/RexySama"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-6" alt="Telegram" /></a>
-      <a href="https://www.instagram.com/ackerman_freak"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-6" alt="Instagram" /></a>
-      <a href="http://t.me/RexySama"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-6" alt="GitHub" /></a>
-      <a href="http://t.me/RexySama"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-6" alt="YouTube" /></a>
-    </footer>
+    <div class="flex justify-center space-x-6 mt-6">
+      <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-6" /></a>
+      <a href="https://www.instagram.com/ackerman_freak" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-6" /></a>
+      <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-6" /></a>
+      <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-6" /></a>
+    </div>
+
+    <p class="text-center text-gray-400 text-xs mt-4">UI Design by <span class="text-cyan-500 font-semibold">REXY</span></p>
   </div>
 
   <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      new Plyr(document.querySelector('.plyr'));
+      new Plyr('.plyr');
     });
 
     const currentUrl = window.location.href;
@@ -78,7 +102,7 @@
       navigator.clipboard.writeText(finalUrl).then(() => {
         const div = document.createElement('div');
         div.textContent = "Link copied to clipboard!";
-        div.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded-lg shadow";
+        div.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg animate-fadeIn";
         document.body.appendChild(div);
         setTimeout(() => div.remove(), 3000);
       });
@@ -87,7 +111,7 @@
 
   <style>
     .player-button {
-      @apply flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg shadow transition;
+      @apply cursor-pointer bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-xl shadow transition transform hover:scale-105;
     }
   </style>
 </body>
