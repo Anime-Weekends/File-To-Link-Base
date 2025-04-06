@@ -5,7 +5,7 @@ from bot import Bot  # This now works!
 @Bot.on_message(filters.command("id") & filters.private)
 async def showid(client, message):
     user_id = message.chat.id
-    photo_url = "https://i.ibb.co/q3twLtCw/photo-2025-04-05-08-59-25-7489751171209363460.jpg"
+    photo_url = "https://i.ibb.co/d0Xg3xMB/photo-2025-04-06-10-07-03-7490139616641548308.jpg"
 
     buttons = InlineKeyboardMarkup([
         [
