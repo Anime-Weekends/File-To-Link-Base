@@ -5,7 +5,7 @@ import aiohttp
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from plugins.Extra.human_read import get_readable_time
+#from plugins.Extra.human_read import get_readable_time
 
 anime_query = """
 query ($id: Int, $idMal: Int, $search: String) {
