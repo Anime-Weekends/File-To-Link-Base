@@ -159,9 +159,9 @@ def shorten(description, info="anilist.co"):
     ms_g = ""
     if len(description) > 700:
         description = f"{description[:500]}...."
-        ms_g += f'\n<strong>Description:</strong> <em><blockquote expandable>{description}</em></blockquote><a href="{info}">More info</a>'
+        ms_g += f'\n<strong><blockquote>𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 :</blockquote></strong> <em><blockquote expandable>{description}</em></blockquote><a href="{info}"><blockquote>Mᴏʀᴇ ɪɴғᴏ</blockquote></a>'
     else:
-        ms_g += f"\n<strong>Description:</strong> <em>{description}</em>"
+        ms_g += f"\n<strong><blockquote>𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 :</blockquote></strong> <em></blockquote expandable>{description}</blockquote></em>"
     return (
         ms_g.replace("<br>", "")
         .replace("</br>", "")
@@ -173,7 +173,7 @@ async def handle_media(mesg, media_type):
     search = mesg.text.split(None, 1)
     reply = await mesg.reply("<blockquote>⏳ <i>Pʟᴇᴀsᴇ ᴡᴀɪᴛ ...</i></blockquote>", quote=True)
     if len(search) == 1:
-        return await reply.edit(f"<blockquote>⚠️ <b>Gɪᴠᴇ {media_type.capitalize()} Nᴀᴍᴇ ᴘʟᴇᴀsᴇ...<blockquote></b>")
+        return await reply.edit(f"<blockquote>⚠️ <b>Gɪᴠᴇ {media_type.capitalize()} Nᴀᴍᴇ ᴘʟᴇᴀsᴇ...</blockquote></b>")
     search = search[1]
     variables = {"search": search, "type": media_type.upper()}
     data = json.loads(await get_media(variables))["data"]
@@ -181,7 +181,7 @@ async def handle_media(mesg, media_type):
     if not res:
         return await reply.edit("<blockquote>💢 Nᴏ ʀᴇsᴏᴜʀᴄᴇ ғᴏᴜɴᴅ! [404]</blockquote>")
 
-    msg = f"<b>{res['title']['romaji']}</b> (<code>{res['title']['native']}</code>)\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
+    msg = f"<b><blockquote>{res['title']['romaji']}</blockquote></b>\n\n<blockquote>(<code>{res['title']['native']}</code>)</blockquote>\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
     
     if media_type == "anime":
         durasi = get_readable_time(int(res.get("duration", 0) * 60))
