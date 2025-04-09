@@ -53,7 +53,7 @@ async def private_receive_handler(c: Client, m: Message):
             disable_web_page_preview=True, quote=True
         )
 
-THUMBNAIL_URL = "https://i.ibb.co/b5PwhJxm/photo-2025-04-06-20-48-47-7490897815808245776.jpg"  # You can replace this
+THUMBNAIL_URL = "https://i.ibb.co/b5PwhJxm/photo-2025-04-06-20-48-47-7490897815808245776.jpg"
 
 # ✅ अगर file_name मौजूद है तो पूरा कैप्शन भेजें, वरना सिर्फ डाउनलोड लिंक भेजें
 if file_name:
