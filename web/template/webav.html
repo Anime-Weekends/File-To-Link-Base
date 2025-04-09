@@ -42,11 +42,11 @@
 
     <!-- Header -->
     <header class="text-center">
-      <h1 class="text-3xl md:text-4xl font-semibold text-white drop-shadow-sm">{{file_name}}</h1>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white drop-shadow">{{file_name}}</h1>
     </header>
 
     <!-- Video Player -->
-    <div class="backdrop-blur-md bg-blackish/60 border border-white/20 shadow-2xl rounded-2xl p-4">
+    <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4 shadow-lg">
       <video class="plyr w-full rounded-xl" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
         <source src="{{file_url}}" type="video/mp4" />
         Your browser does not support the video tag.
@@ -55,23 +55,23 @@
 
     <!-- Action Buttons -->
     <div class="flex flex-wrap justify-center gap-4">
-      <button onclick="download()" class="group relative overflow-hidden bg-black border border-white text-white px-6 py-2 rounded-xl shadow-lg transition-all duration-500 hover:bg-white hover:text-black">
-        <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700"></span>
+      <button onclick="download()" class="group relative overflow-hidden bg-white/5 border border-white/20 text-white px-6 py-2 rounded-xl shadow-md transition-all duration-500 hover:bg-white hover:text-black">
+        <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700 rounded-xl"></span>
         <span class="relative z-10"><i class="fas fa-cloud-download-alt mr-2"></i>Download</span>
       </button>
 
-      <button onclick="copyLink()" class="group relative overflow-hidden bg-black border border-white text-white px-6 py-2 rounded-xl shadow-lg transition-all duration-500 hover:bg-white hover:text-black">
-        <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700"></span>
+      <button onclick="copyLink()" class="group relative overflow-hidden bg-white/5 border border-white/20 text-white px-6 py-2 rounded-xl shadow-md transition-all duration-500 hover:bg-white hover:text-black">
+        <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700 rounded-xl"></span>
         <span class="relative z-10"><i class="fas fa-link mr-2"></i>Copy Link</span>
       </button>
     </div>
 
     <!-- Player Options -->
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
-      <div onclick="playOnline('vlc')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
-      <div onclick="playOnline('mx')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
-      <div onclick="playOnline('np')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-8 mx-auto" />nPlayer</div>
-      <div onclick="playOnline('sp')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
+      <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
+      <div onclick="playOnline('mx')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
+      <div onclick="playOnline('np')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-8 mx-auto" />nPlayer</div>
+      <div onclick="playOnline('sp')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
     </div>
 
     <!-- Social Links -->
@@ -123,8 +123,8 @@
 
   <!-- Style -->
   <style>
-    .player-button {
-      @apply cursor-pointer bg-black border border-white text-white py-3 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105;
+    .player-button-glass {
+      @apply cursor-pointer bg-white/5 backdrop-blur-md border border-white/10 text-white py-3 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105;
     }
   </style>
 </body>
