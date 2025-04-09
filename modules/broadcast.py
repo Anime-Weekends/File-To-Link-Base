@@ -1,131 +1,128 @@
-from pyrogram.errors import *
-from database.users_db import db
 from pyrogram import Client, filters
-from info import ADMINS
+from pyrogram.enums import ParseMode
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-import asyncio
-import datetime
-import time
-import random
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
+from database.users_db import db
+from info import ADMINS
+import asyncio, datetime, time
 
-# Global flag for canceling broadcast
-broadcast_cancel = {}
+# Global cancel flag
+cancel_flag = {}
 
-BROADCAST_IMG = "https://i.ibb.co/b5PwhJxm/photo-2025-04-06-20-48-47-7490897815808245776.jpg"
-URL_BTN = "https://t.me/RexySama"
-
-async def broadcast_messages(user_id, message, forward=False, pin=False, delete_after=None):
+async def send_broadcast(user_id, message, forward=False, pin=False, auto_delete=None):
     try:
         if forward:
             sent = await message.forward(chat_id=user_id)
         else:
             sent = await message.copy(chat_id=user_id)
+
         if pin:
-            await sent.pin(disable_notification=True)
-        if delete_after:
-            await asyncio.sleep(delete_after)
-            await sent.delete()
-        return True, "Success"
-    except FloodWait as e:
-        await asyncio.sleep(e.value)
-        return await broadcast_messages(user_id, message, forward, pin, delete_after)
-    except (InputUserDeactivated, UserIsBlocked, PeerIdInvalid):
-        await db.delete_user(int(user_id))
-        return False, "Invalid"
-    except Exception:
-        return False, "Error"
-
-@Client.on_message(filters.command("broadcast") & filters.user(ADMINS) & filters.reply)
-async def start_broadcast(bot, message):
-    global broadcast_cancel
-    broadcast_id = random.randint(10000, 99999)
-    broadcast_cancel[broadcast_id] = False
-
-    b_msg = message.reply_to_message
-    users = await db.get_all_users()
-    total_users = await db.total_users_count()
-    forward = "forward" in message.command
-    delete_after = 10 if "autodelete" in message.command else None
-    pin = "pin" in message.command
-
-    status_msg = await message.reply_photo(
-        BROADCAST_IMG,
-        caption=f"**<b>Broadcast Started</b>**\n\nTotal users: {total_users}\n\n<b>Status:</b> Processing...",
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Refresh", callback_data=f"refresh_{broadcast_id}"),
-             InlineKeyboardButton("Cancel", callback_data=f"cancel_{broadcast_id}")],
-            [InlineKeyboardButton("Join Updates Channel", url=URL_BTN)]
-        ])
-    )
-
-    done = success = blocked = deleted = failed = 0
-    start_time = time.time()
-
-    async for user in users:
-        if broadcast_cancel.get(broadcast_id):
-            break
-        uid = user.get("id")
-        if uid:
-            sent, reason = await broadcast_messages(
-                user_id=int(uid),
-                message=b_msg,
-                forward=forward,
-                pin=pin,
-                delete_after=delete_after
-            )
-            if sent:
-                success += 1
-            else:
-                if reason == "Blocked":
-                    blocked += 1
-                elif reason == "Deleted":
-                    deleted += 1
-                else:
-                    failed += 1
-            done += 1
-
-        if not done % 20:
             try:
-                await status_msg.edit_caption(
-                    f"**<b>Broadcast in Progress...</b>**\n\n"
-                    f"Total: {total_users}\n"
-                    f"Done: {done}\n"
-                    f"Success: {success}\n"
-                    f"Blocked: {blocked}\n"
-                    f"Deleted: {deleted}\n"
-                    f"Failed: {failed}",
-                    reply_markup=status_msg.reply_markup
-                )
+                await message._client.pin_chat_message(user_id, sent.id, disable_notification=True)
             except:
                 pass
+        if auto_delete:
+            await asyncio.sleep(auto_delete)
+            try:
+                await message._client.delete_messages(user_id, sent.id)
+            except:
+                pass
+        return True, "Success"
 
-    end_time = time.time()
-    duration = datetime.timedelta(seconds=int(end_time - start_time))
-    final_text = (
-        f"**<b>Broadcast Finished</b>**\n\n"
-        f"Total Users: {total_users}\n"
-        f"Completed: {done}\n"
-        f"Success: {success}\n"
-        f"Blocked: {blocked}\n"
-        f"Deleted: {deleted}\n"
-        f"Failed: {failed}\n"
-        f"Time Taken: {duration}"
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
+        return await send_broadcast(user_id, message, forward, pin, auto_delete)
+    except (InputUserDeactivated, UserIsBlocked, PeerIdInvalid):
+        await db.delete_user(user_id)
+        return False, "Invalid"
+    except:
+        return False, "Failed"
+
+@Client.on_message(filters.command("broadcast") & filters.user(ADMINS) & filters.reply)
+async def broadcast_handler(client, message):
+    reply = message.reply_to_message
+    if not reply:
+        return await message.reply("**<blockquote>Reply to a message to broadcast it.</blockquote>**")
+
+    buttons = [
+        [
+            InlineKeyboardButton("➕ Normal", callback_data="bcast:normal"),
+            InlineKeyboardButton("🔁 Forward", callback_data="bcast:forward")
+        ],
+        [
+            InlineKeyboardButton("📌 With Pin", callback_data="bcast:pin"),
+            InlineKeyboardButton("⏱ Auto-Delete", callback_data="bcast:delete")
+        ],
+        [
+            InlineKeyboardButton("♻ Refresh", callback_data="bcast:refresh"),
+            InlineKeyboardButton("✖ Cancel", callback_data="bcast:cancel")
+        ]
+    ]
+
+    await message.reply_photo(
+        photo="https://i.ibb.co/ynjcqYdZ/photo-2025-04-06-20-48-47-7490304985767346192.jpg",
+        caption="**<blockquote>Choose your broadcast mode:</blockquote>**",
+        reply_markup=InlineKeyboardMarkup(buttons)
     )
 
-    try:
-        await status_msg.edit_caption(final_text, reply_markup=None)
-    except:
-        pass
+@Client.on_callback_query(filters.regex(r"bcast:(.*)"))
+async def broadcast_callback(client, query):
+    action = query.data.split(":")[1]
+    user_id = query.from_user.id
+    reply = query.message.reply_to_message
 
-    del broadcast_cancel[broadcast_id]
+    if not reply:
+        return await query.answer("Reply message missing.", show_alert=True)
 
-@Client.on_callback_query(filters.regex("cancel_(.*)"))
-async def cancel_broadcast_cb(bot, query):
-    bc_id = int(query.data.split("_")[1])
-    broadcast_cancel[bc_id] = True
-    await query.answer("Broadcast cancelled.", show_alert=True)
-    await query.message.edit_caption("**<b>Broadcast Cancelled.</b>**", reply_markup=None)
+    if action == "cancel":
+        cancel_flag[user_id] = True
+        return await query.edit_message_caption("**<blockquote>Broadcast Cancelled.</blockquote>**")
 
-@Client.on_callback_query(filters.regex("refresh_(.*)"))
-async def refresh_status(bot, query):
-    await query.answer("Refreshing...", show_alert=False)
+    if action == "refresh":
+        return await query.answer("UI refreshed!")
+
+    forward = (action == "forward")
+    pin = (action == "pin")
+    auto_delete = 10 if action == "delete" else None
+
+    cancel_flag[user_id] = False
+
+    users = await db.get_all_users()
+    total = await db.total_users_count()
+    success = failed = invalid = done = 0
+    start = time.time()
+
+    status = await query.edit_message_caption(
+        f"**<blockquote>Broadcast started...\n\nTotal: {total}\nDone: {done}\nSuccess: {success}\nInvalid: {invalid}\nFailed: {failed}</blockquote>**"
+    )
+
+    async for user in users:
+        if cancel_flag.get(user_id):
+            await query.message.edit_caption("**<blockquote>Broadcast Cancelled.</blockquote>**")
+            return
+
+        uid = int(user.get("id"))
+        ok, reason = await send_broadcast(uid, reply, forward=forward, pin=pin, auto_delete=auto_delete)
+        done += 1
+        if ok:
+            success += 1
+        else:
+            if reason == "Invalid":
+                invalid += 1
+            else:
+                failed += 1
+
+        if done % 20 == 0 or done == total:
+            try:
+                await status.edit_caption(
+                    f"**<blockquote>Broadcasting...\n\nTotal: {total}\nDone: {done}\nSuccess: {success}\nInvalid: {invalid}\nFailed: {failed}</blockquote>**",
+                    reply_markup=InlineKeyboardMarkup([[
+                        InlineKeyboardButton("✖ Cancel", callback_data="bcast:cancel")
+                    ]])
+                )
+            except: pass
+
+    duration = str(datetime.timedelta(seconds=int(time.time() - start)))
+    await status.edit_caption(
+        f"**<blockquote>Broadcast Completed in {duration}.\n\nTotal: {total}\nSuccess: {success}\nInvalid: {invalid}\nFailed: {failed}</blockquote>**"
+    )
