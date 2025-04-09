@@ -38,27 +38,35 @@
 </head>
 
 <body class="bg-black text-whiteish min-h-screen flex flex-col items-center font-orbitron p-4">
-  <div class="w-full max-w-4xl space-y-8 animate-fadeIn">
+  <div class="w-full max-w-3xl space-y-10 animate-fadeIn">
+
+    <!-- Header -->
     <header class="text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">{{file_name}}</h1>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white drop-shadow-sm">{{file_name}}</h1>
     </header>
 
-    <div class="rounded-2xl overflow-hidden shadow-2xl bg-blackish border border-white p-2">
+    <!-- Video Player -->
+    <div class="backdrop-blur-md bg-blackish/60 border border-white/20 shadow-2xl rounded-2xl p-4">
       <video class="plyr w-full rounded-xl" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
         <source src="{{file_url}}" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
 
+    <!-- Action Buttons -->
     <div class="flex flex-wrap justify-center gap-4">
-      <button onclick="download()" class="bg-black border border-white text-white hover:bg-white hover:text-black px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-        <i class="fas fa-cloud-download-alt mr-2"></i>Download
+      <button onclick="download()" class="group relative overflow-hidden bg-black border border-white text-white px-6 py-2 rounded-xl shadow-lg transition-all duration-500 hover:bg-white hover:text-black">
+        <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700"></span>
+        <span class="relative z-10"><i class="fas fa-cloud-download-alt mr-2"></i>Download</span>
       </button>
-      <button onclick="copyLink()" class="bg-black border border-white text-white hover:bg-white hover:text-black px-6 py-2 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-        <i class="fas fa-link mr-2"></i>Copy Link
+
+      <button onclick="copyLink()" class="group relative overflow-hidden bg-black border border-white text-white px-6 py-2 rounded-xl shadow-lg transition-all duration-500 hover:bg-white hover:text-black">
+        <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700"></span>
+        <span class="relative z-10"><i class="fas fa-link mr-2"></i>Copy Link</span>
       </button>
     </div>
 
+    <!-- Player Options -->
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
       <div onclick="playOnline('vlc')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
       <div onclick="playOnline('mx')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
@@ -66,6 +74,7 @@
       <div onclick="playOnline('sp')" class="player-button"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
     </div>
 
+    <!-- Social Links -->
     <div class="flex justify-center space-x-6 mt-6">
       <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-6" /></a>
       <a href="https://www.instagram.com/ackerman_freak" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-6" /></a>
@@ -76,6 +85,7 @@
     <p class="text-center text-gray-500 text-xs mt-4">UI Design by <span class="text-white font-semibold">REXY</span></p>
   </div>
 
+  <!-- Scripts -->
   <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -111,6 +121,7 @@
     }
   </script>
 
+  <!-- Style -->
   <style>
     .player-button {
       @apply cursor-pointer bg-black border border-white text-white py-3 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105;
