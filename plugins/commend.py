@@ -14,30 +14,55 @@ from plugins.avbot import is_user_joined
 async def start(client, message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
-        await client.send_message(LOG_CHANNEL, script.LOG_TEXT.format(message.from_user.id, message.from_user.mention))
+        await client.send_message(
+            LOG_CHANNEL,
+            script.LOG_TEXT.format(message.from_user.id, message.from_user.mention)
+        )
+
     if FSUB:
         if not await is_user_joined(client, message):
             return
+
     if len(message.command) != 2 or (len(message.command) == 2 and message.command[1] == "start"):
         buttons = [[
-            InlineKeyboardButton('G', callback_data='help'),
-	    InlineKeyboardButton('O', callback_data='help'),
-	    InlineKeyboardButton('J', callback_data='help'),
-	    InlineKeyboardButton('O', callback_data='help')
+            InlineKeyboardButton("G", callback_data="help"),
+            InlineKeyboardButton("O", callback_data="help"),
+            InlineKeyboardButton("J", callback_data="help"),
+            InlineKeyboardButton("O", callback_data="help")
         ],[
-            InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url=f"https://t.me/{OWNER_USERNAME}")
+            InlineKeyboardButton("Dᴇᴠᴇʟᴏᴘᴇʀ", url=f"https://t.me/{OWNER_USERNAME}")
         ],[
-	    InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
-            InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about')
+            InlineKeyboardButton("Hᴇʟᴘ", callback_data="help"),
+            InlineKeyboardButton("Aʙᴏᴜᴛ", callback_data="about")
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
+
+        m = await message.reply_text(
+            "<i>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ <b>ʟᴜᴄʏ</b>.\nʟᴏᴀᴅɪɴɢ ɪɴᴛᴇʀғᴀᴄᴇ...</i>",
+            parse_mode=enums.ParseMode.HTML
+        )
+        await asyncio.sleep(0.4)
+        await m.edit_text("⏳")
+        await asyncio.sleep(0.5)
+        await m.edit_text("👀")
+        await asyncio.sleep(0.5)
+        await m.edit_text("<b><i>ꜱᴛᴀʀᴛɪɴɢ...</i></b>")
+        await asyncio.sleep(0.4)
+        await m.delete()
+
+        sticker = await message.reply_sticker(
+            "CAACAgUAAxkBAAJFeWd037UWP-vgb_dWo55DCPZS9zJzAAJpEgACqXaJVxBrhzahNnwSHgQ"
+        )
+        await asyncio.sleep(1)
+        await sticker.delete()
+
         await message.reply_photo(
-            photo = random.choice(PICS),
+            photo=random.choice(PICS),
             caption=script.START_TXT.format(message.from_user.mention, BOT_USERNAME),
             reply_markup=reply_markup,
-		message_effect_id=5104841245755180586 #🔥
+            parse_mode=enums.ParseMode.HTML,
+            message_effect_id=5104841245755180586
         )
-        return
 	    
 	
 @Client.on_callback_query()
