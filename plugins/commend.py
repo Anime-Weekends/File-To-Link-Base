@@ -4,19 +4,11 @@ from database.users_db import db
 from pyrogram import Client, filters, enums
 from pyrogram.errors import *
 from pyrogram.types import *
-import broadcast
 from info import BOT_USERNAME, ADMINS, OWNER_USERNAME, SUPPORT, PICS, CHANNEL, LOG_CHANNEL, FSUB, BIN_CHANNEL
 import re
 from utils import get_readable_time
 from web.utils import StartTime, __version__
 from plugins.avbot import is_user_joined
-import logging
-logging.basicConfig(level=logging.INFO)
-
-@Client.on_message(filters.command("broadcast") & filters.user(ADMINS) & filters.reply)
-async def broadcast_handler(client, message):
-    logging.info("Broadcast command received")
-    # Further code
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
