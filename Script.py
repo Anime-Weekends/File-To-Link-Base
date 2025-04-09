@@ -1,5 +1,3 @@
-IMAGE_URL = "https://i.ibb.co/35FQhfdn/photo-2025-03-20-20-55-00-7491430005205893144.jpg"
-
 class script(object):
     START_TXT = """<b><blockquote>Hᴇʏ ᴄᴜᴛɪᴇᴇ {}</blockquote></b>\n<i><blockquote>Sᴇɴᴅ ᴍᴇ ᴀ ғɪʟᴇ ᴏʀ ᴀᴅᴅ ᴍᴇ ᴀs ᴀɴ ᴀᴅᴍɪɴ ᴛᴏ ᴀɴʏ ᴄʜᴀɴɴᴇʟ ᴛᴏ ɪɴsᴛᴀɴᴛʟʏ ɢᴇɴᴇʀᴀᴛᴇ ғɪʟᴇ ʟɪɴᴋs.</blockquote>
 <blockquote expandable>Aᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴛᴏ ɪɴsᴛᴀɴᴛʟʏ ɢᴇɴᴇʀᴀᴛᴇ ʟɪɴᴋs ғᴏʀ ᴀɴʏ ᴅᴏᴡɴʟᴏᴀᴅᴀʙʟᴇ ᴍᴇᴅɪᴀ. ᴏɴᴄᴇ ʀᴇᴄᴇɪᴠᴇᴅ, ɪ ᴡɪʟʟ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴀᴛᴛᴀᴄʜ ᴀᴘᴘʀᴏᴘʀɪᴀᴛᴇ ʙᴜᴛᴛᴏɴs ᴛᴏ ᴛʜᴇ ᴘᴏsᴛ ᴄᴏɴᴛᴀɪɴɪɴɢ ᴛʜᴇ ᴜʀʟ.</blockquote></i>\n<blockquote><a href=https://t.me/{}?startchannel&admin=post_messages+edit_messages+delete_messages>➜ 𝖠𝖽𝖽 𝖳𝗈 𝖢𝗁𝖺𝗇𝗇𝖾𝗅</a></blockquote>"""
