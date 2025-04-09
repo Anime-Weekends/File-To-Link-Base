@@ -181,7 +181,7 @@ async def handle_media(mesg, media_type):
     if not res:
         return await reply.edit("<blockquote>💢 Nᴏ ʀᴇsᴏᴜʀᴄᴇ ғᴏᴜɴᴅ! [404]</blockquote>")
 
-    msg = f"<b><blockquote>{res['title']['romaji']}</blockquote></b>\n\n<blockquote>(<code>{res['title']['native']}</code>)</blockquote>\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
+    msg = f"<b><blockquote>{res['title']['romaji']}</b>(<code>{res['title']['native']}</code>)</blockquote>\n\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
     
     if media_type == "anime":
         durasi = get_readable_time(int(res.get("duration", 0) * 60))
