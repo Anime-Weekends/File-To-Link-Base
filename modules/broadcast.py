@@ -11,8 +11,8 @@ import random
 # Global flag for canceling broadcast
 broadcast_cancel = {}
 
-BROADCAST_IMG = "https://i.ibb.co/zXmNzJL/broadcast.jpg"
-URL_BTN = "https://t.me/AV_BOTz_UPDATE"
+BROADCAST_IMG = "https://i.ibb.co/b5PwhJxm/photo-2025-04-06-20-48-47-7490897815808245776.jpg"
+URL_BTN = "https://t.me/RexySama"
 
 async def broadcast_messages(user_id, message, forward=False, pin=False, delete_after=None):
     try:
