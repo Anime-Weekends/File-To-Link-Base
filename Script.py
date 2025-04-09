@@ -1,3 +1,5 @@
+IMAGE_URL = "https://i.ibb.co/35FQhfdn/photo-2025-03-20-20-55-00-7491430005205893144.jpg"
+
 class script(object):
     START_TXT = """<b><blockquote>Hᴇʏ ᴄᴜᴛɪᴇᴇ {}</blockquote></b>\n<i><blockquote>Sᴇɴᴅ ᴍᴇ ᴀ ғɪʟᴇ ᴏʀ ᴀᴅᴅ ᴍᴇ ᴀs ᴀɴ ᴀᴅᴍɪɴ ᴛᴏ ᴀɴʏ ᴄʜᴀɴɴᴇʟ ᴛᴏ ɪɴsᴛᴀɴᴛʟʏ ɢᴇɴᴇʀᴀᴛᴇ ғɪʟᴇ ʟɪɴᴋs.</blockquote>
 <blockquote expandable>Aᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴛᴏ ɪɴsᴛᴀɴᴛʟʏ ɢᴇɴᴇʀᴀᴛᴇ ʟɪɴᴋs ғᴏʀ ᴀɴʏ ᴅᴏᴡɴʟᴏᴀᴅᴀʙʟᴇ ᴍᴇᴅɪᴀ. ᴏɴᴄᴇ ʀᴇᴄᴇɪᴠᴇᴅ, ɪ ᴡɪʟʟ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴀᴛᴛᴀᴄʜ ᴀᴘᴘʀᴏᴘʀɪᴀᴛᴇ ʙᴜᴛᴛᴏɴs ᴛᴏ ᴛʜᴇ ᴘᴏsᴛ ᴄᴏɴᴛᴀɪɴɪɴɢ ᴛʜᴇ ᴜʀʟ.</blockquote></i>\n<blockquote><a href=https://t.me/{}?startchannel&admin=post_messages+edit_messages+delete_messages>➜ 𝖠𝖽𝖽 𝖳𝗈 𝖢𝗁𝖺𝗇𝗇𝖾𝗅</a></blockquote>"""
@@ -11,7 +13,6 @@ class script(object):
 
     HELP_TXT = """<b><blockquote>Yᴏᴜ ᴅᴏɴ'ᴛ ɴᴇᴇᴅ ᴍᴀɴʏ ᴄᴏᴍᴍᴇɴᴛs ᴛᴏ ᴜsᴇ ᴛʜɪs ʙᴏᴛ</blockquote>\n<blockquote>Jᴜsᴛ sᴇɴᴅ ᴍᴇ ғɪʟᴇs ᴀɴᴅ I ᴡɪʟʟ ɢɪᴠᴇ ʏᴏᴜ ᴅɪʀᴇᴄᴛ ʙᴏᴡɴʟᴏᴀᴅ & sᴛʀᴇᴀᴍɪɴɢ ʟɪɴᴋ</blockquote>\n<blockquote>Aʟsᴏ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ ᴀɴᴅ sᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ</blockquote>\n\n<blockquote>Fᴏʀ ᴍᴏʀᴇ, ᴜꜱᴇ /help\nᴍᴏʀᴇ, ᴜꜱᴇ /about</blockquote></b>"""
 
-    IMAGE_URL = "https://i.ibb.co/35FQhfdn/photo-2025-03-20-20-55-00-7491430005205893144.jpg"
     
     ADMIN_CMD_TXT = """<b>
 <blockquote>Tʜɪs ɪs ғᴏʀ ᴄᴜᴛᴇ ᴀᴅᴍɪɴ</blockquote>
