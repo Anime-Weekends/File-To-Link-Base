@@ -11,9 +11,7 @@ class script(object):
 
     HELP_TXT = """<b><blockquote>Yᴏᴜ ᴅᴏɴ'ᴛ ɴᴇᴇᴅ ᴍᴀɴʏ ᴄᴏᴍᴍᴇɴᴛs ᴛᴏ ᴜsᴇ ᴛʜɪs ʙᴏᴛ</blockquote>\n<blockquote>Jᴜsᴛ sᴇɴᴅ ᴍᴇ ғɪʟᴇs ᴀɴᴅ I ᴡɪʟʟ ɢɪᴠᴇ ʏᴏᴜ ᴅɪʀᴇᴄᴛ ʙᴏᴡɴʟᴏᴀᴅ & sᴛʀᴇᴀᴍɪɴɢ ʟɪɴᴋ</blockquote>\n<blockquote>Aʟsᴏ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ ᴀɴᴅ sᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ</blockquote>\n\n<blockquote>Fᴏʀ ᴍᴏʀᴇ, ᴜꜱᴇ /help\nᴍᴏʀᴇ, ᴜꜱᴇ /about</blockquote></b>"""
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
+    IMAGE_URL = "https://i.ibb.co/35FQhfdn/photo-2025-03-20-20-55-00-7491430005205893144.jpg"
     
     ADMIN_CMD_TXT = """<b>
 <blockquote>Tʜɪs ɪs ғᴏʀ ᴄᴜᴛᴇ ᴀᴅᴍɪɴ</blockquote>
@@ -46,9 +44,6 @@ class script(object):
 
 <blockquote><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/RexySama'>Dᴇᴠᴇʟᴏᴘᴇʀ</a></i></blockquote></b>"""
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     LOG_TEXT = """#NewUser
 ID - <code>{}</code>
@@ -72,9 +67,6 @@ Hᴏsᴛᴇᴅ ᴏɴ : ʜᴇʀᴏᴋᴜ
 Lᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
 Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</blockquote></b>"""
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     AUTH_TXT = """<b><blockquote expandable>Dᴇᴀʀ {}!\n\nPʟᴇᴀsᴇ ᴊᴏɪɴ ᴏᴜʀ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴍᴇ ! 😊\n\nDᴜᴇ ᴛᴏ sᴇʀᴠᴇʀ ᴏᴠᴇʀʟᴏᴀᴅ, ᴏɴʟʏ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ʙᴏᴛ !</blockquote></b>"""
     
@@ -88,9 +80,6 @@ Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</blockquote></b>"""
 
 <b><blockquote>Nᴏᴛᴇ : ʟɪɴᴋ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ ᴛɪʟʟ ɪ ᴅᴇʟᴇᴛᴇ</blockquote></b>"""
 
- #Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     CAPTION2_TXT = """
 <i><blockquote>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</blockquote></i>
@@ -101,8 +90,4 @@ Lɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</blockquote></b>"""
 <b><blockquote>Dᴏᴡɴʟᴏᴀᴅ : </b> {}</blockquote>
 
 <b><blockquote>Nᴏᴛᴇ : ʟɪɴᴋ ᴡᴏɴ'ᴛ ᴇxᴘɪʀᴇ ᴛɪʟʟ ɪ ᴅᴇʟᴇᴛᴇ</blockquote></b>"""
-    
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
