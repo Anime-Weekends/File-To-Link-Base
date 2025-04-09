@@ -38,20 +38,20 @@ async def start(client, message):
         reply_markup = InlineKeyboardMarkup(buttons)
 
         m = await message.reply_text(
-            "<i>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ <b>ʟᴜᴄʏ</b>.\nʟᴏᴀᴅɪɴɢ ɪɴᴛᴇʀғᴀᴄᴇ...</i>",
+            "<i>Wᴇʟᴄᴏᴍᴇ ᴛᴏ <b>ɢᴏᴊᴏ</b>.\nʟᴏᴀᴅɪɴɢ ɪɴᴛᴇʀғᴀᴄᴇ...</i>",
             parse_mode=enums.ParseMode.HTML
         )
         await asyncio.sleep(0.4)
-        await m.edit_text("⏳")
+        await m.edit_text("💜")
         await asyncio.sleep(0.5)
-        await m.edit_text("👀")
+        await m.edit_text("✨")
         await asyncio.sleep(0.5)
         await m.edit_text("<b><i>ꜱᴛᴀʀᴛɪɴɢ...</i></b>")
         await asyncio.sleep(0.4)
         await m.delete()
 
         sticker = await message.reply_sticker(
-            "CAACAgUAAxkBAAJFeWd037UWP-vgb_dWo55DCPZS9zJzAAJpEgACqXaJVxBrhzahNnwSHgQ"
+            "CAACAgUAAxkBAAEORWdn9t14H6o0kLthL0Q7rX0T2dYdgQACpxUAAoIFuFYlqHCk6hgEjDYE"
         )
         await asyncio.sleep(1)
         await sticker.delete()
@@ -61,7 +61,7 @@ async def start(client, message):
             caption=script.START_TXT.format(message.from_user.mention, BOT_USERNAME),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
-            message_effect_id=5104841245755180586
+            message_effect_id=5104841245755180586 #🔥
         )
 	    
 	
