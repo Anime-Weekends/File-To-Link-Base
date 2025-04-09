@@ -53,34 +53,32 @@ async def private_receive_handler(c: Client, m: Message):
             disable_web_page_preview=True, quote=True
         )
 
-THUMBNAIL_URL = "https://i.ibb.co/b5PwhJxm/photo-2025-04-06-20-48-47-7490897815808245776.jpg"
-
 # ✅ अगर file_name मौजूद है तो पूरा कैप्शन भेजें, वरना सिर्फ डाउनलोड लिंक भेजें
-if file_name:
-    await m.reply_photo(
-        photo=THUMBNAIL_URL,
-        caption=script.CAPTION_TXT.format(CHANNEL, file_name, file_size, stream, download),
-        quote=True,
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Sᴛʀᴇᴀᴍ", url=stream),
-             InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ", url=download)],
-            [InlineKeyboardButton('Gᴇᴛ ғɪʟᴇ', url=file_link),
-             InlineKeyboardButton('Sʜᴀʀᴇ', url=share_link),
-             InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')]
-        ])
-    )
-else:
-    await m.reply_photo(
-        photo=THUMBNAIL_URL,
-        caption=script.CAPTION2_TXT.format(CHANNEL, file_name, file_size, download),
-        quote=True,
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ", url=download),
-             InlineKeyboardButton('Gᴇᴛ ғɪʟᴇ', url=file_link)],
-            [InlineKeyboardButton('Sʜᴀʀᴇ', url=share_link),
-             InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')]
-        ])
-    )
+        if file_name:
+            await m.reply_text(
+                text=script.CAPTION_TXT.format(CHANNEL, file_name, file_size, stream, download),
+                quote=True,
+                disable_web_page_preview=True,
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("Sᴛʀᴇᴀᴍ", url=stream),
+                     InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ", url=download)],
+                    [InlineKeyboardButton('Gᴇᴛ ғɪʟᴇ', url=file_link),
+                    InlineKeyboardButton('Sʜᴀʀᴇ', url=share_link),
+                    InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')]
+                ])
+            )
+        else:
+            await m.reply_text(
+                text=script.CAPTION2_TXT.format(CHANNEL, file_name, file_size, download),
+                quote=True,
+                disable_web_page_preview=True,
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ", url=download),
+                    InlineKeyboardButton('Gᴇᴛ ғɪʟᴇ', url=file_link)],
+                   [ InlineKeyboardButton('Sʜᴀʀᴇ', url=share_link),
+                    InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')]
+                ])
+             )
 
     except FloodWait as e:
         print(f"Sleeping for {e.value}s")
