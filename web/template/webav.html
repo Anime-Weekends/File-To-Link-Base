@@ -4,11 +4,9 @@
   <meta property="og:image" content="https://i.ibb.co/XZkSjLMt/photo-2025-04-01-09-49-29-7488279663874146332.jpg" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Emiting Stars Botz | {{file_name}}</title>
-  <link rel="icon" href="https://i.ibb.co/wZP3njqD/photo-2025-04-01-09-47-05-7488279045398855684.jpg" type="image/x-icon" />
+  <title>Emiting Stars Botz | Futuristic UI</title>  <link rel="icon" href="https://i.ibb.co/wZP3njqD/photo-2025-04-01-09-47-05-7488279045398855684.jpg" type="image/x-icon" />
   <link href="https://cdn.plyr.io/3.7.8/plyr.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+  <script src="https://cdn.tailwindcss.com"></script>  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -18,83 +16,96 @@
           colors: {
             blackish: '#0b0b0b',
             whiteish: '#f5f5f5',
+            neon: '#00fff7'
           },
           animation: {
-            fadeIn: 'fadeIn 0.8s ease-in-out both',
+            fadeIn: 'fadeIn 1s ease-in-out both'
           },
           keyframes: {
             fadeIn: {
-              '0%': { opacity: 0, transform: 'translateY(20px)' },
-              '100%': { opacity: 1, transform: 'translateY(0)' }
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 }
             }
           }
         }
       }
     }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head><body class="bg-black text-whiteish font-orbitron scroll-smooth">
-  <div id="scroll-pages" class="flex overflow-x-scroll snap-x snap-mandatory h-screen w-screen scroll-smooth"><!-- PAGE 1: Main Video Viewer -->
-<div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col items-center justify-center p-4 space-y-10 animate-fadeIn">
-  <header class="text-center">
-    <h1 class="text-3xl md:text-4xl font-semibold text-white drop-shadow">{{file_name}}</h1>
-  </header>
-
-  <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4 shadow-lg w-full max-w-3xl">
+  </script>  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+</head><body class="bg-black text-whiteish font-orbitron transition-colors duration-500">  <!-- Theme Toggle -->  <div class="fixed top-4 right-4 z-50">
+    <button id="themeToggle" onclick="toggleTheme()" class="flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-lg shadow hover:bg-white hover:text-black transition-all duration-500">
+      <span id="themeIcon">🌙</span> <span>Night</span>
+    </button>
+  </div>  <!-- Scrollable Pages -->  <div id="scroll-pages" class="flex overflow-x-scroll snap-x snap-mandatory h-screen w-screen scroll-smooth"><!-- Page 1: Video Player -->
+<div class="flex-shrink-0 w-screen h-screen flex flex-col items-center justify-center p-6 space-y-8 snap-start animate-fadeIn">
+  <h1 class="text-3xl font-bold drop-shadow-lg">Emiting Stars Botz</h1>
+  <div class="w-full max-w-3xl bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4 shadow-lg">
     <video class="plyr w-full rounded-xl" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
       <source src="{{file_url}}" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
-
-  <div class="flex flex-wrap justify-center gap-4">
-    <button onclick="download()" class="action-btn"><i class="fas fa-cloud-download-alt mr-2"></i>Download</button>
-    <button onclick="copyLink()" class="action-btn"><i class="fas fa-link mr-2"></i>Copy Link</button>
+  <div class="flex gap-4">
+    <button onclick="download()" class="bg-white/10 px-6 py-2 rounded-xl border border-white/20 hover:bg-white hover:text-black transition-all duration-300">
+      Download
+    </button>
+    <button onclick="copyLink()" class="bg-white/10 px-6 py-2 rounded-xl border border-white/20 hover:bg-white hover:text-black transition-all duration-300">
+      Copy Link
+    </button>
   </div>
 </div>
 
-<!-- PAGE 2: Streaming App Launcher -->
-<div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center space-y-10 animate-fadeIn">
-  <h2 class="text-2xl font-bold">Open With</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-sm text-center">
-    <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-10 mx-auto" />VLC</div>
-    <div onclick="playOnline('mx')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-10 mx-auto" />MX Player</div>
-    <div onclick="playOnline('np')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-10 mx-auto" />nPlayer</div>
-    <div onclick="playOnline('sp')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-10 mx-auto" />SPlayer</div>
+<!-- Page 2: Streaming Apps -->
+<div class="flex-shrink-0 w-screen h-screen flex flex-col justify-center items-center gap-6 snap-start animate-fadeIn">
+  <h2 class="text-2xl font-semibold">Play with Apps</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+    <div onclick="playOnline('vlc')" class="player-button-glass">VLC</div>
+    <div onclick="playOnline('mx')" class="player-button-glass">MX Player</div>
+    <div onclick="playOnline('np')" class="player-button-glass">nPlayer</div>
+    <div onclick="playOnline('sp')" class="player-button-glass">SPlayer</div>
   </div>
 </div>
 
-<!-- PAGE 3: Social Links Section -->
-<div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center space-y-8 animate-fadeIn">
-  <h2 class="text-3xl font-bold mb-6">Follow Us</h2>
-  <div class="flex space-x-8">
+<!-- Page 3: Social Links -->
+<div class="flex-shrink-0 w-screen h-screen flex flex-col items-center justify-center gap-8 snap-start animate-fadeIn">
+  <h2 class="text-3xl font-bold">Follow Us</h2>
+  <div class="flex gap-6">
     <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-10" /></a>
     <a href="https://www.instagram.com/ackerman_freak" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-10" /></a>
     <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-10" /></a>
     <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-10" /></a>
   </div>
-  <p class="text-gray-500 text-sm mt-4">UI by <span class="text-white font-semibold">REXY</span></p>
+  <p class="text-sm text-gray-400">UI by <span class="text-white font-semibold">REXY</span></p>
 </div>
 
-  </div>  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>  <script>
+  </div>  <!-- Plyr Script -->  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>  <!-- Theme + Controls Script -->  <script>
     document.addEventListener('DOMContentLoaded', () => {
       new Plyr('.plyr');
+      const storedTheme = localStorage.getItem('theme');
+      storedTheme === 'light' ? setLightTheme() : setDarkTheme();
     });
+
+    function toggleTheme() {
+      const isDark = document.body.classList.contains('bg-black');
+      isDark ? setLightTheme() : setDarkTheme();
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+
+    function setDarkTheme() {
+      document.body.classList.remove('bg-white', 'text-black');
+      document.body.classList.add('bg-black', 'text-whiteish');
+      document.getElementById('themeIcon').textContent = '🌙';
+      document.getElementById('themeToggle').querySelector('span:last-child').textContent = 'Night';
+    }
+
+    function setLightTheme() {
+      document.body.classList.remove('bg-black', 'text-whiteish');
+      document.body.classList.add('bg-white', 'text-black');
+      document.getElementById('themeIcon').textContent = '☀️';
+      document.getElementById('themeToggle').querySelector('span:last-child').textContent = 'Day';
+    }
 
     const currentUrl = window.location.href;
     const finalUrl = currentUrl.replace("/watch/", "/dl/");
-
-    function playOnline(player) {
-      const urls = {
-        vlc: `vlc://${finalUrl}`,
-        mxp: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.pro;end`,
-        mx: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.ad;end`,
-        np: `nplayer-${finalUrl}`,
-        sp: `intent:${finalUrl}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;end`
-      };
-      window.location.href = urls[player] || finalUrl;
-    }
 
     function download() {
       window.location.href = finalUrl;
@@ -103,19 +114,25 @@
     function copyLink() {
       navigator.clipboard.writeText(finalUrl).then(() => {
         const div = document.createElement('div');
-        div.textContent = "Link copied to clipboard!";
+        div.textContent = "Link copied!";
         div.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-2 rounded-lg shadow-lg animate-fadeIn";
         document.body.appendChild(div);
         setTimeout(() => div.remove(), 3000);
       });
     }
-  </script>  <style>
-    .action-btn {
-      @apply group relative overflow-hidden bg-white/5 border border-white/20 text-white px-6 py-2 rounded-xl shadow-md transition-all duration-500 hover:bg-white hover:text-black;
-    }
 
+    function playOnline(player) {
+      const urls = {
+        vlc: `vlc://${finalUrl}`,
+        mx: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.ad;end`,
+        np: `nplayer-${finalUrl}`,
+        sp: `intent:${finalUrl}#Intent;package=com.young.simple.player;end`
+      };
+      window.location.href = urls[player] || finalUrl;
+    }
+  </script>  <!-- Player Button Style -->  <style>
     .player-button-glass {
-      @apply cursor-pointer bg-white/5 backdrop-blur-md border border-white/10 text-white py-3 px-4 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105;
+      @apply cursor-pointer bg-white/5 backdrop-blur-md border border-white/10 text-white px-6 py-3 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 text-center;
     }
   </style></body>
 </html>
