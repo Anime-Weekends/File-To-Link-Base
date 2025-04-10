@@ -1,115 +1,85 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta property="og:image" content="https://i.ibb.co/XZkSjLMt/photo-2025-04-01-09-49-29-7488279663874146332.jpg" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emiting Stars Botz | {{file_name}}</title>
-  <link rel="icon" href="https://i.ibb.co/wZP3njqD/photo-2025-04-01-09-47-05-7488279045398855684.jpg" type="image/x-icon" />
+  <meta property="og:image" content="https://i.ibb.co/XZkSjLMt/photo-2025-04-01-09-49-29-7488279663874146332.jpg" />
+  <link rel="icon" href="https://i.ibb.co/wZP3njqD/photo-2025-04-01-09-47-05-7488279045398855684.jpg" />
   <link href="https://cdn.plyr.io/3.7.8/plyr.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            orbitron: ['Orbitron', 'sans-serif']
-          },
-          colors: {
-            blackish: '#0b0b0b',
-            whiteish: '#f5f5f5',
-          },
-          animation: {
-            fadeIn: 'fadeIn 0.8s ease-in-out both',
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: 0, transform: 'translateY(20px)' },
-              '100%': { opacity: 1, transform: 'translateY(0)' }
-            }
-          }
-        }
-      }
-    }
-  </script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     html {
       scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+    .snap-page {
+      scroll-snap-align: start;
     }
     .toggle-btn {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 0.5rem;
-      border-radius: 9999px;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      transition: all 0.4s ease-in-out;
     }
-    .player-button-glass {
-      @apply cursor-pointer bg-white/5 backdrop-blur-md border border-white/10 text-white py-3 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105;
+    .fadeIn {
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body class="bg-black text-whiteish font-orbitron">  <!-- Day/Night Toggle Button -->  <button id="themeToggle" class="toggle-btn flex items-center justify-center text-2xl transition-transform duration-500 ease-in-out transform hover:rotate-12">
-    <span id="toggleIcon">🌙</span>
-  </button>  <div id="scroll-pages" class="flex overflow-x-scroll snap-x snap-mandatory h-screen w-screen scroll-smooth"><!-- PAGE 1: Main Video Viewer -->
-<div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col items-center justify-center p-4 space-y-10 animate-fadeIn">
-  <header class="text-center">
-    <h1 class="text-3xl md:text-4xl font-semibold text-white drop-shadow">{{file_name}}</h1>
-  </header>
-
-  <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4 shadow-lg w-full max-w-3xl">
+<body class="bg-black text-white font-orbitron">
+  <!-- Theme Toggle -->
+  <div class="fixed top-4 right-4 z-50">
+    <button onclick="toggleTheme()" class="toggle-btn bg-white/10 border border-white/20 backdrop-blur-md text-white p-2 rounded-full shadow-lg hover:scale-110 transition-all">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>  <!-- Pages Container -->  <div id="pages" class="flex overflow-x-auto snap-x h-screen w-screen"><!-- Page 1: Video Player -->
+<section class="w-screen h-screen flex flex-col justify-center items-center p-4 space-y-6 snap-page">
+  <h1 class="text-3xl md:text-4xl font-bold fadeIn">{{file_name}}</h1>
+  <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-lg w-full max-w-3xl fadeIn">
     <video class="plyr w-full rounded-xl" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
       <source src="{{file_url}}" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
-
-  <div class="flex flex-wrap justify-center gap-4">
-    <button onclick="download()" class="group relative overflow-hidden bg-white/5 border border-white/20 text-white px-6 py-2 rounded-xl shadow-md transition-all duration-500 hover:bg-white hover:text-black">
-      <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700 rounded-xl"></span>
-      <span class="relative z-10"><i class="fas fa-cloud-download-alt mr-2"></i>Download</span>
+  <div class="flex space-x-4 fadeIn">
+    <button onclick="download()" class="px-6 py-2 bg-white/10 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-all">
+      <i class="fas fa-download mr-2"></i>Download
     </button>
-
-    <button onclick="copyLink()" class="group relative overflow-hidden bg-white/5 border border-white/20 text-white px-6 py-2 rounded-xl shadow-md transition-all duration-500 hover:bg-white hover:text-black">
-      <span class="absolute inset-0 bg-white opacity-10 scale-0 group-hover:scale-150 transition-transform duration-700 rounded-xl"></span>
-      <span class="relative z-10"><i class="fas fa-link mr-2"></i>Copy Link</span>
+    <button onclick="copyLink()" class="px-6 py-2 bg-white/10 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-all">
+      <i class="fas fa-link mr-2"></i>Copy Link
     </button>
   </div>
-</div>
+</section>
 
-<!-- PAGE 2: Streaming Apps -->
-<div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center space-y-10 animate-fadeIn">
-  <h2 class="text-2xl font-semibold mb-4">Open With</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
-    <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
-    <div onclick="playOnline('mx')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
-    <div onclick="playOnline('np')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-8 mx-auto" />nPlayer</div>
-    <div onclick="playOnline('sp')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
+<!-- Page 2: Streaming Apps -->
+<section class="w-screen h-screen flex flex-col justify-center items-center space-y-6 snap-page">
+  <h2 class="text-2xl font-semibold">Play With</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-10 mx-auto" />VLC</div>
+    <div onclick="playOnline('mx')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-10 mx-auto" />MX Player</div>
+    <div onclick="playOnline('np')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-10 mx-auto" />nPlayer</div>
+    <div onclick="playOnline('sp')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-10 mx-auto" />SPlayer</div>
   </div>
-</div>
+</section>
 
-<!-- PAGE 3: Social Links -->
-<div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center space-y-8 animate-fadeIn">
-  <h2 class="text-3xl font-bold mb-6">Follow Us</h2>
-  <div class="flex space-x-8">
-    <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-10" /></a>
-    <a href="https://www.instagram.com/ackerman_freak" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-10" /></a>
-    <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-10" /></a>
-    <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-10" /></a>
+<!-- Page 3: Social -->
+<section class="w-screen h-screen flex flex-col justify-center items-center space-y-6 snap-page">
+  <h2 class="text-2xl font-semibold">Follow Us</h2>
+  <div class="flex space-x-6">
+    <a href="http://t.me/RexySama"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-10 hover:scale-110 transition" /></a>
+    <a href="https://www.instagram.com/ackerman_freak"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-10 hover:scale-110 transition" /></a>
+    <a href="http://t.me/RexySama"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-10 hover:scale-110 transition" /></a>
+    <a href="http://t.me/RexySama"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-10 hover:scale-110 transition" /></a>
   </div>
-  <p class="text-gray-500 text-sm mt-4">UI by <span class="text-white font-semibold">REXY</span></p>
-</div>
+  <p class="text-gray-400 text-sm">UI by <span class="text-white font-semibold">REXY</span></p>
+</section>
 
   </div>  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      new Plyr('.plyr');
-    });
+    document.addEventListener("DOMContentLoaded", () => new Plyr(".plyr"));
 
     const currentUrl = window.location.href;
     const finalUrl = currentUrl.replace("/watch/", "/dl/");
@@ -130,7 +100,7 @@
 
     function copyLink() {
       navigator.clipboard.writeText(finalUrl).then(() => {
-        const div = document.createElement('div');
+        const div = document.createElement("div");
         div.textContent = "Link copied to clipboard!";
         div.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-2 rounded-lg shadow-lg animate-fadeIn";
         document.body.appendChild(div);
@@ -138,17 +108,23 @@
       });
     }
 
-    const toggleBtn = document.getElementById('themeToggle');
-    const toggleIcon = document.getElementById('toggleIcon');
-    let darkMode = true;
-
-    toggleBtn.addEventListener('click', () => {
-      darkMode = !darkMode;
-      document.body.classList.toggle('bg-black', darkMode);
-      document.body.classList.toggle('bg-white', !darkMode);
-      document.body.classList.toggle('text-whiteish', darkMode);
-      document.body.classList.toggle('text-black', !darkMode);
-      toggleIcon.textContent = darkMode ? '🌙' : '☀️';
-    });
-  </script></body>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById("theme-icon");
+      html.classList.toggle("dark");
+      if (html.classList.contains("dark")) {
+        document.body.classList.replace("bg-white", "bg-black");
+        document.body.classList.replace("text-black", "text-white");
+        icon.textContent = "🌙";
+      } else {
+        document.body.classList.replace("bg-black", "bg-white");
+        document.body.classList.replace("text-white", "text-black");
+        icon.textContent = "☀️";
+      }
+    }
+  </script>  <style>
+    .player-button-glass {
+      @apply cursor-pointer bg-white/10 backdrop-blur-lg border border-white/10 text-white py-3 px-4 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 text-center;
+    }
+  </style></body>
 </html>
