@@ -38,30 +38,32 @@
     html {
       scroll-behavior: smooth;
     }
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      border-radius: 9999px;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
     .player-button-glass {
       @apply cursor-pointer bg-white/5 backdrop-blur-md border border-white/10 text-white py-3 rounded-xl shadow hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105;
     }
-    .theme-toggle {
-      @apply fixed top-4 right-4 z-50 px-4 py-2 rounded-full shadow-md transition-all duration-500;
-    }
-    .dark-mode body {
-      background-color: #0b0b0b;
-      color: #f5f5f5;
-    }
-    .light-mode body {
-      background-color: #f5f5f5;
-      color: #0b0b0b;
-    }
   </style>
-</head><body class="bg-black text-whiteish font-orbitron scroll-smooth">
-  <button onclick="toggleTheme()" class="theme-toggle bg-white text-black">Toggle Theme</button>  <div id="scroll-pages" class="flex overflow-x-auto snap-x snap-mandatory h-screen w-screen scroll-smooth scroll-px-4"><!-- PAGE 1: Main Video Viewer -->
+</head>
+<body class="bg-black text-whiteish font-orbitron">  <!-- Day/Night Toggle Button -->  <button id="themeToggle" class="toggle-btn flex items-center justify-center text-2xl transition-transform duration-500 ease-in-out transform hover:rotate-12">
+    <span id="toggleIcon">🌙</span>
+  </button>  <div id="scroll-pages" class="flex overflow-x-scroll snap-x snap-mandatory h-screen w-screen scroll-smooth"><!-- PAGE 1: Main Video Viewer -->
 <div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col items-center justify-center p-4 space-y-10 animate-fadeIn">
   <header class="text-center">
-    <h1 class="text-3xl md:text-4xl font-semibold drop-shadow">{{file_name}}</h1>
+    <h1 class="text-3xl md:text-4xl font-semibold text-white drop-shadow">{{file_name}}</h1>
   </header>
 
   <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4 shadow-lg w-full max-w-3xl">
-    <h2 class="text-center text-lg mb-2 font-bold">{{file_name}}</h2>
     <video class="plyr w-full rounded-xl" controls poster="https://i.ibb.co/m53bC2FZ/photo-2025-04-01-09-45-48-7488278710391406608.jpg">
       <source src="{{file_url}}" type="video/mp4" />
       Your browser does not support the video tag.
@@ -81,9 +83,9 @@
   </div>
 </div>
 
-<!-- PAGE 2: Streaming App Buttons -->
+<!-- PAGE 2: Streaming Apps -->
 <div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center space-y-10 animate-fadeIn">
-  <h2 class="text-3xl font-bold">Play Online</h2>
+  <h2 class="text-2xl font-semibold mb-4">Open With</h2>
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
     <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
     <div onclick="playOnline('mx')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
@@ -115,7 +117,6 @@
     function playOnline(player) {
       const urls = {
         vlc: `vlc://${finalUrl}`,
-        mxp: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.pro;end`,
         mx: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.ad;end`,
         np: `nplayer-${finalUrl}`,
         sp: `intent:${finalUrl}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;end`
@@ -137,10 +138,17 @@
       });
     }
 
-    function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle('light-mode');
-      body.classList.toggle('dark-mode');
-    }
+    const toggleBtn = document.getElementById('themeToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    let darkMode = true;
+
+    toggleBtn.addEventListener('click', () => {
+      darkMode = !darkMode;
+      document.body.classList.toggle('bg-black', darkMode);
+      document.body.classList.toggle('bg-white', !darkMode);
+      document.body.classList.toggle('text-whiteish', darkMode);
+      document.body.classList.toggle('text-black', !darkMode);
+      toggleIcon.textContent = darkMode ? '🌙' : '☀️';
+    });
   </script></body>
 </html>
