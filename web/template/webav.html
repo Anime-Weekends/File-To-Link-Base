@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta property="og:image" content="https://i.ibb.co/XZkSjLMt/photo-2025-04-01-09-49-29-7488279663874146332.jpg" />
@@ -58,7 +59,10 @@
     <button id="theme-toggle" class="text-2xl px-4 py-2 bg-white/10 border border-white/20 rounded-xl shadow hover:scale-110 hover:bg-white/30 transition-all duration-700">
       <span id="theme-icon">🌙</span>
     </button>
-  </div>  <div id="scroll-pages" class="flex overflow-x-scroll snap-x snap-mandatory h-screen w-screen scroll-smooth transition-transform duration-1000 ease-out">
+  </div>
+
+  <div id="scroll-pages" class="flex overflow-x-scroll snap-x snap-mandatory h-screen w-screen scroll-smooth transition-transform duration-1000 ease-out">
+    
     <!-- PAGE 1: Main Video Viewer -->
     <div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col items-center justify-center p-4 space-y-6 animate-fadeIn">
       <header class="text-center">
@@ -77,37 +81,60 @@
           <i class="fas fa-link mr-2"></i>Copy Link
         </button>
       </div>
-    </div><!-- PAGE 2: Streaming Apps + Social -->
-<div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center space-y-4 animate-fadeIn px-4">
-  <h2 class="text-3xl font-bold">Streaming Apps</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
-    <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
-    <div onclick="playOnline('mx')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
-    <div onclick="playOnline('np')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-8 mx-auto" />nPlayer</div>
-    <div onclick="playOnline('sp')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
-  </div>
-  <h2 class="text-3xl font-bold mt-10">Social Apps</h2>
-  <div class="flex space-x-8">
-    <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-10" /></a>
-    <a href="https://www.instagram.com/ackerman_freak" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-10" /></a>
-    <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-10" /></a>
-    <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-10" /></a>
-  </div>
-</div>
+    </div>
 
-  </div>  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>  <script>
+    <!-- PAGE 2: Streaming Apps + Social -->
+    <div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center animate-fadeIn px-4">
+      <h2 class="text-3xl font-bold mb-4">Streaming Apps</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
+        <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
+        <div onclick="playOnline('mx')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" class="h-8 mx-auto" />MX Player</div>
+        <div onclick="playOnline('np')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" class="h-8 mx-auto" />nPlayer</div>
+        <div onclick="playOnline('sp')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
+      </div>
+
+      <!-- GAP -->
+      <div class="h-8"></div>
+
+      <h2 class="text-3xl font-bold mt-4 mb-2">Social Apps</h2>
+      <div class="flex space-x-8 mb-6">
+        <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-10" /></a>
+        <a href="https://www.instagram.com/ackerman_freak" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-10" /></a>
+        <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-10" /></a>
+        <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-10" /></a>
+      </div>
+
+      <!-- Credit -->
+      <footer class="text-xs text-center text-white/60">UI Designed by <a href="http://t.me/RexySama" class="underline hover:text-white">R E X Y</a></footer>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       new Plyr('.plyr');
 
       const toggleBtn = document.getElementById('theme-toggle');
       const themeIcon = document.getElementById('theme-icon');
 
+      // Load theme from localStorage
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'white') {
+        document.body.classList.replace('bg-black', 'bg-white');
+        document.body.classList.replace('text-whiteish', 'text-black');
+        themeIcon.textContent = '☀️';
+      }
+
       toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('bg-black');
         document.body.classList.toggle('bg-white');
         document.body.classList.toggle('text-black');
         document.body.classList.toggle('text-whiteish');
-        themeIcon.textContent = (themeIcon.textContent === '🌙') ? '☀️' : '🌙';
+
+        const isWhite = document.body.classList.contains('bg-white');
+        themeIcon.textContent = isWhite ? '☀️' : '🌙';
+        localStorage.setItem('theme', isWhite ? 'white' : 'black');
       });
     });
 
@@ -137,5 +164,6 @@
         setTimeout(() => div.remove(), 3000);
       });
     }
-  </script></body>
+  </script>
+</body>
 </html>
