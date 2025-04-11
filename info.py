@@ -23,18 +23,12 @@ PICS = (environ.get("PICS", "https://i.ibb.co/hxqp9gQk/photo-2025-04-03-11-00-42
 CHANNEL = environ.get('CHANNEL', 'https://t.me/EmitingStars_Botz')
 SUPPORT = environ.get('SUPPORT', 'https://t.me/+HZuPVe0l-F1mM2Jl')
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 # file limit information
 ENABLE_LIMIT = environ.get("ENABLE_LIMIT", False) # True and False
 RATE_LIMIT_TIMEOUT = int(environ.get("RATE_LIMIT_TIMEOUT", "600"))  # limit time 600 = 10 minutes 
 MAX_FILES = int(environ.get("MAX_FILES", "10"))  # file limit 10 file Olay
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 # ban information
 BANNED_CHANNELS = [int(banned_channels) if id_pattern.search(banned_channels) else banned_channels for banned_channels in environ.get('BANNED_CHANNELS', '-1002410513772').split()]   
@@ -53,10 +47,6 @@ FSUB = environ.get("FSUB", True)
 # port information
 PORT = int(getenv('PORT', '2626'))
 NO_PORT = bool(getenv('NO_PORT', False))
-
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 # time information
 PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
