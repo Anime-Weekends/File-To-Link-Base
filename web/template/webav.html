@@ -53,18 +53,20 @@
     }
   </style>
 </head>
-<body class="bg-black text-whiteish font-orbitron scroll-smooth transition-colors duration-500">
-  <!-- Theme Toggle Button -->
+
+<body class="bg-black text-whiteish font-orbitron scroll-smooth transition-colors duration-500 bg-gradient-to-br from-black to-gray-900">
+  <!-- Theme Toggle -->
   <div class="fixed top-4 right-4 z-50">
     <button id="theme-toggle" class="text-2xl px-4 py-2 bg-white/10 border border-white/20 rounded-xl shadow hover:scale-110 hover:bg-white/30 transition-all duration-700">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 
+  <!-- Scroll Pages -->
   <div id="scroll-pages" class="flex overflow-x-scroll snap-x snap-mandatory h-screen w-screen scroll-smooth transition-transform duration-1000 ease-out">
-    
-    <!-- PAGE 1: Main Video Viewer -->
-    <div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col items-center justify-center p-4 space-y-6 animate-fadeIn">
+
+    <!-- PAGE 1 -->
+    <div class="relative flex-shrink-0 snap-start w-screen h-screen flex flex-col items-center justify-center p-4 space-y-6 animate-fadeIn">
       <header class="text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow">{{file_name}}</h1>
       </header>
@@ -74,17 +76,14 @@
         </video>
       </div>
       <div class="flex flex-wrap justify-center gap-4">
-        <button id="download-btn" onclick="download()" class="theme-button">
-          <i class="fas fa-cloud-download-alt mr-2"></i>Download
-        </button>
-        <button id="copy-btn" onclick="copyLink()" class="theme-button">
-          <i class="fas fa-link mr-2"></i>Copy Link
-        </button>
+        <button onclick="download()" class="theme-button"><i class="fas fa-cloud-download-alt mr-2"></i>Download</button>
+        <button onclick="copyLink()" class="theme-button"><i class="fas fa-link mr-2"></i>Copy Link</button>
       </div>
+      <div class="absolute bottom-5 text-xs text-center w-full text-white/50">Page 1 of 2</div>
     </div>
 
-    <!-- PAGE 2: Streaming Apps + Social -->
-    <div class="flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center animate-fadeIn px-4">
+    <!-- PAGE 2 -->
+    <div class="relative flex-shrink-0 snap-start w-screen h-screen flex flex-col justify-center items-center animate-fadeIn px-4 space-y-8">
       <h2 class="text-3xl font-bold mb-4">Streaming Apps</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm text-center">
         <div onclick="playOnline('vlc')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/vlc.png" class="h-8 mx-auto" />VLC</div>
@@ -93,32 +92,33 @@
         <div onclick="playOnline('sp')" class="player-button-glass"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/splayer.webp" class="h-8 mx-auto" />SPlayer</div>
       </div>
 
-      <!-- GAP -->
-      <div class="h-8"></div>
-
-      <h2 class="text-3xl font-bold mt-4 mb-2">Social Apps</h2>
-      <div class="flex space-x-8 mb-6">
+      <h2 class="text-3xl font-bold">Social Apps</h2>
+      <div class="flex space-x-8 mb-4">
         <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/telegram.png" class="h-10" /></a>
         <a href="https://www.instagram.com/ackerman_freak" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/instagram.png" class="h-10" /></a>
-        <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-10" /></a>
-        <a href="http://t.me/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-10" /></a>
+        <a href="https://github.com/RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/github.png" class="h-10" /></a>
+        <a href="https://youtube.com/@RexySama" class="hover:scale-110 transition"><img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/youtube.png" class="h-10" /></a>
       </div>
 
-      <!-- Credit -->
       <footer class="text-xs text-center text-white/60">UI Designed by <a href="http://t.me/RexySama" class="underline hover:text-white">R E X Y</a></footer>
+      <div class="absolute bottom-5 text-xs text-center w-full text-white/50">Page 2 of 2</div>
     </div>
-
   </div>
 
+  <!-- Page Indicator Dots -->
+  <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 flex space-x-2">
+    <span class="w-3 h-3 rounded-full bg-white/30" id="dot1"></span>
+    <span class="w-3 h-3 rounded-full bg-white/30" id="dot2"></span>
+  </div>
+
+  <!-- Scripts -->
   <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       new Plyr('.plyr');
-
       const toggleBtn = document.getElementById('theme-toggle');
       const themeIcon = document.getElementById('theme-icon');
 
-      // Load theme from localStorage
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'white') {
         document.body.classList.replace('bg-black', 'bg-white');
@@ -135,6 +135,20 @@
         const isWhite = document.body.classList.contains('bg-white');
         themeIcon.textContent = isWhite ? '☀️' : '🌙';
         localStorage.setItem('theme', isWhite ? 'white' : 'black');
+      });
+
+      const scrollContainer = document.getElementById('scroll-pages');
+      const dot1 = document.getElementById('dot1');
+      const dot2 = document.getElementById('dot2');
+
+      scrollContainer.addEventListener('scroll', () => {
+        const scrollLeft = scrollContainer.scrollLeft;
+        const width = scrollContainer.clientWidth;
+        const active = Math.round(scrollLeft / width);
+        dot1.classList.toggle('bg-white', active === 0);
+        dot1.classList.toggle('bg-white/30', active !== 0);
+        dot2.classList.toggle('bg-white', active === 1);
+        dot2.classList.toggle('bg-white/30', active !== 1);
       });
     });
 
