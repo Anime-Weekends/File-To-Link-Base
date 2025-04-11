@@ -14,7 +14,7 @@
 
   <style>
     .theme-button {
-      @apply relative overflow-hidden px-6 py-2 rounded-xl border shadow-md transition-all duration-500 cursor-pointer;
+      @apply relative overflow-hidden px-6 py-2 rounded-xl border shadow-md transition-all duration-500 cursor-pointer transform hover:scale-105;
     }
 
     .theme-dark {
@@ -28,7 +28,6 @@
     .theme-dark .theme-button {
       background-color: rgba(255, 255, 255, 0.05);
       border-color: rgba(255, 255, 255, 0.2);
-      color: inherit;
     }
 
     .theme-dark .theme-button:hover {
@@ -38,7 +37,6 @@
     .theme-light .theme-button {
       background-color: rgba(0, 0, 0, 0.05);
       border-color: rgba(0, 0, 0, 0.2);
-      color: black;
     }
 
     .theme-light .theme-button:hover {
@@ -79,14 +77,14 @@
   </script>
 </head>
 
-<body class="font-orbitron scroll-smooth transition-colors duration-500">
+<body class="font-orbitron scroll-smooth transition-colors duration-700 ease-in-out">
 
   <div id="loader">
     <div class="spinner"></div>
   </div>
 
   <div class="fixed top-4 right-4 z-40">
-    <button id="theme-toggle" class="text-2xl px-4 py-2 bg-white/10 border border-white/20 rounded-xl shadow hover:scale-110 hover:bg-white/30 transition-all duration-700">
+    <button id="theme-toggle" class="text-2xl px-4 py-2 bg-white/10 border border-white/20 rounded-xl shadow hover:scale-110 hover:bg-white/30 transition-all duration-700 transform">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
@@ -171,8 +169,7 @@
 
       toggleBtn.addEventListener('click', () => {
         const current = body.classList.contains('theme-dark') ? 'dark' : 'light';
-        const newTheme = current === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
+        applyTheme(current === 'dark' ? 'light' : 'dark');
       });
 
       const scrollContainer = document.getElementById('scroll-pages');
