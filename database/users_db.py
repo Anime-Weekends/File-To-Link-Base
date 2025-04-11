@@ -2,9 +2,6 @@ import re
 import motor.motor_asyncio
 from info import DATABASE_NAME, DATABASE_URI
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 class Database:
     def __init__(self, uri, database_name):
@@ -19,9 +16,6 @@ class Database:
             name = name,
         )
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     async def add_user(self, id, name):
         user = self.new_user(id, name)
@@ -38,9 +32,6 @@ class Database:
     async def get_all_users(self):
         return self.col.find({})
         
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     async def delete_user(self, user_id):
         await self.col.delete_many({'id': int(user_id)})
@@ -57,9 +48,6 @@ class Database:
         user = await self.bannedList.find_one({'banId' : int(user_id)})
         return True if user else False
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
     
     async def is_unbanned(self , user_id):
         try : 
@@ -75,7 +63,3 @@ class Database:
         
 
 db = Database(DATABASE_URI, DATABASE_NAME)
-
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
