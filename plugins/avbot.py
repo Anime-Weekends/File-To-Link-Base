@@ -11,10 +11,6 @@ from typing import (
 rate_limit = {}
 
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
-
 
 async def get_invite_link(bot, chat_id: Union[str, int]):
     try:
@@ -24,45 +20,57 @@ async def get_invite_link(bot, chat_id: Union[str, int]):
         print(f"Sleep of {e.value}s caused by FloodWait ...")
         await asyncio.sleep(e.value)
         return await get_invite_link(bot, chat_id)
-        
-async def is_user_joined(bot, message: Message):
-    if AUTH_CHANNEL and AUTH_CHANNEL.startswith("-100"):
-        channel_chat_id = int(AUTH_CHANNEL)    # When id startswith with -100
-    elif AUTH_CHANNEL and (not AUTH_CHANNEL.startswith("-100")):
-        channel_chat_id = AUTH_CHANNEL     # When id not startswith -100
-    else:
-        return 200
+
+async def check_user_in_channel(bot, channel_id, user_id):
     try:
-        user = await bot.get_chat_member(chat_id=channel_chat_id, user_id=message.from_user.id)
-        if user.status == "BANNED":
+        member = await bot.get_chat_member(chat_id=channel_id, user_id=user_id)
+        if member.status == "banned":
+            return "banned"
+        return True
+    except UserNotParticipant:
+        return False
+    except Exception:
+        return None
+
+async def is_user_joined(bot, message: Message):
+    user_id = message.from_user.id
+    channels = [AUTH_CHANNEL, AUTH_CHANNEL2, AUTH_CHANNEL3]
+    missing_channels = []
+
+    for ch in channels:
+        if not ch:
+            continue
+        chat_id = int(ch) if ch.startswith("-100") else ch
+        status = await check_user_in_channel(bot, chat_id, user_id)
+
+        if status == "banned":
             await message.reply_text(
                 text=BAN_ALERT.format(ADMINS),
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True
             )
             return False
-    except UserNotParticipant:
-        invite_link = await get_invite_link(bot, chat_id=channel_chat_id)
+        elif status is False:
+            invite = await get_invite_link(bot, chat_id)
+            missing_channels.append(invite.invite_link)
+
+    if missing_channels:
+        buttons = [
+            [InlineKeyboardButton(f"Jᴏɪɴ Cʜᴀɴɴᴇʟ {i+1}", url=link)]
+            for i, link in enumerate(missing_channels)
+        ]
         if AUTH_PICS:
             ver = await message.reply_photo(
                 photo=AUTH_PICS,
                 caption=script.AUTH_TXT.format(message.from_user.mention),
                 parse_mode=ParseMode.HTML,
-                reply_markup=InlineKeyboardMarkup(
-                [[
-                    InlineKeyboardButton("Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link)
-                ]]
-                )
+                reply_markup=InlineKeyboardMarkup(buttons)
             )
         else:
             ver = await message.reply_text(
                 text=script.AUTH_TXT.format(message.from_user.mention),
-                reply_markup=InlineKeyboardMarkup(
-                    [[
-                        InlineKeyboardButton("Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link)
-                    ]]
-                ),
-                parse_mode=ParseMode.HTML
+                parse_mode=ParseMode.HTML,
+                reply_markup=InlineKeyboardMarkup(buttons)
             )
         await asyncio.sleep(30)
         try:
@@ -71,12 +79,7 @@ async def is_user_joined(bot, message: Message):
         except Exception:
             pass
         return False
-    except Exception:
-        await message.reply_text(
-            text = f"<i><blockquote>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='https://t.me/RexySama'>Cʟɪᴄᴋ ʜᴇʀᴇ</a></blockquote></b>",
-            parse_mode=ParseMode.HTML,
-            disable_web_page_preview=True)
-        return False
+
     return True
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
