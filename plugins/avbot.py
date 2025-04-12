@@ -12,32 +12,11 @@ rate_limit = {}
 
 
 
-async def get_invite_link(bot, chat_id: Union[str, int]):
-    try:
-        invite_link = await bot.create_chat_invite_link(chat_id=chat_id)
-        return invite_link
-    except FloodWait as e:
-        print(f"Sleep of {e.value}s caused by FloodWait ...")
-        await asyncio.sleep(e.value)
-        return await get_invite_link(bot, chat_id)
-
-async def check_user_in_channel(bot, channel_id, user_id):
-    try:
-        member = await bot.get_chat_member(chat_id=channel_id, user_id=user_id)
-        if member.status == "banned":
-            return "banned"
-        return True
-    except UserNotParticipant:
-        return False
-    except Exception:
-        return None
-
 async def is_user_joined(bot, message: Message):
     user_id = message.from_user.id
-    channels = [AUTH_CHANNEL, AUTH_CHANNEL2, AUTH_CHANNEL3]
     missing_channels = []
 
-    for ch in channels:
+    for ch in AUTH_CHANNELS:
         if not ch:
             continue
         chat_id = int(ch) if ch.startswith("-100") else ch
