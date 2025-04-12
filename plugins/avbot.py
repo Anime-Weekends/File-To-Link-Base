@@ -1,25 +1,14 @@
 import asyncio
 import time
-from typing import Union
 from pyrogram.errors import UserNotParticipant, FloodWait
 from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-
 from Script import script
-from info import (
-    AUTH_PICS,
-    AUTH_CHANNEL,
-    ENABLE_LIMIT,
-    RATE_LIMIT_TIMEOUT,
-    MAX_FILES,
-    BAN_ALERT,
-    ADMINS,
-    AUTH_CHANNELS
-)
+from info import AUTH_PICS, AUTH_CHANNELS, ENABLE_LIMIT, RATE_LIMIT_TIMEOUT, MAX_FILES, BAN_ALERT, ADMINS
 
 rate_limit = {}
 
-# Function to check if user is joined in required channels
+# Function to check if user is joined to required channels
 async def is_user_joined(bot, message: Message):
     user_id = message.from_user.id
     missing_channels = []
@@ -39,26 +28,30 @@ async def is_user_joined(bot, message: Message):
             return False
         elif status is False:
             invite = await get_invite_link(bot, chat_id)
-            missing_channels.append(invite.invite_link)
+            if invite:
+                missing_channels.append(invite.invite_link)
 
     if missing_channels:
         buttons = [
-            [InlineKeyboardButton(f"Jᴏɪɴ Cʜᴀɴɴᴇʟ {i+1}", url=link)]
+            [InlineKeyboardButton(f"Join Channel {i+1}", url=link)]
             for i, link in enumerate(missing_channels)
         ]
+        markup = InlineKeyboardMarkup(buttons)
+
         if AUTH_PICS:
             ver = await message.reply_photo(
                 photo=AUTH_PICS,
                 caption=script.AUTH_TXT.format(message.from_user.mention),
                 parse_mode=ParseMode.HTML,
-                reply_markup=InlineKeyboardMarkup(buttons)
+                reply_markup=markup
             )
         else:
             ver = await message.reply_text(
                 text=script.AUTH_TXT.format(message.from_user.mention),
                 parse_mode=ParseMode.HTML,
-                reply_markup=InlineKeyboardMarkup(buttons)
+                reply_markup=markup
             )
+
         await asyncio.sleep(30)
         try:
             await ver.delete()
@@ -69,24 +62,38 @@ async def is_user_joined(bot, message: Message):
 
     return True
 
-
-# Function to check user’s status in a specific channel
+# Check user's membership status in a channel
 async def check_user_in_channel(bot, chat_id, user_id):
     try:
         member = await bot.get_chat_member(chat_id, user_id)
-        if member.status in ["member", "administrator", "creator"]:
-            return True
-        elif member.status == "kicked":
+        if member.status in ("kicked", "banned"):
             return "banned"
-        else:
-            return False
+        return True
     except UserNotParticipant:
         return False
-    except Exception:
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
+        return await check_user_in_channel(bot, chat_id, user_id)
+    except Exception as e:
+        print(f"check_user_in_channel error: {e}")
         return False
 
+# Get or export the invite link of a channel
+async def get_invite_link(bot, chat_id):
+    try:
+        chat = await bot.get_chat(chat_id)
+        if not chat.invite_link:
+            invite_link = await bot.export_chat_invite_link(chat_id)
+        else:
+            invite_link = chat.invite_link
+        class Dummy:
+            invite_link = invite_link
+        return Dummy()
+    except Exception as e:
+        print(f"get_invite_link error: {e}")
+        return None
 
-# Rate limiter function to restrict number of file requests
+# Check if user has exceeded the usage rate limit
 async def is_user_allowed(user_id):
     current_time = time.time()
 
@@ -95,15 +102,14 @@ async def is_user_allowed(user_id):
             file_count, last_time = rate_limit[user_id]
             if file_count >= MAX_FILES and (current_time - last_time) < RATE_LIMIT_TIMEOUT:
                 remaining_time = int(RATE_LIMIT_TIMEOUT - (current_time - last_time))
-                return False, remaining_time  # ❌ Limit Exceeded
+                return False, remaining_time
             elif file_count >= MAX_FILES:
-                rate_limit[user_id] = [1, current_time]  # ✅ Reset Limit
+                rate_limit[user_id] = [1, current_time]
             else:
                 rate_limit[user_id][0] += 1
         else:
             rate_limit[user_id] = [1, current_time]
 
-    return True, 0  # ✅ Allowed
+    return True, 0
 
-# Don’t remove credits.
-# @AV_BOTz_UPDATE | Repo by @BOT_OWNER26 | Help: @AV_SUPPORT_GROUP
+# Dont Remove Credit @AV_BOTz_UPDATE | Repo By @BOT_OWNER26
