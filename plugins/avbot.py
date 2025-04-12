@@ -1,17 +1,25 @@
+import asyncio
+import time
+from typing import Union
 from pyrogram.errors import UserNotParticipant, FloodWait
 from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
+
 from Script import script
-from info import AUTH_PICS, AUTH_CHANNEL, ENABLE_LIMIT, RATE_LIMIT_TIMEOUT, MAX_FILES, BAN_ALERT, ADMINS, AUTH_CHANNELS
-import asyncio, time
-from typing import (
-    Union
+from info import (
+    AUTH_PICS,
+    AUTH_CHANNEL,
+    ENABLE_LIMIT,
+    RATE_LIMIT_TIMEOUT,
+    MAX_FILES,
+    BAN_ALERT,
+    ADMINS,
+    AUTH_CHANNELS
 )
 
 rate_limit = {}
 
-
-
+# Function to check if user is joined in required channels
 async def is_user_joined(bot, message: Message):
     user_id = message.from_user.id
     missing_channels = []
@@ -61,12 +69,25 @@ async def is_user_joined(bot, message: Message):
 
     return True
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
-    
+
+# Function to check user’s status in a specific channel
+async def check_user_in_channel(bot, chat_id, user_id):
+    try:
+        member = await bot.get_chat_member(chat_id, user_id)
+        if member.status in ["member", "administrator", "creator"]:
+            return True
+        elif member.status == "kicked":
+            return "banned"
+        else:
+            return False
+    except UserNotParticipant:
+        return False
+    except Exception:
+        return False
+
+
+# Rate limiter function to restrict number of file requests
 async def is_user_allowed(user_id):
-    """📌 यह फंक्शन चेक करेगा कि यूजर की फाइल लिमिट खत्म हुई है या नहीं"""
     current_time = time.time()
 
     if ENABLE_LIMIT:
@@ -84,7 +105,5 @@ async def is_user_allowed(user_id):
 
     return True, 0  # ✅ Allowed
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
-    
+# Don’t remove credits.
+# @AV_BOTz_UPDATE | Repo by @BOT_OWNER26 | Help: @AV_SUPPORT_GROUP
