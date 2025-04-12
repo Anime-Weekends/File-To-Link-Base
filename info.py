@@ -41,7 +41,7 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "EmitingStarsFilesToLink")
 
 # fsub  information
 AUTH_PICS = environ.get('AUTH_PICS', 'https://i.ibb.co/ycvH92F8/photo-2025-04-01-10-56-55-7488297041311825924.jpg')              
-AUTH_CHANNEL = (environ.get("AUTH_CHANNEL", "-1002410513772"))
+AUTH_CHANNELS = list(map(str, environ.get("AUTH_CHANNELS", "-1002410513772").split()))
 FSUB = environ.get("FSUB", True)
 
 # port information
