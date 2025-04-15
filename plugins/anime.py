@@ -56,6 +56,7 @@ query ($id: Int, $idMal: Int, $search: String, $type: MediaType) {
     }
     updatedAt
     coverImage {
+      extraLarge
       large
     }
     bannerImage
@@ -222,7 +223,9 @@ async def handle_media(mesg, media_type):
     description = res.get("description", "N/A")
     msg += shorten(description, info)
 
-    image = res.get("bannerImage") or res["coverImage"]["large"]
+    # Prefer high-res banner image, then fallback to extraLarge cover
+    image = res.get("bannerImage") or res["coverImage"].get("extraLarge") or res["coverImage"].get("large")
+
     btn = [[InlineKeyboardButton("Mᴏʀᴇ ɪɴғᴏ ⚡", url=info)]]
     if trailer_url:
         btn[0].append(InlineKeyboardButton("Tʀᴀɪʟᴇʀ 🎬", url=trailer_url))
@@ -242,13 +245,13 @@ async def anime_handler(client, message):
 async def manga_handler(client, message):
     await handle_media(message, "manga")
 
-# Main bot runner
+# Run the bot
 if __name__ == "__main__":
     app = Client(
         "anilist_bot",
-        api_id=123456,  # Replace with your API ID
-        api_hash="your_api_hash_here",  # Replace with your API hash
-        bot_token="your_bot_token_here"  # Replace with your Bot token
+        api_id=YOUR_API_ID,  # Replace with your API ID
+        api_hash="YOUR_API_HASH",  # Replace with your API Hash
+        bot_token="YOUR_BOT_TOKEN"  # Replace with your Bot Token
     )
 
     app.add_handler(filters.command("anime", "/")(anime_handler))
