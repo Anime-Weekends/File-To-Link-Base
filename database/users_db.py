@@ -33,6 +33,11 @@ class Database:
         count = await self.col.count_documents({"is_active": True})
         return count
 
+    async def banned_users_count(self):
+        # Count documents in the banned list
+        count = await self.bannedList.count_documents({})
+        return count
+
     async def get_all_users(self):
         return self.col.find({})
 
@@ -45,7 +50,6 @@ class Database:
             return False
         else:
             await self.bannedList.insert_one({'banId': int(user_id)})
-            # Mark the user as inactive when banned
             await self.col.update_one({'id': int(user_id)}, {"$set": {"is_active": False}})
             return True
 
@@ -57,7 +61,6 @@ class Database:
         try:
             if await self.bannedList.find_one({'banId': int(user_id)}):
                 await self.bannedList.delete_one({'banId': int(user_id)})
-                # Re-activate the user
                 await self.col.update_one({'id': int(user_id)}, {"$set": {"is_active": True}})
                 return True
             else:
