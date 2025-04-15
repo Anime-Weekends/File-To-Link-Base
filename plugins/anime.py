@@ -162,7 +162,7 @@ def shorten(description, info="anilist.co"):
         description = f"{description[:500]}...."
         ms_g += f'\n<strong><blockquote>𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 :</blockquote></strong> <em><blockquote expandable>{description}</em></blockquote><a href="{info}"><blockquote>Mᴏʀᴇ ɪɴғᴏ</blockquote></a>'
     else:
-        ms_g += f"\n<strong><blockquote>𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 :</blockquote></strong> <em></blockquote expandable>{description}</blockquote></em>"
+        ms_g += f"\n<strong><blockquote>𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 :</blockquote></strong> <em><blockquote expandable>{description}</blockquote></em>"
     return (
         ms_g.replace("<br>", "")
         .replace("</br>", "")
@@ -182,15 +182,15 @@ async def handle_media(mesg, media_type):
     if not res:
         return await reply.edit("<blockquote>💢 Nᴏ ʀᴇsᴏᴜʀᴄᴇ ғᴏᴜɴᴅ! [404]</blockquote>")
 
-    msg = f"<b><blockquote>{res['title']['romaji']}</b>(<code>{res['title']['native']}</code>)</blockquote>\n\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
+    msg = f"<b><blockquote>{res['title']['romaji']}</b> (<code>{res['title']['native']}</code>)</blockquote>\n\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
     
     if media_type == "anime":
         durasi = get_readable_time(int(res.get("duration", 0) * 60))
-        msg += f"<b>Episodes</b>: {res.get('episodes', 'N/A')}\n<b>Duration </b>: {durasi} Per Eps.\n"
+        msg += f"<b>Episodes</b>: {res.get('episodes', 'N/A')}\n<b>Duration</b>: {durasi} Per Eps.\n"
     else:
         msg += f"<b>Chapters</b>: {res.get('chapters', 'N/A')}\n<b>Volumes</b>: {res.get('volumes', 'N/A')}\n"
 
-    msg += f"<b>Score</b>: {res.get('averageScore', 'N/A')}%\n<b>Category</b>: <code>"
+    msg += f"<b>Score</b>: {res.get('averageScore', 'N/A')}%\n<b>Genres</b>: <code>"
     for genre in res.get("genres", []):
         msg += f"{genre}, "
     msg = msg.rstrip(", ") + "</code>\n"
@@ -223,8 +223,12 @@ async def handle_media(mesg, media_type):
     description = res.get("description", "N/A")
     msg += shorten(description, info)
 
-    # Prefer high-res banner image, then fallback to extraLarge cover
-    image = res.get("bannerImage") or res["coverImage"].get("extraLarge") or res["coverImage"].get("large")
+    # HIGH QUALITY IMAGE HANDLING
+    image = res.get("bannerImage")
+    if not image:
+        image = res["coverImage"].get("extraLarge")
+    if not image:
+        image = res["coverImage"].get("large")
 
     btn = [[InlineKeyboardButton("Mᴏʀᴇ ɪɴғᴏ ⚡", url=info)]]
     if trailer_url:
@@ -244,17 +248,3 @@ async def anime_handler(client, message):
 @Client.on_message(filters.command("manga", "/"))
 async def manga_handler(client, message):
     await handle_media(message, "manga")
-
-# Run the bot
-if __name__ == "__main__":
-    app = Client(
-        "anilist_bot",
-        api_id=YOUR_API_ID,  # Replace with your API ID
-        api_hash="YOUR_API_HASH",  # Replace with your API Hash
-        bot_token="YOUR_BOT_TOKEN"  # Replace with your Bot Token
-    )
-
-    app.add_handler(filters.command("anime", "/")(anime_handler))
-    app.add_handler(filters.command("manga", "/")(manga_handler))
-
-    app.run()
