@@ -8,9 +8,6 @@ from pyrogram.errors import ChatAdminRequired
 import asyncio
 from pyrogram.enums import ParseMode
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
 @Client.on_message(filters.command('ban') & filters.user(ADMINS))
 async def do_ban(bot, message):
@@ -49,9 +46,7 @@ async def do_ban(bot, message):
         await text.edit(f"<b>Cᴏɴᴛʀᴏʟʟ ʏᴏᴜʀ ᴀɴɢᴇʀ ʙʀᴏ...\n<code>{userid}</code> ɪs ᴀʟʀᴇᴀᴅʏ ʙᴀɴɴᴇᴅ !!</b>")
     return
 
-#Dont Remove My Credit @AV_BOTz_UPDATE 
-#This Repo Is By @BOT_OWNER26 
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
+
 
 @Client.on_message(filters.command('unban') & filters.user(ADMINS))
 async def do_unban(bot, message):
