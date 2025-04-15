@@ -42,11 +42,11 @@ async def start(client, message):
             parse_mode=enums.ParseMode.HTML
         )
         await asyncio.sleep(0.4)
-        await m.edit_text("💜")
+        await m.edit_text("👀")
         await asyncio.sleep(0.5)
         await m.edit_text("✨")
         await asyncio.sleep(0.5)
-        await m.edit_text("<b><i>ꜱᴛᴀʀᴛɪɴɢ...</i></b>")
+        await m.edit_text("<b><i>Sᴛᴀʀᴛɪɴɢ...</i></b>")
         await asyncio.sleep(0.4)
         await m.delete()
 
