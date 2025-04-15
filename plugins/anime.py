@@ -222,7 +222,7 @@ async def handle_media(mesg, media_type):
     description = res.get("description", "N/A")
     msg += shorten(description, info)
 
-    image = info.replace("anilist.co/anime/", "img.anili.st/media/") if "anime" in info else res["coverImage"]["large"]
+    image = res.get("bannerImage") or res["coverImage"]["large"]
     btn = [[InlineKeyboardButton("Mᴏʀᴇ ɪɴғᴏ ⚡", url=info)]]
     if trailer_url:
         btn[0].append(InlineKeyboardButton("Tʀᴀɪʟᴇʀ 🎬", url=trailer_url))
@@ -241,3 +241,17 @@ async def anime_handler(client, message):
 @Client.on_message(filters.command("manga", "/"))
 async def manga_handler(client, message):
     await handle_media(message, "manga")
+
+# Main bot runner
+if __name__ == "__main__":
+    app = Client(
+        "anilist_bot",
+        api_id=123456,  # Replace with your API ID
+        api_hash="your_api_hash_here",  # Replace with your API hash
+        bot_token="your_bot_token_here"  # Replace with your Bot token
+    )
+
+    app.add_handler(filters.command("anime", "/")(anime_handler))
+    app.add_handler(filters.command("manga", "/")(manga_handler))
+
+    app.run()
