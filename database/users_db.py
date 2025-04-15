@@ -1,4 +1,3 @@
-import re
 import motor.motor_asyncio
 from info import DATABASE_NAME, DATABASE_URI
 
@@ -12,54 +11,62 @@ class Database:
 
     def new_user(self, id, name):
         return dict(
-            id = id,
-            name = name,
+            id=id,
+            name=name,
+            is_active=True  # Default active status
         )
 
-    
     async def add_user(self, id, name):
         user = self.new_user(id, name)
         await self.col.insert_one(user)
-    
+
     async def is_user_exist(self, id):
-        user = await self.col.find_one({'id':int(id)})
+        user = await self.col.find_one({'id': int(id)})
         return bool(user)
-    
+
     async def total_users_count(self):
         count = await self.col.count_documents({})
         return count
 
+    async def active_users_count(self):
+        # Count only active users
+        count = await self.col.count_documents({"is_active": True})
+        return count
+
     async def get_all_users(self):
         return self.col.find({})
-        
-    
+
     async def delete_user(self, user_id):
         await self.col.delete_many({'id': int(user_id)})
 
-    async def ban_user(self , user_id):
-        user = await self.bannedList.find_one({'banId' : int(user_id)})
+    async def ban_user(self, user_id):
+        user = await self.bannedList.find_one({'banId': int(user_id)})
         if user:
             return False
         else:
-            await self.bannedList.insert_one({'banId' : int(user_id)})
+            await self.bannedList.insert_one({'banId': int(user_id)})
+            # Mark the user as inactive when banned
+            await self.col.update_one({'id': int(user_id)}, {"$set": {"is_active": False}})
             return True
-        
-    async def is_banned(self , user_id):
-        user = await self.bannedList.find_one({'banId' : int(user_id)})
+
+    async def is_banned(self, user_id):
+        user = await self.bannedList.find_one({'banId': int(user_id)})
         return True if user else False
 
-    
-    async def is_unbanned(self , user_id):
-        try : 
-            if await self.bannedList.find_one({'banId' : int(user_id)}):
-                await self.bannedList.delete_one({'banId' : int(user_id)})
+    async def is_unbanned(self, user_id):
+        try:
+            if await self.bannedList.find_one({'banId': int(user_id)}):
+                await self.bannedList.delete_one({'banId': int(user_id)})
+                # Re-activate the user
+                await self.col.update_one({'id': int(user_id)}, {"$set": {"is_active": True}})
                 return True
             else:
                 return False
         except Exception as e:
-            e = f'Fᴀɪʟᴇᴅ ᴛᴏ ᴜɴʙᴀɴ.Rᴇᴀsᴏɴ : {e}'
+            e = f'Failed to unban. Reason: {e}'
             print(e)
             return e
-        
 
+
+# Initialize Database instance
 db = Database(DATABASE_URI, DATABASE_NAME)
