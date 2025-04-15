@@ -24,6 +24,7 @@ async def users(bot, message):
         photo=img_url,
         caption=text,
         reply_markup=buttons
+        message_effect_id=5104841245755180586 #🔥
     )
 
 # Callback to handle "Close" button
