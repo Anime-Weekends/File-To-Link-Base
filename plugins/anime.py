@@ -56,7 +56,6 @@ query ($id: Int, $idMal: Int, $search: String, $type: MediaType) {
     }
     updatedAt
     coverImage {
-      extraLarge
       large
     }
     bannerImage
@@ -182,15 +181,15 @@ async def handle_media(mesg, media_type):
     if not res:
         return await reply.edit("<blockquote>💢 Nᴏ ʀᴇsᴏᴜʀᴄᴇ ғᴏᴜɴᴅ! [404]</blockquote>")
 
-    msg = f"<b><blockquote>{res['title']['romaji']}</b> (<code>{res['title']['native']}</code>)</blockquote>\n\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
+    msg = f"<b><blockquote>{res['title']['romaji']}</b>(<code>{res['title']['native']}</code>)</blockquote>\n\n<b>Type</b>: {res['format']}\n<b>Status</b>: {res['status']}\n"
     
     if media_type == "anime":
         durasi = get_readable_time(int(res.get("duration", 0) * 60))
-        msg += f"<b>Episodes</b>: {res.get('episodes', 'N/A')}\n<b>Duration</b>: {durasi} Per Eps.\n"
+        msg += f"<b>Episodes</b>: {res.get('episodes', 'N/A')}\n<b>Duration </b>: {durasi} Per Eps.\n"
     else:
         msg += f"<b>Chapters</b>: {res.get('chapters', 'N/A')}\n<b>Volumes</b>: {res.get('volumes', 'N/A')}\n"
 
-    msg += f"<b>Score</b>: {res.get('averageScore', 'N/A')}%\n<b>Genres</b>: <code>"
+    msg += f"<b>Score</b>: {res.get('averageScore', 'N/A')}%\n<b>Category</b>: <code>"
     for genre in res.get("genres", []):
         msg += f"{genre}, "
     msg = msg.rstrip(", ") + "</code>\n"
@@ -223,13 +222,8 @@ async def handle_media(mesg, media_type):
     description = res.get("description", "N/A")
     msg += shorten(description, info)
 
-    # HIGH QUALITY IMAGE HANDLING
-    image = res.get("bannerImage")
-    if not image:
-        image = res["coverImage"].get("extraLarge")
-    if not image:
-        image = res["coverImage"].get("large")
-
+    # Use banner image if available, else fallback to cover
+    image = res.get("bannerImage") or res["coverImage"]["large"]
     btn = [[InlineKeyboardButton("Mᴏʀᴇ ɪɴғᴏ ⚡", url=info)]]
     if trailer_url:
         btn[0].append(InlineKeyboardButton("Tʀᴀɪʟᴇʀ 🎬", url=trailer_url))
