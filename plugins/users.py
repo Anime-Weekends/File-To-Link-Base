@@ -28,14 +28,14 @@ async def users(bot, message):
     uptime = get_uptime()
 
     text = "<b><blockquote>𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦</blockquote></b>\n"
-    text += f"<blockquote>\nTᴏᴛᴀʟ ᴜsᴇʀs : {total_users}</blockquote>"
+    text += f"\n<blockquote>Tᴏᴛᴀʟ ᴜsᴇʀs : {total_users}</blockquote>"
     text += f"<blockquote>\nAᴄᴛɪᴠᴇ ᴜsᴇʀs : {active_users}</blockquote>"
     text += f"<blockquote>\nBᴀɴɴᴇᴅ ᴜsᴇʀs: {banned_users}</blockquote>"
     text += f"<blockquote>\nVᴇʀsɪᴏɴ : {BOT_VERSION}</blockquote>"
     text += f"<blockquote>\nUᴘᴛɪᴍᴇ : {uptime}</blockquote>"
 
     buttons = InlineKeyboardMarkup([
-        [InlineKeyboardButton("Close", callback_data="close")]
+        [InlineKeyboardButton("", callback_data="close")]
     ])
 
     img_url = "https://i.ibb.co/YzFqHky/photo-2025-04-15-09-14-30-7493465832589099024.jpg"
