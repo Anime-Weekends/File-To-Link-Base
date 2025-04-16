@@ -20,6 +20,19 @@ class Database:
         user = self.new_user(id, name)
         await self.col.insert_one(user)
 
+async def get_banned_user_details(self):
+        banned_users = await self.bannedList.find().to_list(length=None)
+        details = []
+
+        for user in banned_users:
+            user_data = await self.col.find_one({"id": user["banId"]})
+            if user_data:
+                details.append((user_data["id"], user_data.get("name", "Unknown")))
+            else:
+                details.append((user["banId"], "Unknown"))
+
+        return details    
+
     async def is_user_exist(self, id):
         user = await self.col.find_one({'id': int(id)})
         return bool(user)
