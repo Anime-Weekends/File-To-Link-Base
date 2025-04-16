@@ -28,11 +28,11 @@ async def users(bot, message):
     uptime = get_uptime()
 
     text = "<b><blockquote>𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦</blockquote></b>\n"
-    text += f"<blockquote>\nTotal Users: {total_users}</blockquote>"
-    text += f"<blockquote>\nActive Users: {active_users}</blockquote>"
-    text += f"<blockquote>\nBanned Users: {banned_users}</blockquote>"
-    text += f"<blockquote>\nVersion: {BOT_VERSION}</blockquote>"
-    text += f"<blockquote>\nUptime: {uptime}</blockquote>"
+    text += f"<blockquote>\nTᴏᴛᴀʟ ᴜsᴇʀs : {total_users}</blockquote>"
+    text += f"<blockquote>\nAᴄᴛɪᴠᴇ ᴜsᴇʀs : {active_users}</blockquote>"
+    text += f"<blockquote>\nBᴀɴɴᴇᴅ ᴜsᴇʀs: {banned_users}</blockquote>"
+    text += f"<blockquote>\nVᴇʀsɪᴏɴ : {BOT_VERSION}</blockquote>"
+    text += f"<blockquote>\nUᴘᴛɪᴍᴇ : {uptime}</blockquote>"
 
     buttons = InlineKeyboardMarkup([
         [InlineKeyboardButton("Close", callback_data="close")]
@@ -57,7 +57,7 @@ async def close_button(bot, query):
 @Client.on_message(filters.private & filters.command("restart") & filters.user(ADMINS))
 async def restart(client, message):
     msg = await message.reply_text(
-        text="<i>Trying to restart...</i>",
+        text="<i><blockquote>Tʀʏɪɴɢ ᴛᴏ ʀᴇsᴛᴀʀᴛ...</blockquote></i>",
         quote=True
     )
     await asyncio.sleep(2)
