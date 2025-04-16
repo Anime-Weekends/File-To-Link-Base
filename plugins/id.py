@@ -16,7 +16,7 @@ async def showid(client, message):
 
     await message.reply_photo(
         photo=photo_url,
-        caption=f"<b><blockquote>Yᴏᴜʀ ᴜsᴇʀ ɪᴅ ɪs:</b> <code>{user_id}</blockquote></code>",
+        caption=f"<b><blockquote>Yᴏᴜʀ ᴜsᴇʀ ɪᴅ ɪs :</b> <code>{user_id}</blockquote></code>",
         reply_markup=buttons,
         quote=True
     )
