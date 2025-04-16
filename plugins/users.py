@@ -27,12 +27,12 @@ async def users(bot, message):
     banned_users = await db.banned_users_count()
     uptime = get_uptime()
 
-    text = "<b>Bot Status</b>\n"
-    text += f"\nTotal Users: {total_users}"
-    text += f"\nActive Users: {active_users}"
-    text += f"\nBanned Users: {banned_users}"
-    text += f"\nVersion: {BOT_VERSION}"
-    text += f"\nUptime: {uptime}"
+    text = "<b><blockquote>𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦</blockquote></b>\n"
+    text += f"<blockquote>\nTotal Users: {total_users}</blockquote>"
+    text += f"<blockquote>\nActive Users: {active_users}</blockquote>"
+    text += f"<blockquote>\nBanned Users: {banned_users}</blockquote>"
+    text += f"<blockquote>\nVersion: {BOT_VERSION}</blockquote>"
+    text += f"<blockquote>\nUptime: {uptime}</blockquote>"
 
     buttons = InlineKeyboardMarkup([
         [InlineKeyboardButton("Close", callback_data="close")]
