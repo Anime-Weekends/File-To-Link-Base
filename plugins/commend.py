@@ -161,7 +161,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f"[chat owner](https://telegram.me/AV_OWNER_BOT)\n"
                     f"Reason: {reason}</b>"
                 )
-                ban_image = "https://example.com/ban.jpg"  # Replace with your ban image URL
+                ban_image = "https://i.ibb.co/7xWp8JKb/photo-2025-04-16-11-00-49-7493864315359854612.jpg"  # Replace with your ban image URL
                 buttons = InlineKeyboardMarkup([
                     [InlineKeyboardButton("Contact", url="https://telegram.me/AV_OWNER_BOT"),
                      InlineKeyboardButton("Close", callback_data="close_data")]
@@ -198,7 +198,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     "<b>Hurray.. you are unbanned by "
                     "[owner](https://telegram.me/RexySama)</b>"
                 )
-                unban_image = "https://example.com/unban.jpg"  # Replace with your unban image URL
+                unban_image = "https://i.ibb.co/7xWp8JKb/photo-2025-04-16-11-00-49-7493864315359854612.jpg"  # Replace with your unban image URL
                 buttons = InlineKeyboardMarkup([
                     [InlineKeyboardButton("Contact", url="https://telegram.me/RexySama"),
                      InlineKeyboardButton("Close", callback_data="close_data")]
