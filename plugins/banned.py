@@ -97,7 +97,7 @@ async def show_banlist(bot: Client, message: Message):
     user_list_text = "\n".join([f"<code>{uid}</code> - {name}" for uid, name in banned_details])
     caption = (
         "<b><blockquote>ʜᴇʀᴇ ɪs ᴛʜᴇ ʙᴀɴɴᴇᴅ ᴜsᴇʀs ʟɪsᴛ:</blockquote></b>\n\n"
-        f"{user_list_text}"
+        f"<blockquote expandable>{user_list_text}<blockquote>"
     )
 
     await message.reply_photo(
