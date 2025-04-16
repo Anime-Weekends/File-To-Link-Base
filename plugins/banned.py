@@ -85,3 +85,31 @@ async def do_unban(bot, message):
 
     else:
         await text.edit(f"<b><blockquote>Fᴀɪʟᴇᴅ ᴛᴏ ᴜɴʙᴀɴ ᴜsᴇʀ/ᴄʜᴀɴɴᴇʟ.\nʀᴇᴀsᴏɴ : {unban_chk}</blockquote></b>")
+
+@Client.on_message(filters.command('banlist') & filters.user(ADMINS))
+async def show_banlist(bot: Client, message: Message):
+    banned_details = await db.get_banned_user_details()
+
+    if not banned_details:
+        await message.reply("<b><blockquote>Nᴏ ᴏɴᴇ ɪs ʙᴀɴɴᴇᴅ ʏᴇᴛ.</blockquote></b>")
+        return
+
+    user_list_text = "\n".join([f"<code>{uid}</code> - {name}" for uid, name in banned_details])
+    caption = (
+        "<b><blockquote>ʜᴇʀᴇ ɪs ᴛʜᴇ ʙᴀɴɴᴇᴅ ᴜsᴇʀs ʟɪsᴛ:</blockquote></b>\n\n"
+        f"{user_list_text}"
+    )
+
+    await message.reply_photo(
+        photo="https://i.ibb.co/BHqdCMCY/photo-2025-04-03-11-48-19-7489356433650090000.jpg",
+        caption=caption,
+        parse_mode=ParseMode.HTML,
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("❌ Close", callback_data="close_banlist")]]
+        )
+    )
+
+
+@Client.on_callback_query(filters.regex("close_banlist"))
+async def close_banlist_handler(client: Client, callback_query: CallbackQuery):
+    await callback_query.message.delete()
