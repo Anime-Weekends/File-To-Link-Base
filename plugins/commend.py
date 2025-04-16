@@ -164,7 +164,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ban_image = "https://example.com/ban.jpg"  # Replace with your ban image URL
                 buttons = InlineKeyboardMarkup([
                     [InlineKeyboardButton("Contact", url="https://telegram.me/AV_OWNER_BOT"),
-                     InlineKeyboardButton("Close", callback_data="closeAlert")]
+                     InlineKeyboardButton("Close", callback_data="close_data")]
                 ])
                 await client.send_photo(
                     user_id,
@@ -201,7 +201,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 unban_image = "https://example.com/unban.jpg"  # Replace with your unban image URL
                 buttons = InlineKeyboardMarkup([
                     [InlineKeyboardButton("Contact", url="https://telegram.me/RexySama"),
-                     InlineKeyboardButton("Close", callback_data="closeAlert")]
+                     InlineKeyboardButton("Close", callback_data="close_data")]
                 ])
                 await client.send_photo(
                     user_id,
