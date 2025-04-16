@@ -138,39 +138,80 @@ async def cb_handler(client: Client, query: CallbackQuery):
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 	
     elif query.data.startswith("sendAlert"):
-        user_id =(query.data.split("_")[1])
-        user_id = int(user_id.replace(' ' , ''))
-        if len(str(user_id)) == 10:
-            reason = str(query.data.split("_")[2])
-            try:
-                await client.send_message(user_id , f"<b>ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ʙʏ [ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ](https://telegram.me/AV_OWNER_BOT)\nʀᴇᴀsᴏɴ : {reason}</b>")
-                await query.message.edit(f"<b>Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nʀᴇᴀsᴏɴ : {reason}</b>")
-            except Exception as e:
-                await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
-        else:
-            await query.message.edit(f"<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>")
-    elif query.data.startswith('noAlert'):
-        user_id =(query.data.split("_")[1])
-        user_id = int(user_id.replace(' ' , ''))
-        await query.message.edit(f"<b>Tʜᴇ ʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.</b>")
+    user_id = query.data.split("_")[1]
+    user_id = int(user_id.replace(' ', ''))
+    if len(str(user_id)) == 10:
+        reason = query.data.split("_")[2]
+        try:
+            ban_text = (
+                f"<b>ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ʙʏ "
+                f"[ᴀᴠ ᴄʜᴀᴛ ᴏᴡɴᴇʀ](https://telegram.me/AV_OWNER_BOT)\n"
+                f"ʀᴇᴀsᴏɴ : {reason}</b>"
+            )
+            ban_image = "https://example.com/ban.jpg"  # Replace with your ban image URL
+            buttons = InlineKeyboardMarkup([
+                [InlineKeyboardButton("Contact", url="https://telegram.me/AV_OWNER_BOT"),
+                 InlineKeyboardButton("Close", callback_data="closeAlert")]
+            ])
+            await client.send_photo(
+                user_id,
+                photo=ban_image,
+                caption=ban_text,
+                parse_mode="html",
+                reply_markup=buttons,
+                message_effect_id=5104841245755180586
+            )
+            await query.message.edit(
+                f"<b>Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nʀᴇᴀsᴏɴ : {reason}</b>"
+            )
+        except Exception as e:
+            await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
+    else:
+        await query.message.edit(
+            "<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>"
+        )
 
-    elif query.data.startswith('sendUnbanAlert'):
-        user_id =(query.data.split("_")[1])
-        user_id = int(user_id.replace(' ' , ''))
-        if len(str(user_id)) == 10:
-            try:
-                unban_text = "<b>ʜᴜʀʀᴀʏ..ʏᴏᴜ ᴀʀᴇ ᴜɴʙᴀɴɴᴇᴅ ʙʏ [ᴏᴡɴᴇʀ](https://telegram.me/RexySama)</b>"
-                await client.send_message(user_id , unban_text)
-                await query.message.edit(f"<b>Uɴʙᴀɴɴᴇᴅ Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nᴀʟᴇʀᴛ ᴛᴇxᴛ : {unban_text}</b>")
-            except Exception as e:
-                await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
-        else:
-            await query.message.edit(f"<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>")
-            
-    elif query.data.startswith('NoUnbanAlert'):
-        user_id =(query.data.split("_")[1])
-        user_id = int(user_id.replace(' ' , ''))
-        await query.message.edit(f"Tʜᴇ ᴜɴʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.")
+elif query.data.startswith("noAlert"):
+    user_id = query.data.split("_")[1]
+    user_id = int(user_id.replace(' ', ''))
+    await query.message.edit(f"<b>Tʜᴇ ʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.</b>")
+
+elif query.data.startswith("sendUnbanAlert"):
+    user_id = query.data.split("_")[1]
+    user_id = int(user_id.replace(' ', ''))
+    if len(str(user_id)) == 10:
+        try:
+            unban_text = (
+                "<b>ʜᴜʀʀᴀʏ..ʏᴏᴜ ᴀʀᴇ ᴜɴʙᴀɴɴᴇᴅ ʙʏ "
+                "[ᴏᴡɴᴇʀ](https://telegram.me/RexySama)</b>"
+            )
+            unban_image = "https://example.com/unban.jpg"  # Replace with your unban image URL
+            buttons = InlineKeyboardMarkup([
+                [InlineKeyboardButton("Contact", url="https://telegram.me/RexySama"),
+                 InlineKeyboardButton("Close", callback_data="closeAlert")]
+            ])
+            await client.send_photo(
+                user_id,
+                photo=unban_image,
+                caption=unban_text,
+                parse_mode="html",
+                reply_markup=buttons,
+                message_effect_id=5104841245755180586
+            )
+            await query.message.edit(
+                f"<b>Uɴʙᴀɴɴᴇᴅ Aʟᴇʀᴛ sᴇɴᴛ ᴛᴏ <code>{user_id}</code>\nᴀʟᴇʀᴛ ᴛᴇxᴛ : {unban_text}</b>"
+            )
+        except Exception as e:
+            await query.message.edit(f"<b>sʀʏ ɪ ɢᴏᴛ ᴛʜɪs ᴇʀʀᴏʀ : {e}</b>")
+    else:
+        await query.message.edit(
+            "<b>Tʜᴇ ᴘʀᴏᴄᴇss ᴡᴀs ɴᴏᴛ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ʙᴇᴄᴀᴜsᴇ ᴛʜᴇ ᴜsᴇʀ ɪᴅ ᴡᴀs ɴᴏᴛ ᴠᴀʟɪᴅ, ᴏʀ ᴘᴇʀʜᴀᴘs ɪᴛ ᴡᴀs ᴀ ᴄʜᴀɴɴᴇʟ ɪᴅ</b>"
+        )
+
+elif query.data.startswith("NoUnbanAlert"):
+    user_id = query.data.split("_")[1]
+    user_id = int(user_id.replace(' ', ''))
+    await query.message.edit(f"Tʜᴇ ᴜɴʙᴀɴ ᴏɴ <code>{user_id}</code> ᴡᴀs ᴇxᴇᴄᴜᴛᴇᴅ sɪʟᴇɴᴛʟʏ.")
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
