@@ -170,7 +170,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     user_id,
                     photo=ban_image,
                     caption=ban_text,
-                    parse_mode="html",
+                    parse_mode=enums.ParseMode.HTML, 
                     reply_markup=buttons,
                     message_effect_id=5104841245755180586
                 )
@@ -207,7 +207,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     user_id,
                     photo=unban_image,
                     caption=unban_text,
-                    parse_mode="html",
+                    parse_mode=enums.ParseMode.HTML, 
                     reply_markup=buttons,
                     message_effect_id=5104841245755180586
                 )
