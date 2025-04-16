@@ -35,7 +35,7 @@ async def users(bot, message):
     text += f"<blockquote>\nUᴘᴛɪᴍᴇ : {uptime}</blockquote>"
 
     buttons = InlineKeyboardMarkup([
-        [InlineKeyboardButton("", callback_data="close")]
+        [InlineKeyboardButton("Cʟᴏsᴇ ᴄᴜᴛɪᴇ", callback_data="close")]
     ])
 
     img_url = "https://i.ibb.co/YzFqHky/photo-2025-04-15-09-14-30-7493465832589099024.jpg"
