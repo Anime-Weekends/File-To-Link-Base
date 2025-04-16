@@ -9,6 +9,7 @@ from utils import get_size
 from Script import script
 from plugins.avbot import is_user_joined, is_user_allowed
 
+
 @Client.on_message((filters.private) & (filters.document | filters.video | filters.audio), group=4)
 async def private_receive_handler(c: Client, m: Message):
     # Force Subscribe Check
@@ -36,16 +37,32 @@ async def private_receive_handler(c: Client, m: Message):
     file_size = get_size(file_id.file_size)
 
     try:
+        # Forward file to BIN_CHANNEL
         msg = await m.forward(chat_id=BIN_CHANNEL)
 
-        # Ensure URL is valid
-        base_url = URL if URL.startswith("http") else f"https://{URL}"
+        # Ensure base URL is valid
+        base_url = URL.strip()
+        if not base_url.startswith("http"):
+            base_url = f"https://{base_url}"
 
-        # Generate Links
-        stream = f"{base_url}watch/{msg.id}?hash={get_hash(msg)}"
-        download = f"{base_url}{msg.id}?hash={get_hash(msg)}"
+        msg_hash = get_hash(msg)
+
+        # Build links
+        stream = f"{base_url}/watch/{msg.id}?hash={msg_hash}"
+        download = f"{base_url}/{msg.id}?hash={msg_hash}"
         file_link = f"https://t.me/{BOT_USERNAME}?start=file_{msg.id}"
         share_link = f"https://t.me/share/url?url={file_link}"
+
+        # URL validation helper
+        def is_valid_url(url):
+            return url.startswith("http://") or url.startswith("https://")
+
+        # Fallbacks
+        fallback_url = "https://t.me"
+        stream = stream if is_valid_url(stream) else fallback_url
+        download = download if is_valid_url(download) else fallback_url
+        file_link = file_link if is_valid_url(file_link) else fallback_url
+        share_link = share_link if is_valid_url(share_link) else fallback_url
 
         # Notify in BIN_CHANNEL
         await msg.reply_text(
@@ -56,32 +73,32 @@ async def private_receive_handler(c: Client, m: Message):
             quote=True
         )
 
-        # Send response with full or short caption
+        # Inline buttons
         if file_name:
-            await m.reply_text(
-                text=script.CAPTION_TXT.format(CHANNEL, file_name, file_size, stream, download),
-                quote=True,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("Stream", url=stream),
-                     InlineKeyboardButton("Download", url=download)],
-                    [InlineKeyboardButton("Get File", url=file_link),
-                     InlineKeyboardButton("Share", url=share_link),
-                     InlineKeyboardButton("Close", callback_data="close_data")]
-                ])
-            )
+            reply_markup = InlineKeyboardMarkup([
+                [InlineKeyboardButton("Stream", url=stream),
+                 InlineKeyboardButton("Download", url=download)],
+                [InlineKeyboardButton("Get File", url=file_link),
+                 InlineKeyboardButton("Share", url=share_link),
+                 InlineKeyboardButton("Close", callback_data="close_data")]
+            ])
+            caption = script.CAPTION_TXT.format(CHANNEL, file_name, file_size, stream, download)
         else:
-            await m.reply_text(
-                text=script.CAPTION2_TXT.format(CHANNEL, file_name, file_size, download),
-                quote=True,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("Download", url=download),
-                     InlineKeyboardButton("Get File", url=file_link)],
-                    [InlineKeyboardButton("Share", url=share_link),
-                     InlineKeyboardButton("Close", callback_data="close_data")]
-                ])
-            )
+            reply_markup = InlineKeyboardMarkup([
+                [InlineKeyboardButton("Download", url=download),
+                 InlineKeyboardButton("Get File", url=file_link)],
+                [InlineKeyboardButton("Share", url=share_link),
+                 InlineKeyboardButton("Close", callback_data="close_data")]
+            ])
+            caption = script.CAPTION2_TXT.format(CHANNEL, file_name, file_size, download)
+
+        # Send message to user
+        await m.reply_text(
+            text=caption,
+            quote=True,
+            disable_web_page_preview=True,
+            reply_markup=reply_markup
+        )
 
     except FloodWait as e:
         print(f"Sleeping for {e.value}s")
