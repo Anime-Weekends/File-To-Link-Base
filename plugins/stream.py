@@ -1,6 +1,4 @@
 import asyncio
-import os
-import time
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
@@ -11,25 +9,22 @@ from utils import get_size
 from Script import script
 from plugins.avbot import is_user_joined, is_user_allowed
 
-# Dont Remove My Credit @AV_BOTz_UPDATE
-# This Repo Is By @BOT_OWNER26
-# For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
+# Ensure URL doesn't have trailing slash
+URL = URL.rstrip("/")
 
 @Client.on_message((filters.private) & (filters.document | filters.video | filters.audio), group=4)
 async def private_receive_handler(c: Client, m: Message):
-    # Force Subscribe Check
     if FSUB:
         if not await is_user_joined(c, m):
             return
 
-    # Check if Banned
+    # Check if banned
     ban_chk = await db.is_banned(int(m.from_user.id))
     if ban_chk:
         return await m.reply(BAN_ALERT)
 
     user_id = m.from_user.id
 
-    # ✅ Check if User is Allowed (Limit System)
     is_allowed, remaining_time = await is_user_allowed(user_id)
     if not is_allowed:
         await m.reply_text(
@@ -45,18 +40,13 @@ async def private_receive_handler(c: Client, m: Message):
     try:
         msg = await m.forward(chat_id=BIN_CHANNEL)
 
-        # Generate Links
-        hash_value = get_hash(msg)
-        stream = f"{URL}watch/{msg.id}?hash={hash_value}"
-        download = f"{URL}{msg.id}?hash={hash_value}"
+        # Generate safe URLs
+        stream = f"{URL}/watch/{msg.id}?hash={get_hash(msg)}"
+        download = f"{URL}/{msg.id}?hash={get_hash(msg)}"
         file_link = f"https://t.me/{BOT_USERNAME}?start=file_{msg.id}"
         share_link = f"https://t.me/share/url?url={file_link}"
 
-        # Sanity check for URLs
-        if not all(x.startswith("http") for x in [stream, download, file_link, share_link]):
-            return await m.reply_text("❌ Invalid URL format. Please check your `URL` or `BOT_USERNAME` in `info.py`.")
-
-        # Notify in BIN_CHANNEL
+        # Log in bin channel
         await msg.reply_text(
             text=f"Requested By: [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n"
                  f"User ID: `{m.from_user.id}`\n"
@@ -65,32 +55,28 @@ async def private_receive_handler(c: Client, m: Message):
             quote=True
         )
 
-        # ✅ अगर file_name मौजूद है तो पूरा कैप्शन भेजें, वरना सिर्फ डाउनलोड लिंक भेजें
-        if file_name:
-            await m.reply_text(
-                text=script.CAPTION_TXT.format(CHANNEL, file_name, file_size, stream, download),
-                quote=True,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("Stream", url=stream),
-                     InlineKeyboardButton("Download", url=download)],
-                    [InlineKeyboardButton("Get File", url=file_link),
-                     InlineKeyboardButton("Share", url=share_link),
-                     InlineKeyboardButton("Close", callback_data="close_data")]
-                ])
-            )
-        else:
-            await m.reply_text(
-                text=script.CAPTION2_TXT.format(CHANNEL, file_name, file_size, download),
-                quote=True,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("Download", url=download),
-                     InlineKeyboardButton("Get File", url=file_link)],
-                    [InlineKeyboardButton("Share", url=share_link),
-                     InlineKeyboardButton("Close", callback_data="close_data")]
-                ])
-            )
+        buttons = InlineKeyboardMarkup([
+            [InlineKeyboardButton("Stream", url=stream),
+             InlineKeyboardButton("Download", url=download)],
+            [InlineKeyboardButton("Get File", url=file_link),
+             InlineKeyboardButton("Share", url=share_link),
+             InlineKeyboardButton("Close", callback_data="close_data")]
+        ]) if file_name else InlineKeyboardMarkup([
+            [InlineKeyboardButton("Download", url=download),
+             InlineKeyboardButton("Get File", url=file_link)],
+            [InlineKeyboardButton("Share", url=share_link),
+             InlineKeyboardButton("Close", callback_data="close_data")]
+        ])
+
+        caption_text = script.CAPTION_TXT.format(CHANNEL, file_name, file_size, stream, download) if file_name \
+            else script.CAPTION2_TXT.format(CHANNEL, file_name, file_size, download)
+
+        await m.reply_text(
+            text=caption_text,
+            quote=True,
+            disable_web_page_preview=True,
+            reply_markup=buttons
+        )
 
     except FloodWait as e:
         print(f"Sleeping for {e.value}s")
