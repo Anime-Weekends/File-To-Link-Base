@@ -55,6 +55,11 @@ async def private_receive_handler(c: Client, m: Message):
 
         # ✅ अगर file_name मौजूद है तो पूरा कैप्शन भेजें, वरना सिर्फ डाउनलोड लिंक भेजें
         if file_name:
+            print("STREAM URL:", stream)
+            print("DOWNLOAD URL:", download)
+            print("FILE LINK:", file_link)
+            print("SHARE LINK:", share_link)
+
             await m.reply_text(
                 text=script.CAPTION_TXT.format(CHANNEL, file_name, file_size, stream, download),
                 quote=True,
@@ -63,22 +68,26 @@ async def private_receive_handler(c: Client, m: Message):
                     [InlineKeyboardButton(" Stream ", url=stream),
                      InlineKeyboardButton(" Download ", url=download)],
                     [InlineKeyboardButton('Get File', url=file_link),
-                    InlineKeyboardButton('share', url=share_link),
-                    InlineKeyboardButton('close', callback_data='close_data')]
+                     InlineKeyboardButton('share', url=share_link),
+                     InlineKeyboardButton('close', callback_data='close_data')]
                 ])
             )
         else:
+            print("DOWNLOAD URL:", download)
+            print("FILE LINK:", file_link)
+            print("SHARE LINK:", share_link)
+
             await m.reply_text(
                 text=script.CAPTION2_TXT.format(CHANNEL, file_name, file_size, download),
                 quote=True,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton(" Download ", url=download),
-                    InlineKeyboardButton('Get File', url=file_link)],
-                   [ InlineKeyboardButton('share', url=share_link),
-                    InlineKeyboardButton('close', callback_data='close_data')]
+                     InlineKeyboardButton('Get File', url=file_link)],
+                    [InlineKeyboardButton('share', url=share_link),
+                     InlineKeyboardButton('close', callback_data='close_data')]
                 ])
-             )
+            )
 
     except FloodWait as e:
         print(f"Sleeping for {e.value}s")
@@ -87,9 +96,8 @@ async def private_receive_handler(c: Client, m: Message):
             chat_id=BIN_CHANNEL,
             text=f"Gᴏᴛ FʟᴏᴏᴅWᴀɪᴛ ᴏғ {e.value}s from [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n\n**𝚄𝚜𝚎𝚛 𝙸𝙳 :** `{m.from_user.id}`",
             disable_web_page_preview=True
-           )
+        )
 
 #Dont Remove My Credit @AV_BOTz_UPDATE 
 #This Repo Is By @BOT_OWNER26 
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
-    
