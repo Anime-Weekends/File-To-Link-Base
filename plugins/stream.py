@@ -47,8 +47,8 @@ async def private_receive_handler(c: Client, m: Message):
         base_url = URL if URL.startswith("http") else f"https://{URL}"
         hash_val = get_hash(msg)
 
-        stream = f"{base_url}watch/{msg.id}?hash={hash_val}"
-        download = f"{base_url}{msg.id}?hash={hash_val}"
+        stream = f"{URL}watch/{msg.id}?hash={get_hash(msg)}"
+        download = f"{URL}download/{msg.id}?hash={get_hash(msg)}"
         file_link = f"https://t.me/{BOT_USERNAME}?start=file_{msg.id}"
         share_link = f"https://t.me/share/url?url={file_link}"
 
