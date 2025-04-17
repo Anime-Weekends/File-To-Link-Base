@@ -69,6 +69,6 @@ FQDN = str(getenv('FQDN', BIND_ADDRESS)) if not ON_HEROKU or getenv('FQDN', '') 
 HAS_SSL = bool(getenv('HAS_SSL', False))
 
 if HAS_SSL:
-    URL = "http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app:2626/""
+    URL = "http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app:2626/"
 else:
     URL = "http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app:2626/" if NO_PORT else f"http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app:{PORT}"
