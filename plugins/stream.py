@@ -15,7 +15,6 @@ from plugins.avbot import is_user_joined, is_user_allowed
 # This Repo Is By @BOT_OWNER26
 # For Any Kind Of Error Ask Us In Support Group @AV_SUPPORT_GROUP
 
-
 @Client.on_message((filters.private) & (filters.document | filters.video | filters.audio), group=4)
 async def private_receive_handler(c: Client, m: Message):
     # Force Subscribe Check
@@ -47,10 +46,15 @@ async def private_receive_handler(c: Client, m: Message):
         msg = await m.forward(chat_id=BIN_CHANNEL)
 
         # Generate Links
-        stream = f"{URL}watch/{msg.id}?hash={get_hash(msg)}"
-        download = f"{URL}{msg.id}?hash={get_hash(msg)}"
+        hash_value = get_hash(msg)
+        stream = f"{URL}watch/{msg.id}?hash={hash_value}"
+        download = f"{URL}{msg.id}?hash={hash_value}"
         file_link = f"https://t.me/{BOT_USERNAME}?start=file_{msg.id}"
         share_link = f"https://t.me/share/url?url={file_link}"
+
+        # Sanity check for URLs
+        if not all(x.startswith("http") for x in [stream, download, file_link, share_link]):
+            return await m.reply_text("❌ Invalid URL format. Please check your `URL` or `BOT_USERNAME` in `info.py`.")
 
         # Notify in BIN_CHANNEL
         await msg.reply_text(
