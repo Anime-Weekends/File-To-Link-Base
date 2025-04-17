@@ -71,4 +71,4 @@ HAS_SSL = bool(getenv('HAS_SSL', False))
 if HAS_SSL:
     URL = "https://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app/"
 else:
-    URL = "http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app/" if NO_PORT else f"http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app:{PORT}"
+    URL = "https://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app/" if NO_PORT else f"http://cheerful-kimberlee-filetolink1286-a70f100b.koyeb.app:{PORT}"
